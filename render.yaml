@@ -9,8 +9,18 @@ services:
         value: MexL
       - key: ROOM_MODE
         value: free
-      - key: ADVANCED_MODE
-        value: true
       - key: LOG_LEVEL
         value: INFO
+      - key: ADVANCED_MODE
+        value: true
+      - key: AUTO_WHITELIST
+        value: true
+      - key: AUTO_SC_WALLET
+        value: true
+      - key: ENABLE_MEMORY
+        value: true
+      - key: ENABLE_AGENT_TOKEN
+        value: false
+      - key: AUTO_IDENTITY
+        value: true
     autoDeploy: true
