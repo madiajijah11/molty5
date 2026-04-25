@@ -12,10 +12,12 @@ COPY bot/ ./bot/
 # Create dirs for credentials and memory persistence
 RUN mkdir -p /app/dev-agent /root/.molty-royale
 
-# Railway injects PORT env var; default 8080 for dashboard
+# Platform-agnostic: Railway and Fly.io both inject PORT env var; default 8080
 EXPOSE 8080
 
-# Railway: env vars injected at runtime, volumes configured via dashboard
-# Local Docker: use docker run --env-file .env -v molty-data:/root/.molty-royale
+# Platform-specific notes:
+# - Railway: env vars injected at runtime, volumes configured via dashboard
+# - Fly.io: uses fly.toml [mounts] for persistent volume at /root/.molty-royale
+# - Local Docker: use docker run --env-file .env -v molty-data:/root/.molty-royale
 
 CMD ["python", "-m", "bot.main"]

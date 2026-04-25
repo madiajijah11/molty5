@@ -1,0 +1,37 @@
+# fly.toml app configuration
+app = "molty-bot"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[deploy]
+  release_command = ""
+  strategy = "rolling"
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    force_https = false
+    handlers = ["http"]
+    port = 8080
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    interval = 10000
+    timeout = 2000
+
+# Persistent volume for bot memory
+[mounts]
+  source = "molty_memory"
+  destination = "/root/.molty-royale"

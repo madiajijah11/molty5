@@ -20,7 +20,7 @@ python -m bot.main
 The bot comes with a built-in real-time web dashboard!
 
 When running locally, open: **http://localhost:8080**
-When running on Railway, click the provided domain link.
+When running on Fly.io or Railway, open the provided domain link.
 
 **Features:**
 - **Live Metrics**: Agents, Playing, Dead, Moltz, sMoltz, CROSS
@@ -43,6 +43,97 @@ When running on Railway, click the provided domain link.
 docker build -t molty-bot .
 docker run --env-file .env -p 8080:8080 -it molty-bot
 ```
+
+## ✈️ Fly.io Deployment (Recommended - Free Tier)
+
+> **Fly.io handles persistence differently than Railway.** The VM persists across restarts, so credentials are saved automatically in `/app/dev-agent/`. No need for manual token sync.
+
+### Step 1: Install Fly CLI
+```bash
+# macOS
+brew install flyctl
+
+# Windows (PowerShell)
+iwr https://fly.io/install.ps1 -useb | iex
+
+# Linux
+curl -L https://fly.io/install.sh | sh
+```
+
+### Step 2: Login
+```bash
+fly auth login
+```
+
+### Step 3: Launch App (creates fly.toml + volume)
+```bash
+fly launch
+# When asked:
+# - App name: molty-bot
+# - Region: choose closest to you
+# - Deploy now: No (we'll configure first)
+```
+
+The `fly.toml` in this repo already configures a persistent volume at `/root/.molty-royale` for cross-game memory.
+
+### Step 4: Set Secrets
+```bash
+fly secrets set AGENT_NAME=YourBotName
+fly secrets set ROOM_MODE=free
+fly secrets set ADVANCED_MODE=true
+fly secrets set LOG_LEVEL=INFO
+```
+
+### Step 5: Deploy
+```bash
+fly deploy
+```
+
+### Step 6: Access Dashboard
+```bash
+fly open
+```
+
+### Common Commands
+```bash
+fly logs              # View logs
+fly status           # Check VM status
+fly restart          # Restart the app
+fly scale count 1    # Ensure 1 VM running
+```
+
+### Managing Secrets
+
+**View all secrets:**
+```bash
+fly secrets list
+```
+
+**View specific secret:**
+```bash
+fly secret show AGENT_NAME
+```
+
+**Update secret:**
+```bash
+fly secrets set AGENT_NAME=NewBotName
+```
+
+**Access credentials from VM:**
+```bash
+fly ssh cat /app/dev-agent/credentials.json
+fly ssh cat /app/dev-agent/agent-wallet.json
+```
+
+**Dashboard:** https://fly.io/dashboard → Select app → Secrets tab
+
+### First-Run Behavior
+On first deploy, the bot will:
+1. Generate wallets & API key
+2. Save credentials to `/app/dev-agent/`
+3. Since Fly.io VMs persist, credentials survive restarts!
+
+> **No RAILWAY_API_TOKEN needed** — Fly.io doesn't support Railway's GraphQL API. Credentials persist via the VM itself.
 
 ## 🚂 Railway Deployment
 
