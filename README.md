@@ -135,6 +135,39 @@ On first deploy, the bot will:
 
 > **No RAILWAY_API_TOKEN needed** — Fly.io doesn't support Railway's GraphQL API. Credentials persist via the VM itself.
 
+## 🎨 Render Deployment
+
+### Step 1: Daftar
+Buka https://render.com → Sign Up dengan GitHub
+
+### Step 2: Connect Repo
+1. Dashboard → New → Web Service
+2. Pilih repo `molty5`
+3. Branch: `main`
+
+### Step 3: Configure
+| Field | Value |
+|-------|-------|
+| Name | `molty5` |
+| Environment | `Python 3` |
+| Build Command | `pip install -r requirements.txt` |
+| Start Command | `python -m bot.main` |
+
+### Step 4: Environment Variables
+Tambah di dashboard:
+
+| Key | Value |
+|-----|-------|
+| `AGENT_NAME` | `MexL` |
+| `ROOM_MODE` | `free` |
+| `ADVANCED_MODE` | `true` |
+| `LOG_LEVEL` | `INFO` |
+
+### Step 5: Deploy
+Klik **Create Web Service**
+
+> **Note**: Render free tier tidur setelah 15 menit tidak aktif. Upgrade ke $5/bln Biar jalan terus 24/7.
+
 ## 🚂 Railway Deployment
 
 ### Step 1: Push to GitHub

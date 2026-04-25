@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: molty5
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m bot.main
+    envVars:
+      - key: AGENT_NAME
+        value: MexL
+      - key: ROOM_MODE
+        value: free
+      - key: ADVANCED_MODE
+        value: true
+      - key: LOG_LEVEL
+        value: INFO
+    autoDeploy: true
