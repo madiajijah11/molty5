@@ -77,22 +77,17 @@ fly launch
 
 ### Step 4: Set Secrets DULU (sebelum deploy!)
 
-> **PENTING: Fly.io TIDAK auto-detect env dari .env.example!** Semua env harus di-set manual di secrets Supaya:
-> - Visible di dashboard → Secrets tab
-> - documented black whiteapa yang digunakan
-> - Kontrol penuh atas konfigurasi
+> **PENTING: Fly.io TIDAK auto-detect env dari .env.example!** Semua env WAJIB di-set manual.
+
+Ini yang WAJIB di-set (selebihnya Pakai Defaultaja):
 
 ```bash
-# Utama (WAJIB)
 fly secrets set AGENT_NAME=YourBotName ROOM_MODE=free LOG_LEVEL=INFO
-
-# First-Run Intake (defaults = true/auto, tapi di-set Supaya visible)
-fly secrets set ADVANCED_MODE=true AUTO_WHITELIST=true AUTO_SC_WALLET=true ENABLE_MEMORY=true ENABLE_AGENT_TOKEN=false AUTO_IDENTITY=true
 ```
 
-Atau sekaligus:
+Opsional (default sudah true, tidak perlu diubah):
 ```bash
-fly secrets set AGENT_NAME=MexL ROOM_MODE=free LOG_LEVEL=INFO ADVANCED_MODE=true AUTO_WHITELIST=true AUTO_SC_WALLET=true ENABLE_MEMORY=true ENABLE_AGENT_TOKEN=false AUTO_IDENTITY=true
+fly secrets set ADVANCED_MODE=true
 ```
 
 **AUTO-GENERATED (JANGAN DIISI)**: Bot generate sendiri:
