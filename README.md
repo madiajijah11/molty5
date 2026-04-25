@@ -46,7 +46,7 @@ docker run --env-file .env -p 8080:8080 -it molty-bot
 
 ## ✈️ Fly.io Deployment (Recommended - Free Tier)
 
-> **Fly.io handles persistence differently than Railway.** The VM persists across restarts, so credentials are saved automatically in `/app/dev-agent/`. No need for manual token sync.
+> **PENTING: Urutan yang benar adalah SEBELUM deploy, baru set secrets!** Jika deploy dulu baru set secrets, bot akan generate ulang credentials.
 
 ### Step 1: Install Fly CLI
 ```bash
@@ -65,75 +65,91 @@ curl -L https://fly.io/install.sh | sh
 fly auth login
 ```
 
-### Step 3: Launch App (creates fly.toml + volume)
+### Step 3: Launch App (TAPI JANGAN deploy dulu!)
 ```bash
+fly launch --name molty5 --region iad --no-deploy --yes
+# Atau interactive:
 fly launch
-# When asked:
-# - App name: molty-bot
-# - Region: choose closest to you
-# - Deploy now: No (we'll configure first)
+# - App name: molty5
+# - Region: closest to you
+# - Deploy now: No  <-- PENTING!
 ```
 
-The `fly.toml` in this repo already configures a persistent volume at `/root/.molty-royale` for cross-game memory.
-
-### Step 4: Set Secrets
+### Step 4: Set Secrets DULU (sebelum deploy!)
 ```bash
-fly secrets set AGENT_NAME=YourBotName
-fly secrets set ROOM_MODE=free
-fly secrets set ADVANCED_MODE=true
-fly secrets set LOG_LEVEL=INFO
+fly secrets set AGENT_NAME=YourBotName ROOM_MODE=free ADVANCED_MODE=true LOG_LEVEL=INFO
 ```
 
-### Step 5: Deploy
+### Step 5: Baru Deploy
 ```bash
 fly deploy
 ```
 
-### Step 6: Access Dashboard
+### Step 6: Akses Credentials (setelah Bot Jalan)
+
+SETELAH bot running, cek logs untuk lihat credentials yang di-generate:
+```bash
+fly logs
+```
+
+Atau akses langsung dari VM:
+```bash
+# List semua file
+fly machine exec <machine-id> "ls -la /app/dev-agent/"
+
+# Get credentials.json (bisa lihat API_KEY, agent_wallet_address, dll)
+fly machine exec <machine-id> "cat /app/dev-agent/credentials.json"
+
+# Get wallet (bisa lihat PRIVATE KEY!)
+fly machine exec <machine-id> "cat /app/dev-agent/agent-wallet.json"
+fly machine exec <machine-id> "cat /app/dev-agent/owner-wallet.json"
+```
+
+Contoh output credentials.json:
+```json
+{
+  "api_key": "mr_live_xxxx",
+  "agent_name": "MexL",
+  "agent_wallet_address": "0x...",
+  "owner_eoa": "0x...",
+  "erc8004_token_id": 12345
+}
+```
+
+Contoh output agent-wallet.json:
+```json
+{
+  "address": "0x...",
+  "privateKey": "0x..."  // <-- Ini yang dibutuhkan untuk import ke MetaMask!
+}
+```
+
+### Step 7: akses Dashboard
 ```bash
 fly open
 ```
+
+Atau langsung ke: https://molty5.fly.dev/
 
 ### Common Commands
 ```bash
 fly logs              # View logs
 fly status           # Check VM status
-fly restart          # Restart the app
-fly scale count 1    # Ensure 1 VM running
+fly machine list     # List semua machine
+fly restart         # Restart semua machine
+fly scale count 1   # Pastikan 1 VM berjalan
 ```
 
-### Managing Secrets
+### ⚠️ Bedanya Railway vs Fly.io
 
-**View all secrets:**
-```bash
-fly secrets list
-```
+| Aspek | Railway | Fly.io |
+|-------|--------|-------|
+| Auto-sync credentials | ✅ Ya (GraphQL API) | ❌ Tidak |
+| Credentials tersimpan | Railway Variables | VM filesystem (`/app/dev-agent/`) |
+| Lihat credentials | Dashboard → Variables | `fly machine exec` + `cat` |
+| Persistence | Lewat cloud | Lewat VM volume |
 
-**View specific secret:**
-```bash
-fly secret show AGENT_NAME
-```
-
-**Update secret:**
-```bash
-fly secrets set AGENT_NAME=NewBotName
-```
-
-**Access credentials from VM:**
-```bash
-fly ssh cat /app/dev-agent/credentials.json
-fly ssh cat /app/dev-agent/agent-wallet.json
-```
-
-**Dashboard:** https://fly.io/dashboard → Select app → Secrets tab
-
-### First-Run Behavior
-On first deploy, the bot will:
-1. Generate wallets & API key
-2. Save credentials to `/app/dev-agent/`
-3. Since Fly.io VMs persist, credentials survive restarts!
-
-> **No RAILWAY_API_TOKEN needed** — Fly.io doesn't support Railway's GraphQL API. Credentials persist via the VM itself.
+> **Karena Fly.io tidak auto-sync seperti Railway**, credentials tersimpan di dalam VM (`/app/dev-agent/`). Setiap kali deploy ulang, credentials akan di-generate ulang!
 
 ## 🎨 Render Deployment
 
