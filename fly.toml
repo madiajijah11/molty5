@@ -1,12 +1,19 @@
-# fly.toml app configuration file generated for molty5 on 2026-04-26T01:04:36+08:00
-#
+# fly.toml app configuration file generated for molty5 on 2026-04-26
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
 
 app = 'molty5'
 primary_region = 'iad'
 
 [build]
+  dockerfile = 'Dockerfile'
+
+[deploy]
+  strategy = 'rolling'
+
+# Persistent volume untuk simpan credentials & memory
+[[mounts]]
+  source = 'molty_volume'
+  destination = '/app'
 
 [http_service]
   internal_port = 8080
