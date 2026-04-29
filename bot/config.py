@@ -71,3 +71,38 @@ ENABLE_MEMORY = os.getenv("ENABLE_MEMORY", "true").lower() == "true"         # Q
 ENABLE_AGENT_TOKEN = os.getenv("ENABLE_AGENT_TOKEN", "false").lower() == "true"  # Q8: agent token
 AUTO_IDENTITY = os.getenv("AUTO_IDENTITY", "true").lower() == "true"         # Q9: ERC-8004 auto-register
 
+
+# ── Multi-Agent Support ──────────────────────────────────────────
+def load_agents() -> list:
+    """
+    Load agent configs from AGENTS_JSON env var, fallback to credentials.json.
+    Returns list of dicts, each with: name, owner_eoa, molty_royale_wallet,
+    account_id, api_key, agent_wallet_address, agent_wallet_private_key
+    """
+    import json
+
+    # Try AGENTS_JSON env var first (Railway deployment)
+    agents_json = os.getenv("AGENTS_JSON", "")
+    if agents_json:
+        try:
+            agents = json.loads(agents_json)
+            if isinstance(agents, list) and len(agents) > 0:
+                log.info("Loaded %d agents from AGENTS_JSON env var", len(agents))
+                return agents
+        except json.JSONDecodeError as e:
+            log.error("Failed to parse AGENTS_JSON: %s", e)
+
+    # Fallback to credentials.json (local development)
+    if CREDENTIALS_FILE.exists():
+        try:
+            data = json.loads(CREDENTIALS_FILE.read_text(encoding="utf-8"))
+            agents = data.get("agents", [])
+            if isinstance(agents, list) and len(agents) > 0:
+                log.info("Loaded %d agents from credentials.json", len(agents))
+                return agents
+        except (json.JSONDecodeError, OSError) as e:
+            log.error("Failed to read credentials.json: %s", e)
+
+    log.warning("No agents found in AGENTS_JSON or credentials.json")
+    return []
+

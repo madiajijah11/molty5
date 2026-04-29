@@ -30,18 +30,25 @@ log = get_logger(__name__)
 class Heartbeat:
     """Main heartbeat loop — runs forever, manages the full agent lifecycle."""
 
-    def __init__(self):
+    def __init__(self, agent_config: dict | None = None):
         self.api: MoltyAPI | None = None
         self.memory = AgentMemory()
         self.running = True
         self._agent_key = "agent-1"  # Consistent dashboard key
         self._agent_name = "Agent"
 
+        # Per-agent config (from AGENTS_JSON or credentials.json)
+        self.agent_config = agent_config or {}
+        if self.agent_config:
+            self._agent_name = self.agent_config.get("name", "Agent")
+            self._agent_key = self.agent_config.get("account_id", "agent-1")
+
     async def run(self):
         """Entry point — runs the heartbeat loop indefinitely."""
-        log.info("═══════════════════════════════════════════")
-        log.info("  MOLTY ROYALE AI AGENT — STARTING")
-        log.info("═══════════════════════════════════════════")
+        agent_name = self._agent_name
+        log.info("═════════════════════════════════════════")
+        log.info("  MOLTY ROYALE AI AGENT — STARTING [%s]", agent_name)
+        log.info("═════════════════════════════════════════")
 
         # Log active config (answers to setup.md First-Run Intake)
         log.info("Config (First-Run Intake answers):")
@@ -52,15 +59,24 @@ class Heartbeat:
         log.info("  AUTO_IDENTITY   = %s  (Q9: auto ERC-8004)", AUTO_IDENTITY)
         log.info("  ROOM_MODE       = %s", ROOM_MODE)
 
+        # Get API key from per-agent config or fallback to env/file
+        if self.agent_config:
+            api_key = self.agent_config.get("api_key", "")
+            log.info("Using API key from agent config for [%s]", agent_name)
+        else:
+            api_key = get_api_key()
+            log.info("Using API key from env/file (single-agent mode)")
+
         # Phase 0: First-run intake + account setup (retry until success)
         creds = None
         while self.running and not creds:
             try:
                 creds = await ensure_account_ready()
-                api_key = creds.get("api_key", "") or get_api_key()
+                if not api_key:
+                    api_key = creds.get("api_key", "") or get_api_key()
                 if not api_key:
                     log.error("No API key available. Retrying in 60s...")
-                    creds = None
+                    api_key = None
                     await asyncio.sleep(60)
             except Exception as e:
                 log.error("Account setup error: %s. Retrying in 60s...", e)
@@ -69,7 +85,7 @@ class Heartbeat:
         if not self.running:
             return
 
-        self.api = MoltyAPI(creds.get("api_key", "") or get_api_key())
+        self.api = MoltyAPI(api_key)
 
         # Feed dashboard
         dashboard_state.bots_running = 1
@@ -147,9 +163,14 @@ class Heartbeat:
 
     async def _handle_no_identity(self, me: dict):
         """Setup pipeline: wallet → whitelist → identity. Respects config flags."""
-        creds = load_credentials() or {}
-        owner_eoa = creds.get("owner_eoa", "")
-        agent_eoa = creds.get("agent_wallet_address", "")
+        # Use per-agent config first, fallback to credentials file
+        if self.agent_config:
+            owner_eoa = self.agent_config.get("owner_eoa", "")
+            agent_eoa = self.agent_config.get("agent_wallet_address", "")
+        else:
+            creds = load_credentials() or {}
+            owner_eoa = creds.get("owner_eoa", "")
+            agent_eoa = creds.get("agent_wallet_address", "")
 
         if not owner_eoa:
             log.error("Owner EOA not set. Re-run setup.")

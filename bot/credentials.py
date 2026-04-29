@@ -134,3 +134,22 @@ def update_env_file(key: str, value: str):
     if not found:
         lines.append(f"{key}={value}")
     env_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def load_agents() -> list:
+    """Load agents from credentials.json. Supports both formats:
+    - New format: { "agents": [ {name, owner_eoa, ...}, ... ] }
+    - Old format: { "owner_eoa": "...", "api_key": "...", ... } (single agent)
+    Returns list of agent configs.
+    """
+    data = load_credentials()
+    if not data:
+        return []
+
+    # New format: agents array
+    if "agents" in data and isinstance(data["agents"], list):
+        return data["agents"]
+
+    # Old format: single agent at root level, wrap in list
+    log.warning("Old credentials format detected, wrapping in agents array")
+    return [data]
