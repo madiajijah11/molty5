@@ -76,6 +76,7 @@ AUTO_IDENTITY = os.getenv("AUTO_IDENTITY", "true").lower() == "true"         # Q
 def load_agents() -> list:
     """
     Load agent configs from AGENTS_JSON env var, fallback to credentials.json.
+    Filters by AGENT_NAMES env var if set (comma-separated list of agent names).
     Returns list of dicts, each with: name, owner_eoa, molty_royale_wallet,
     account_id, api_key, agent_wallet_address, agent_wallet_private_key
     """
@@ -88,7 +89,7 @@ def load_agents() -> list:
             agents = json.loads(agents_json)
             if isinstance(agents, list) and len(agents) > 0:
                 log.info("Loaded %d agents from AGENTS_JSON env var", len(agents))
-                return agents
+                return _filter_agents(agents)
         except json.JSONDecodeError as e:
             log.error("Failed to parse AGENTS_JSON: %s", e)
 
@@ -99,10 +100,29 @@ def load_agents() -> list:
             agents = data.get("agents", [])
             if isinstance(agents, list) and len(agents) > 0:
                 log.info("Loaded %d agents from credentials.json", len(agents))
-                return agents
+                return _filter_agents(agents)
         except (json.JSONDecodeError, OSError) as e:
             log.error("Failed to read credentials.json: %s", e)
 
     log.warning("No agents found in AGENTS_JSON or credentials.json")
     return []
+
+
+def _filter_agents(agents: list) -> list:
+    """
+    Filter agents by AGENT_NAMES env var (comma-separated list of agent names).
+    If AGENT_NAMES is not set or empty, return all agents.
+    """
+    agent_names_filter = os.getenv("AGENT_NAMES", "").strip()
+    if not agent_names_filter:
+        return agents
+
+    # Parse comma-separated list (e.g., "MexL,GENZODR")
+    allowed_names = [name.strip() for name in agent_names_filter.split(",") if name.strip()]
+    if not allowed_names:
+        return agents
+
+    filtered = [a for a in agents if a.get("name") in allowed_names]
+    log.info("Filtered to %d agents: %s", len(filtered), allowed_names)
+    return filtered
 
