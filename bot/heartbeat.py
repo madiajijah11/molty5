@@ -20,7 +20,7 @@ from bot.memory.agent_memory import AgentMemory
 from bot.credentials import load_credentials, get_api_key
 from bot.config import (
     ADVANCED_MODE, ROOM_MODE, AUTO_WHITELIST,
-    AUTO_SC_WALLET, ENABLE_MEMORY, AUTO_IDENTITY,
+    AUTO_SC_WALLET, ENABLE_MEMORY, AUTO_IDENTITY, HAVE_ACCOUNT,
 )
 from bot.utils.logger import get_logger
 
@@ -65,27 +65,35 @@ class Heartbeat:
 
         # Get API key from per-agent config or fallback to env/file
         api_key = ""
-        if self.agent_config:
-            api_key = self.agent_config.get("api_key", "").strip()
-            if api_key:
-                log.info("Using API key from agent config for [%s]", agent_name)
+        
+        # Check HAVE_ACCOUNT confirmation
+        if HAVE_ACCOUNT == "yes":
+            # YES - already have account, use AGENTS_JSON
+            if self.agent_config:
+                api_key = self.agent_config.get("api_key", "").strip()
+                if api_key:
+                    log.info("Using API key from agent config for [%s] (HAVE_ACCOUNT=yes)", agent_name)
+                else:
+                    log.error("HAVE_ACCOUNT=yes but api_key empty for [%s]! Set api_key in AGENTS_JSON.", agent_name)
+                    return
             else:
-                log.info("Agent config found but api_key empty for [%s] — will run first-run intake", agent_name)
+                api_key = get_api_key()
+                log.info("Using API key from env/file (single-agent mode, HAVE_ACCOUNT=yes)")
         else:
-            api_key = get_api_key()
-            log.info("Using API key from env/file (single-agent mode)")
-
+            # NO or not set - need to create new account (FIRST-RUN INTAKE)
+            log.info("HAVE_ACCOUNT=%s — will run first-run intake to create new account", HAVE_ACCOUNT or "not set")
+            # If agent_config exists but no api_key, use agent name for new account
+            if self.agent_config and self.agent_config.get("name"):
+                import os
+                os.environ["AGENT_NAME"] = self.agent_config["name"]
+                log.info("Set AGENT_NAME to [%s] from agent config", self.agent_config["name"])
+        
         # Phase 0: First-run intake + account setup (retry until success)
         creds = None
         while self.running and not creds:
             try:
                 # If no api_key yet, run first-run intake to create account
                 if not api_key:
-                    # Use agent name from config (not AGENT_NAME env var)
-                    if self.agent_config and self.agent_config.get("name"):
-                        import os
-                        os.environ["AGENT_NAME"] = self.agent_config["name"]
-                        log.info("Set AGENT_NAME to [%s] from agent config", self.agent_config["name"])
                     creds = await ensure_account_ready()
                     api_key = creds.get("api_key", "") or get_api_key()
                 else:

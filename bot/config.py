@@ -71,6 +71,12 @@ ENABLE_MEMORY = os.getenv("ENABLE_MEMORY", "true").lower() == "true"         # Q
 ENABLE_AGENT_TOKEN = os.getenv("ENABLE_AGENT_TOKEN", "false").lower() == "true"  # Q8: agent token
 AUTO_IDENTITY = os.getenv("AUTO_IDENTITY", "true").lower() == "true"         # Q9: ERC-8004 auto-register
 
+# ── Account Status Confirmation ─────────────────────────────────
+# Set to "yes" if agent already has account (use AGENTS_JSON)
+# Set to "no" if agent needs new account (run FIRST-RUN INTAKE)
+# If not set, auto-detect based on AGENTS_JSON api_key
+HAVE_ACCOUNT = os.getenv("HAVE_ACCOUNT", "").lower()
+
 
 # ── Multi-Agent Support ──────────────────────────────────────────
 def load_agents() -> list:
