@@ -4,6 +4,7 @@ Autonomous AI agent for Molty Royale — handles account creation, identity regi
 
 ## 🚀 Quick Start
 
+### Single-Agent Mode
 ```bash
 # 1. Install dependencies
 pip install -r requirements.txt
@@ -13,6 +14,19 @@ cp .env.example .env
 
 # 3. Run the bot (first run = interactive setup)
 python -m bot.main
+```
+
+### Multi-Agent Mode (Railway Recommended)
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Set AGENTS_JSON environment variable with array of agent configs
+# (See .env.example for format)
+
+# 3. Run with multiple agents
+python -m bot.main
+# Bot will load all agents from AGENTS_JSON and run concurrently
 ```
 
 ## 📊 Command Center Dashboard
@@ -219,7 +233,14 @@ git push -u origin main
 
 Go to your service → **Variables** tab → add these:
 
-**Required (You fill these):**
+**Multi-Agent Mode (Recommended):**
+| Variable | Value | Description |
+|---|---|---|
+| `AGENTS_JSON` | `[{"name":"Agent1",...},...]` | JSON array of agent configs (see .env.example) |
+| `RAILWAY_API_TOKEN` | *(see below)* | Required to auto-save credentials |
+| `LOG_LEVEL` | `INFO` | Logging level |
+
+**Single-Agent Mode (Alternative):**
 | Variable | Value | Description |
 |---|---|---|
 | `AGENT_NAME` | `YourBotName` | Agent name (max 50 chars) |
@@ -248,9 +269,11 @@ Go to your service → **Variables** tab → add these:
 
 ```
 bot/
-├── main.py           # Entry point
-├── heartbeat.py      # Main loop (state machine)
-├── dashboard/        # Command Center Web UI
+├── main.py           # Entry point (multi-agent support)
+├── config.py         # Configuration + AGENTS_JSON loader
+├── heartbeat.py      # Main loop (per-agent state machine)
+├── credentials.py    # Multi-agent credential management
+├── dashboard/        # Command Center Web UI (multi-agent)
 ├── setup/            # Account + wallet + whitelist + identity
 ├── game/             # WebSocket engine + game strategy
 ├── strategy/         # Combat AI + movement + guardian farming
@@ -258,3 +281,9 @@ bot/
 ├── memory/           # Cross-game learning
 └── utils/            # Logger, rate limiter, Railway sync
 ```
+
+**Multi-Agent Mode:**
+- Set `AGENTS_JSON` env var with array of agent configs
+- `main.py` spawns N agents via `asyncio.gather()`
+- Each agent runs concurrently (single-thread, asyncio)
+- Dashboard displays all agents with individual status
