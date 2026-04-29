@@ -121,6 +121,9 @@ def _filter_agents(agents: list) -> list:
     Filter agents by AGENT_NAMES env var (comma-separated list of agent names).
     If AGENT_NAMES is not set or empty, return all agents.
     """
+    from bot.utils.logger import get_logger
+    log = get_logger(__name__)
+
     agent_names_filter = os.getenv("AGENT_NAMES", "").strip()
     if not agent_names_filter:
         return agents
