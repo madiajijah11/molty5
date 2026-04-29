@@ -64,9 +64,13 @@ class Heartbeat:
         log.info("  ROOM_MODE       = %s", self.room_mode)
 
         # Get API key from per-agent config or fallback to env/file
+        api_key = ""
         if self.agent_config:
-            api_key = self.agent_config.get("api_key", "")
-            log.info("Using API key from agent config for [%s]", agent_name)
+            api_key = self.agent_config.get("api_key", "").strip()
+            if api_key:
+                log.info("Using API key from agent config for [%s]", agent_name)
+            else:
+                log.info("Agent config found but api_key empty for [%s] — will run first-run intake", agent_name)
         else:
             api_key = get_api_key()
             log.info("Using API key from env/file (single-agent mode)")
@@ -75,9 +79,19 @@ class Heartbeat:
         creds = None
         while self.running and not creds:
             try:
-                creds = await ensure_account_ready()
+                # If no api_key yet, run first-run intake to create account
                 if not api_key:
+                    # Use agent name from config (not AGENT_NAME env var)
+                    if self.agent_config and self.agent_config.get("name"):
+                        import os
+                        os.environ["AGENT_NAME"] = self.agent_config["name"]
+                        log.info("Set AGENT_NAME to [%s] from agent config", self.agent_config["name"])
+                    creds = await ensure_account_ready()
                     api_key = creds.get("api_key", "") or get_api_key()
+                else:
+                    # Already have api_key, just validate it
+                    creds = {"api_key": api_key}
+                
                 if not api_key:
                     log.error("No API key available. Retrying in 60s...")
                     api_key = None
