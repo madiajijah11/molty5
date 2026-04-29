@@ -75,6 +75,11 @@ class MoltyAPI:
             log.warning("Rate limited (429). Backing off.")
             raise APIError("RATE_LIMITED", "Too many requests", 429)
 
+        # Handle authentication/authorization errors
+        if resp.status_code in (401, 403):
+            log.error("API request failed: %d %s — %s", resp.status_code, resp.reason_phrase, resp.text[:200])
+            raise APIError("UNAUTHORIZED", f"Authentication failed ({resp.status_code})", resp.status_code)
+
         data = self._safe_parse_json(resp.text)
 
         # Check for error response shape

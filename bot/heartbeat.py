@@ -152,8 +152,16 @@ class Heartbeat:
         try:
             me = await self.api.get_accounts_me()
         except APIError as e:
-            if e.status == 401:
-                log.error("Invalid API key. Re-run setup.")
+            if e.status in (401, 403):
+                if HAVE_ACCOUNT == "yes":
+                    log.error(
+                        "HAVE_ACCOUNT=yes but API key invalid (status %d). "
+                        "Check AGENTS_JSON api_key for [%s]. Stopping.",
+                        e.status, self._agent_name
+                    )
+                    self.running = False
+                    return
+                log.error("Invalid API key (status %d). Re-run setup.", e.status)
                 self.running = False
                 return
             raise
@@ -176,6 +184,14 @@ class Heartbeat:
 
         # Step 3: Route based on state
         if state == NO_IDENTITY:
+            if HAVE_ACCOUNT == "yes":
+                log.error(
+                    "HAVE_ACCOUNT=yes but server reports NO_IDENTITY for [%s]. "
+                    "Check if agent is registered. Stopping.",
+                    self._agent_name
+                )
+                self.running = False
+                return
             await self._handle_no_identity(me)
             return
 
