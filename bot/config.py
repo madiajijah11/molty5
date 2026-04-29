@@ -97,6 +97,10 @@ def load_agents() -> list:
             agents = json.loads(agents_json)
             if isinstance(agents, list) and len(agents) > 0:
                 log.info("Loaded %d agents from AGENTS_JSON env var", len(agents))
+                # If only 1 agent in AGENTS_JSON, use it directly (Railway single-agent deploy)
+                if len(agents) == 1:
+                    log.info("Single agent in AGENTS_JSON, using directly: %s", agents[0].get("name"))
+                    return _select_primary_per_wallet(agents, log)
                 return _filter_agents(agents)
         except json.JSONDecodeError as e:
             log.error("Failed to parse AGENTS_JSON: %s", e)
@@ -120,12 +124,16 @@ def _filter_agents(agents: list) -> list:
     """
     Filter agents by AGENT_NAMES env var (comma-separated list of agent names).
     If AGENT_NAMES is not set or empty, return all agents.
+    Handles case-insensitive matching and selects only primary agent per SC wallet
+    to avoid NOT_PRIMARY_AGENT errors.
     """
     from bot.utils.logger import get_logger
     log = get_logger(__name__)
 
     agent_names_filter = os.getenv("AGENT_NAMES", "").strip()
     if not agent_names_filter:
+        # No filter - return all agents, but warn about shared SC wallets
+        _warn_shared_wallets(agents, log)
         return agents
 
     # Parse comma-separated list (e.g., "MexL,GENZODR")
@@ -133,7 +141,58 @@ def _filter_agents(agents: list) -> list:
     if not allowed_names:
         return agents
 
-    filtered = [a for a in agents if a.get("name") in allowed_names]
-    log.info("Filtered to %d agents: %s", len(filtered), allowed_names)
+    # Case-insensitive matching
+    allowed_lower = {name.lower(): name for name in allowed_names}
+    filtered = [a for a in agents if a.get("name", "").lower() in allowed_lower]
+
+    if not filtered:
+        available = [a.get("name") for a in agents]
+        log.warning("No agents matched filter %s. Available agents: %s", allowed_names, available)
+
+    # Select only primary agent per SC wallet to avoid NOT_PRIMARY_AGENT
+    filtered = _select_primary_per_wallet(filtered, log)
+
+    log.info("Filtered to %d agents: %s", len(filtered), [a.get("name") for a in filtered])
     return filtered
+
+
+def _warn_shared_wallets(agents: list, log):
+    """Warn if multiple agents share the same SC wallet."""
+    from collections import Counter
+    wallets = [a.get("molty_royale_wallet") for a in agents if a.get("molty_royale_wallet")]
+    dupes = {w: c for w, c in Counter(wallets).items() if c > 1}
+    if dupes:
+        log.warning(
+            "Multiple agents share SC wallets: %s. Only 1 agent per wallet can play. "
+            "Set AGENT_NAMES to select which agent runs.",
+            dupes
+        )
+
+
+def _select_primary_per_wallet(agents: list, log) -> list:
+    """
+    Select only 1 agent per SC wallet (molty_royale_wallet).
+    If multiple agents share a wallet, pick the first one (assumed primary).
+    This prevents NOT_PRIMARY_AGENT errors from the game server.
+    """
+    seen_wallets = {}
+    selected = []
+
+    for agent in agents:
+        wallet = agent.get("molty_royale_wallet")
+        if not wallet:
+            selected.append(agent)
+            continue
+
+        if wallet in seen_wallets:
+            log.warning(
+                "Agent '%s' shares SC wallet %s with '%s' - skipping to avoid NOT_PRIMARY_AGENT",
+                agent.get("name"), wallet, seen_wallets[wallet]
+            )
+            continue
+
+        seen_wallets[wallet] = agent.get("name")
+        selected.append(agent)
+
+    return selected
 
