@@ -87,6 +87,8 @@ def load_agents() -> list:
     account_id, api_key, agent_wallet_address, agent_wallet_private_key
     """
     import json
+    from bot.utils.logger import get_logger
+    log = get_logger(__name__)
 
     # Try AGENTS_JSON env var first (Railway deployment)
     agents_json = os.getenv("AGENTS_JSON", "")
