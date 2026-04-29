@@ -42,6 +42,10 @@ class Heartbeat:
         if self.agent_config:
             self._agent_name = self.agent_config.get("name", "Agent")
             self._agent_key = self.agent_config.get("account_id", "agent-1")
+            # Per-agent room_mode (default to global ROOM_MODE)
+            self.room_mode = self.agent_config.get("room_mode", ROOM_MODE)
+        else:
+            self.room_mode = ROOM_MODE
 
     async def run(self):
         """Entry point — runs the heartbeat loop indefinitely."""
@@ -57,7 +61,7 @@ class Heartbeat:
         log.info("  AUTO_WHITELIST  = %s  (Q4: auto whitelist)", AUTO_WHITELIST)
         log.info("  ENABLE_MEMORY   = %s  (Q7: cross-game learning)", ENABLE_MEMORY)
         log.info("  AUTO_IDENTITY   = %s  (Q9: auto ERC-8004)", AUTO_IDENTITY)
-        log.info("  ROOM_MODE       = %s", ROOM_MODE)
+        log.info("  ROOM_MODE       = %s", self.room_mode)
 
         # Get API key from per-agent config or fallback to env/file
         if self.agent_config:
@@ -214,7 +218,7 @@ class Heartbeat:
 
     async def _handle_ready(self, me: dict, state: str):
         """Join a game based on room selection."""
-        room_type = select_room(me)
+        room_type = select_room(me, self.room_mode)
 
         try:
             if room_type == "paid":

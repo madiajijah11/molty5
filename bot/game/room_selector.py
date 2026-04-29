@@ -1,14 +1,14 @@
 """
 Room selector — choose free or paid room based on readiness and config.
-ROOM_MODE env: auto | free | paid
+room_mode: auto | free | paid (per-agent)
 """
-from bot.config import ROOM_MODE, PAID_ENTRY_FEE_SMOLTZ
+from bot.config import PAID_ENTRY_FEE_SMOLTZ
 from bot.utils.logger import get_logger
 
 log = get_logger(__name__)
 
 
-def select_room(me_data: dict) -> str:
+def select_room(me_data: dict, room_mode: str = "auto") -> str:
     """
     Determine which room type to join.
     Returns 'free' or 'paid'.
@@ -32,11 +32,11 @@ def select_room(me_data: dict) -> str:
         and not has_active_paid
     )
 
-    if ROOM_MODE == "free":
+    if room_mode == "free":
         log.info("Room mode: FREE (forced)")
         return "free"
 
-    if ROOM_MODE == "paid":
+    if room_mode == "paid":
         if paid_ready:
             log.info("Room mode: PAID (forced, ready)")
             return "paid"
