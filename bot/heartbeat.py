@@ -308,8 +308,8 @@ class Heartbeat:
         self.memory.set_temp_game(game_id)
         await self.memory.save()
 
-        # Run WebSocket engine — pass agent_key + name for dashboard
-        engine = WebSocketEngine(game_id, agent_id)
+        # Run WebSocket engine — pass agent_key + name for dashboard + api_key for WS auth
+        engine = WebSocketEngine(game_id, agent_id, api_key=self.api.api_key)
         engine.dashboard_key = self._agent_key
         engine.dashboard_name = self._agent_name
         game_result = await engine.run()
