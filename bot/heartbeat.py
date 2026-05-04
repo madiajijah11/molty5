@@ -222,14 +222,12 @@ class Heartbeat:
 
         # Step 3: Route based on state
         if state == NO_IDENTITY:
-            if HAVE_ACCOUNT == "yes":
-                log.error(
-                    "HAVE_ACCOUNT=yes but server reports NO_IDENTITY for [%s]. "
-                    "Check if agent is registered. Stopping.",
-                    self._agent_name,
-                )
-                self.running = False
-                return
+            # Always try to register identity (ERC-8004) — whether
+            # HAVE_ACCOUNT=yes or no. AUTO_IDENTITY must be true.
+            log.info(
+                "NO_IDENTITY for [%s] — attempting identity registration...",
+                self._agent_name,
+            )
             await self._handle_no_identity(me)
             return
 

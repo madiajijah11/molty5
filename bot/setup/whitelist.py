@@ -3,6 +3,7 @@ Whitelist request + auto-approval (advanced mode).
 POST /whitelist/request → on-chain approveAddWhitelist().
 Never crashes — returns False if setup is incomplete (caller retries).
 """
+
 import asyncio
 from bot.api_client import MoltyAPI, APIError
 from bot.web3.whitelist_contract import approve_whitelist_onchain, verify_whitelist
@@ -25,7 +26,14 @@ async def ensure_whitelist(api: MoltyAPI, owner_eoa: str, agent_eoa: str) -> boo
         log.info("Whitelist request submitted: %s", result)
     except APIError as e:
         if e.code == "CONFLICT":
-            log.info("Whitelist request already exists or already approved")
+            log.info("Whitelist request already exists — checking on-chain status...")
+            # Whitelist might already be approved. Check on-chain before
+            # trying auto-approve (which needs Owner private key).
+            is_approved = await verify_whitelist(owner_eoa, agent_eoa)
+            if is_approved:
+                log.info("✅ Already whitelisted on-chain — skipping approval")
+                return True
+            # Not yet approved. Fall through to auto-approve step.
         elif e.code == "INTERNAL_ERROR" and "AlreadyWhitelisted" in str(e):
             log.info("✅ Already whitelisted on-chain — skipping approval")
             already_whitelisted = True

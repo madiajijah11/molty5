@@ -159,9 +159,15 @@ def _filter_agents(agents: list) -> list:
     if not allowed_names:
         return agents
 
-    # Case-insensitive matching
-    allowed_lower = {name.lower(): name for name in allowed_names}
-    filtered = [a for a in agents if a.get("name", "").lower() in allowed_lower]
+    # Single-name filter → exact (case-sensitive) match to avoid collisions
+    # (e.g. "GENZODR" should not match "GenzoDR")
+    # Multi-name filter → case-insensitive for convenience
+    if len(allowed_names) == 1:
+        exact_name = allowed_names[0]
+        filtered = [a for a in agents if a.get("name") == exact_name]
+    else:
+        allowed_lower = {name.lower(): name for name in allowed_names}
+        filtered = [a for a in agents if a.get("name", "").lower() in allowed_lower]
 
     if not filtered:
         available = [a.get("name") for a in agents]
@@ -171,8 +177,16 @@ def _filter_agents(agents: list) -> list:
             available,
         )
 
-    # Select only primary agent per SC wallet to avoid NOT_PRIMARY_AGENT
-    filtered = _select_primary_per_wallet(filtered, log)
+    # Select only primary agent per SC wallet to avoid NOT_PRIMARY_AGENT.
+    # BUT: when AGENT_NAMES explicitly picks exactly 1 agent, trust the user's
+    # choice and bypass the primary-per-wallet filter (enables single-account testing).
+    if len(filtered) == 1:
+        log.info(
+            "Single agent '%s' — bypassing primary-per-wallet check",
+            filtered[0].get("name"),
+        )
+    else:
+        filtered = _select_primary_per_wallet(filtered, log)
 
     log.info(
         "Filtered to %d agents: %s", len(filtered), [a.get("name") for a in filtered]

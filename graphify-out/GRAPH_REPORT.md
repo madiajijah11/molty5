@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 620 nodes · 939 edges · 64 communities detected
+- 620 nodes · 939 edges · 63 communities detected
 - Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 137 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `29b022ed`
+- Built from commit: `ae342499`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,7 +61,7 @@
 - [[_COMMUNITY_Community 43|Community 43]]
 - [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 45|Community 45]]
-- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 53|Community 53]]
 - [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
@@ -78,7 +78,6 @@
 - [[_COMMUNITY_Community 67|Community 67]]
 - [[_COMMUNITY_Community 68|Community 68]]
 - [[_COMMUNITY_Community 69|Community 69]]
-- [[_COMMUNITY_Community 70|Community 70]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `MoltyAPI` - 50 edges
@@ -119,7 +118,7 @@
 - **Setup Flow** — setup_PostAccounts, setup_PutAccountsWallet, setup_PostWhitelistRequest, setup_PostCreateWallet [EXTRACTED 1.00]
 - **Legacy Withdraw Flow** — setup_LegacyWalletFactory, setup_MoltzERC20, setup_CROSS, setup_OwnerEOA [EXTRACTED 1.00]
 
-## Communities (71 total, 22 thin omitted)
+## Communities (70 total, 22 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -182,12 +181,12 @@ Cohesion: 0.26
 Nodes (11): _collection_upsert(), _get_railway_config(), is_railway(), is_setup_complete(), Railway Variables auto-sync. After account creation, saves API_KEY + private key, ONE-TIME sync of ALL variables to Railway after first-run.     Combines config +, Check if running on Railway., Check if first-run sync was already done (prevents redeploy loop). (+3 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.22
-Nodes (8): Heartbeat, Heartbeat loop — main orchestration per heartbeat.md. State machine: setup → joi, Main heartbeat loop — runs forever, manages the full agent lifecycle., Main heartbeat loop — runs forever, manages the full agent lifecycle., main(), Molty Royale AI Agent — Entry Point v2.0. Run: python -m bot.main Dashboard + Mu, Entry point for the bot., Whitelist Setup Module
-
-### Community 16 - "Community 16"
 Cohesion: 0.25
 Nodes (9): APIError, Setup pipeline: wallet → whitelist → identity. Respects config flags., Setup pipeline: wallet → whitelist → identity. Respects config flags., Exception, ensure_molty_wallet(), MoltyRoyale Wallet (SC Wallet) setup — POST /create/wallet. Handles CONFLICT, WA, Create or recover MoltyRoyale Wallet. Returns wallet address or "".     Per setu, Try to recover wallet address on-chain via WalletFactory.getWallets(). (+1 more)
+
+### Community 16 - "Community 16"
+Cohesion: 0.22
+Nodes (8): Heartbeat, Heartbeat loop — main orchestration per heartbeat.md. State machine: setup → joi, Main heartbeat loop — runs forever, manages the full agent lifecycle., Main heartbeat loop — runs forever, manages the full agent lifecycle., main(), Molty Royale AI Agent — Entry Point v2.0. Run: python -m bot.main Dashboard + Mu, Entry point for the bot., Whitelist Setup Module
 
 ### Community 17 - "Community 17"
 Cohesion: 0.22
@@ -198,20 +197,20 @@ Cohesion: 0.25
 Nodes (9): Autonomous WebSocket Runner Mode, Cost Guidance, Heartbeat Mode, Runtime Modes Document, action messages, agent_view, heartbeat.md, ws/agent (+1 more)
 
 ### Community 19 - "Community 19"
+Cohesion: 0.25
+Nodes (7): _get_region_id(), Strategy brain — main decision engine with priority-based action selection. Impl, Use utility items immediately after pickup.     Map: reveals entire map → trigge, Extract region ID from either a string or dict entry., Extract region ID from either a string or dict entry., Use utility items immediately after pickup.     Map: reveals entire map → trigg, _use_utility_item()
+
+### Community 20 - "Community 20"
 Cohesion: 0.29
 Nodes (4): RateLimiter, Token-bucket rate limiter for REST (300/min) and WebSocket (120/min). Non-blocki, Async token-bucket rate limiter., Wait until tokens are available. Non-blocking via asyncio.sleep.
 
-### Community 20 - "Community 20"
+### Community 21 - "Community 21"
 Cohesion: 0.25
 Nodes (5): Logger Utility, Whitelist Contract Module, Dashboard shared state — bridge between bot engine and web dashboard. Bot writes, Action envelope builder + cooldown state tracker. Builds action messages per act, Whitelist request + auto-approval (advanced mode). POST /whitelist/request → on-
 
-### Community 21 - "Community 21"
+### Community 22 - "Community 22"
 Cohesion: 0.29
 Nodes (5): Join a game based on room selection., Join a game based on room selection., join_free_game(), Free game join via matchmaking queue. POST /join (Long Poll ~15s) → assigned → o, Enter free matchmaking queue and wait for assignment.     Returns (game_id, agen
-
-### Community 22 - "Community 22"
-Cohesion: 0.33
-Nodes (6): _check_equip(), get_weapon_bonus(), Get ATK bonus from equipped weapon., Auto-equip best weapon from inventory., Auto-equip best weapon from inventory., Get ATK bonus from equipped weapon.
 
 ### Community 23 - "Community 23"
 Cohesion: 0.33
@@ -219,19 +218,19 @@ Nodes (6): _check_pickup(), _pickup_score(), Smart pickup: weapons > healing sto
 
 ### Community 24 - "Community 24"
 Cohesion: 0.33
-Nodes (6): decide_action(), _is_in_range(), Main decision engine. Returns action dict or None (wait).      Priority chain, Main decision engine. Returns action dict or None (wait).      Priority chain pe, Check if target is in weapon range.     Per combat-items.md: melee = same regio, Check if target is in weapon range.     Per combat-items.md: melee = same region
+Nodes (6): decide_action(), Main decision engine. Returns action dict or None (wait).      Priority chain, Main decision engine. Returns action dict or None (wait).      Priority chain pe, Select best facility to interact with per game-systems.md.     Facilities: supp, Select best facility to interact with per game-systems.md.     Facilities: suppl, _select_facility()
 
 ### Community 25 - "Community 25"
 Cohesion: 0.33
-Nodes (5): check_version(), get_version_header(), Version check — GET /api/version and X-Version header management. Returns 426 VE, Fetch current server version. Returns version string., Return X-Version header dict.
+Nodes (6): _check_equip(), get_weapon_bonus(), Get ATK bonus from equipped weapon., Auto-equip best weapon from inventory., Auto-equip best weapon from inventory., Get ATK bonus from equipped weapon.
 
 ### Community 26 - "Community 26"
 Cohesion: 0.33
 Nodes (4): Async REST API client for Molty Royale. All endpoints from api-summary.md with r, Strategy Brain Module, Rate Limiter Utility, WebSocket gameplay engine — wss://cdn.moltyroyale.com/ws/agent. Core loop: conne
 
 ### Community 27 - "Community 27"
-Cohesion: 0.4
-Nodes (4): _get_region_id(), Strategy brain — main decision engine with priority-based action selection. Impl, Extract region ID from either a string or dict entry., Extract region ID from either a string or dict entry.
+Cohesion: 0.33
+Nodes (5): check_version(), get_version_header(), Version check — GET /api/version and X-Version header management. Returns 426 VE, Fetch current server version. Returns version string., Return X-Version header dict.
 
 ### Community 29 - "Community 29"
 Cohesion: 0.5
@@ -239,55 +238,51 @@ Nodes (3): determine_state(), State router — determines agent state from GET /
 
 ### Community 31 - "Community 31"
 Cohesion: 0.67
-Nodes (3): calc_damage(), Damage formula per combat-items.md + game-systems.md weather penalty.     Base:, Damage formula per combat-items.md + game-systems.md weather penalty.     Base:
+Nodes (3): _find_healing_item(), Find best healing item based on urgency.     critical=True (HP<30): prefer Band, Find best healing item based on urgency.     critical=True (HP<30): prefer Banda
 
 ### Community 32 - "Community 32"
 Cohesion: 0.67
-Nodes (3): Select target with lowest HP., Select target with lowest HP., _select_weakest()
+Nodes (3): get_weapon_range(), Get range from equipped weapon., Get range from equipped weapon.
 
 ### Community 33 - "Community 33"
 Cohesion: 0.67
-Nodes (3): _find_energy_drink(), Find energy drink for EP recovery (+5 EP per combat-items.md)., Find energy drink for EP recovery (+5 EP per combat-items.md).
+Nodes (3): _is_in_range(), Check if target is in weapon range.     Per combat-items.md: melee = same regio, Check if target is in weapon range.     Per combat-items.md: melee = same region
 
 ### Community 34 - "Community 34"
 Cohesion: 0.67
-Nodes (3): Select best facility to interact with per game-systems.md.     Facilities: supp, Select best facility to interact with per game-systems.md.     Facilities: suppl, _select_facility()
+Nodes (3): _find_energy_drink(), Find energy drink for EP recovery (+5 EP per combat-items.md)., Find energy drink for EP recovery (+5 EP per combat-items.md).
 
 ### Community 35 - "Community 35"
 Cohesion: 0.67
-Nodes (3): _get_move_ep_cost(), Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terra, Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terrai
+Nodes (3): calc_damage(), Damage formula per combat-items.md + game-systems.md weather penalty.     Base:, Damage formula per combat-items.md + game-systems.md weather penalty.     Base:
 
 ### Community 36 - "Community 36"
 Cohesion: 0.67
-Nodes (3): _choose_move_target(), Choose best region to move to.     CRITICAL: NEVER move into a death zone or pen, Choose best region to move to.     CRITICAL: NEVER move into a death zone or pe
+Nodes (3): _estimate_enemy_weapon_bonus(), Estimate enemy's weapon bonus from their equipped weapon., Estimate enemy's weapon bonus from their equipped weapon.
 
 ### Community 37 - "Community 37"
 Cohesion: 0.67
-Nodes (3): Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotcha, Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotchas, _resolve_region()
+Nodes (3): Select target with lowest HP., Select target with lowest HP., _select_weakest()
 
 ### Community 38 - "Community 38"
 Cohesion: 0.67
-Nodes (3): get_weapon_range(), Get range from equipped weapon., Get range from equipped weapon.
+Nodes (3): _get_move_ep_cost(), Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terra, Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terrai
 
 ### Community 39 - "Community 39"
 Cohesion: 0.67
-Nodes (3): Use utility items immediately after pickup.     Map: reveals entire map → trigge, Use utility items immediately after pickup.     Map: reveals entire map → trigg, _use_utility_item()
+Nodes (3): Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., _track_agents()
 
 ### Community 40 - "Community 40"
 Cohesion: 0.67
-Nodes (3): _find_healing_item(), Find best healing item based on urgency.     critical=True (HP<30): prefer Band, Find best healing item based on urgency.     critical=True (HP<30): prefer Banda
+Nodes (3): Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotcha, Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotchas, _resolve_region()
 
 ### Community 41 - "Community 41"
 Cohesion: 0.67
-Nodes (3): _estimate_enemy_weapon_bonus(), Estimate enemy's weapon bonus from their equipped weapon., Estimate enemy's weapon bonus from their equipped weapon.
+Nodes (3): _find_safe_region(), Find nearest connected region that's NOT a death zone AND NOT pending DZ.     P, Find nearest connected region that's NOT a death zone AND NOT pending DZ.     Pe
 
 ### Community 42 - "Community 42"
 Cohesion: 0.67
-Nodes (3): Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., _track_agents()
-
-### Community 43 - "Community 43"
-Cohesion: 0.67
-Nodes (3): _find_safe_region(), Find nearest connected region that's NOT a death zone AND NOT pending DZ.     P, Find nearest connected region that's NOT a death zone AND NOT pending DZ.     Pe
+Nodes (3): _choose_move_target(), Choose best region to move to.     CRITICAL: NEVER move into a death zone or pen, Choose best region to move to.     CRITICAL: NEVER move into a death zone or pe
 
 ## Knowledge Gaps
 - **249 isolated node(s):** `Molty Royale AI Agent Bot`, `State router — determines agent state from GET /accounts/me response. Routes per`, `Analyze /accounts/me response → return (state, context).     Context contains re`, `Exception`, `Async REST API client for Molty Royale. All endpoints from api-summary.md with r` (+244 more)
@@ -297,11 +292,11 @@ Nodes (3): _find_safe_region(), Find nearest connected region that's NOT a death
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Logger Utility` connect `Community 20` to `Community 0`, `Community 2`, `Community 3`, `Community 6`, `Community 8`, `Community 44`, `Community 12`, `Community 14`, `Community 15`, `Community 16`, `Community 17`, `Community 21`, `Community 25`, `Community 26`, `Community 27`, `Community 29`?**
+- **Why does `Logger Utility` connect `Community 21` to `Community 0`, `Community 2`, `Community 3`, `Community 6`, `Community 8`, `Community 43`, `Community 12`, `Community 14`, `Community 15`, `Community 16`, `Community 17`, `Community 19`, `Community 22`, `Community 26`, `Community 27`, `Community 29`?**
   _High betweenness centrality (0.381) - this node is a cross-community bridge._
-- **Why does `Heartbeat` connect `Community 8` to `Community 0`, `Community 2`, `Community 16`, `Community 17`, `Community 21`?**
+- **Why does `Heartbeat` connect `Community 8` to `Community 0`, `Community 2`, `Community 15`, `Community 17`, `Community 22`?**
   _High betweenness centrality (0.121) - this node is a cross-community bridge._
-- **Why does `MoltyAPI` connect `Community 0` to `Community 6`, `Community 8`, `Community 44`, `Community 13`, `Community 15`, `Community 16`, `Community 17`, `Community 20`, `Community 21`, `Community 26`?**
+- **Why does `MoltyAPI` connect `Community 0` to `Community 6`, `Community 8`, `Community 43`, `Community 13`, `Community 15`, `Community 16`, `Community 17`, `Community 21`, `Community 22`, `Community 26`?**
   _High betweenness centrality (0.113) - this node is a cross-community bridge._
 - **Are the 28 inferred relationships involving `MoltyAPI` (e.g. with `.run()` and `run_first_run_intake()`) actually correct?**
   _`MoltyAPI` has 28 INFERRED edges - model-reasoned connections that need verification._
