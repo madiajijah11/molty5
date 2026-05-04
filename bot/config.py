@@ -2,6 +2,7 @@
 Configuration & constants for Molty Royale AI Agent.
 All env vars loaded here. Never hardcode secrets.
 """
+
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -9,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ── Skill / API version ──────────────────────────────────────────────
-SKILL_VERSION = "1.5.2"
+SKILL_VERSION = "1.6.0"
 
 # ── URLs ──────────────────────────────────────────────────────────────
 API_BASE = "https://cdn.moltyroyale.com/api"
@@ -38,8 +39,8 @@ FREE_ROOM_POOL = 1000
 GUARDIAN_KILL_POOL_SHARE = 0.60  # 60%
 
 # ── Rate limits ───────────────────────────────────────────────────────
-REST_RATE_LIMIT = 300   # calls/min per IP
-WS_RATE_LIMIT = 120     # messages/min per connection
+REST_RATE_LIMIT = 300  # calls/min per IP
+WS_RATE_LIMIT = 120  # messages/min per connection
 COOLDOWN_DURATION = 60  # seconds
 
 # ── Credential paths ─────────────────────────────────────────────────
@@ -65,11 +66,21 @@ OWNER_PRIVATE_KEY = os.getenv("OWNER_PRIVATE_KEY", "")
 # ── First-Run Intake answers (setup.md lines 29-39) ──────────────────
 # These replace the interactive yes/no prompts for Railway/Docker.
 # All default to "yes/auto" so zero-config deployment works.
-AUTO_WHITELIST = os.getenv("AUTO_WHITELIST", "true").lower() == "true"        # Q4: auto-check + approve
-AUTO_SC_WALLET = os.getenv("AUTO_SC_WALLET", "true").lower() == "true"       # Q6: auto-create SC wallet
-ENABLE_MEMORY = os.getenv("ENABLE_MEMORY", "true").lower() == "true"         # Q7: cross-game learning
-ENABLE_AGENT_TOKEN = os.getenv("ENABLE_AGENT_TOKEN", "false").lower() == "true"  # Q8: agent token
-AUTO_IDENTITY = os.getenv("AUTO_IDENTITY", "true").lower() == "true"         # Q9: ERC-8004 auto-register
+AUTO_WHITELIST = (
+    os.getenv("AUTO_WHITELIST", "true").lower() == "true"
+)  # Q4: auto-check + approve
+AUTO_SC_WALLET = (
+    os.getenv("AUTO_SC_WALLET", "true").lower() == "true"
+)  # Q6: auto-create SC wallet
+ENABLE_MEMORY = (
+    os.getenv("ENABLE_MEMORY", "true").lower() == "true"
+)  # Q7: cross-game learning
+ENABLE_AGENT_TOKEN = (
+    os.getenv("ENABLE_AGENT_TOKEN", "false").lower() == "true"
+)  # Q8: agent token
+AUTO_IDENTITY = (
+    os.getenv("AUTO_IDENTITY", "true").lower() == "true"
+)  # Q9: ERC-8004 auto-register
 
 # ── Account Status Confirmation ─────────────────────────────────
 # Set to "yes" if agent already has account (use AGENTS_JSON)
@@ -88,6 +99,7 @@ def load_agents() -> list:
     """
     import json
     from bot.utils.logger import get_logger
+
     log = get_logger(__name__)
 
     # Try AGENTS_JSON env var first (Railway deployment)
@@ -99,7 +111,10 @@ def load_agents() -> list:
                 log.info("Loaded %d agents from AGENTS_JSON env var", len(agents))
                 # If only 1 agent in AGENTS_JSON, use it directly (Railway single-agent deploy)
                 if len(agents) == 1:
-                    log.info("Single agent in AGENTS_JSON, using directly: %s", agents[0].get("name"))
+                    log.info(
+                        "Single agent in AGENTS_JSON, using directly: %s",
+                        agents[0].get("name"),
+                    )
                     return _select_primary_per_wallet(agents, log)
                 return _filter_agents(agents)
         except json.JSONDecodeError as e:
@@ -128,6 +143,7 @@ def _filter_agents(agents: list) -> list:
     to avoid NOT_PRIMARY_AGENT errors.
     """
     from bot.utils.logger import get_logger
+
     log = get_logger(__name__)
 
     agent_names_filter = os.getenv("AGENT_NAMES", "").strip()
@@ -137,7 +153,9 @@ def _filter_agents(agents: list) -> list:
         return agents
 
     # Parse comma-separated list (e.g., "MexL,GENZODR")
-    allowed_names = [name.strip() for name in agent_names_filter.split(",") if name.strip()]
+    allowed_names = [
+        name.strip() for name in agent_names_filter.split(",") if name.strip()
+    ]
     if not allowed_names:
         return agents
 
@@ -147,25 +165,34 @@ def _filter_agents(agents: list) -> list:
 
     if not filtered:
         available = [a.get("name") for a in agents]
-        log.warning("No agents matched filter %s. Available agents: %s", allowed_names, available)
+        log.warning(
+            "No agents matched filter %s. Available agents: %s",
+            allowed_names,
+            available,
+        )
 
     # Select only primary agent per SC wallet to avoid NOT_PRIMARY_AGENT
     filtered = _select_primary_per_wallet(filtered, log)
 
-    log.info("Filtered to %d agents: %s", len(filtered), [a.get("name") for a in filtered])
+    log.info(
+        "Filtered to %d agents: %s", len(filtered), [a.get("name") for a in filtered]
+    )
     return filtered
 
 
 def _warn_shared_wallets(agents: list, log):
     """Warn if multiple agents share the same SC wallet."""
     from collections import Counter
-    wallets = [a.get("molty_royale_wallet") for a in agents if a.get("molty_royale_wallet")]
+
+    wallets = [
+        a.get("molty_royale_wallet") for a in agents if a.get("molty_royale_wallet")
+    ]
     dupes = {w: c for w, c in Counter(wallets).items() if c > 1}
     if dupes:
         log.warning(
             "Multiple agents share SC wallets: %s. Only 1 agent per wallet can play. "
             "Set AGENT_NAMES to select which agent runs.",
-            dupes
+            dupes,
         )
 
 
@@ -187,7 +214,9 @@ def _select_primary_per_wallet(agents: list, log) -> list:
         if wallet in seen_wallets:
             log.warning(
                 "Agent '%s' shares SC wallet %s with '%s' - skipping to avoid NOT_PRIMARY_AGENT",
-                agent.get("name"), wallet, seen_wallets[wallet]
+                agent.get("name"),
+                wallet,
+                seen_wallets[wallet],
             )
             continue
 
@@ -195,4 +224,3 @@ def _select_primary_per_wallet(agents: list, log) -> list:
         selected.append(agent)
 
     return selected
-
