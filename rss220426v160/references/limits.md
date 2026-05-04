@@ -60,7 +60,7 @@ Best practice:
 Do not:
 - open duplicate gameplay sockets for the same API key
 - resubmit cooldown actions immediately
-- spam `POST /join` outside the normal Long Poll loop
+- redial `/ws/match` instead of waiting for the server's `queued` → `assigned` frames on the existing socket
 
 ---
 

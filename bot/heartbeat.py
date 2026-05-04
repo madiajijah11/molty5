@@ -3,10 +3,18 @@ Heartbeat loop — main orchestration per heartbeat.md.
 State machine: setup → join → play → settle → repeat.
 Respects First-Run Intake config flags for Railway/Docker deployment.
 """
+
 import asyncio
 from bot.api_client import MoltyAPI, APIError
 from bot.dashboard.state import dashboard_state
-from bot.state_router import determine_state, NO_ACCOUNT, NO_IDENTITY, IN_GAME, READY_PAID, READY_FREE
+from bot.state_router import (
+    determine_state,
+    NO_ACCOUNT,
+    NO_IDENTITY,
+    IN_GAME,
+    READY_PAID,
+    READY_FREE,
+)
 from bot.setup.account_setup import ensure_account_ready
 from bot.setup.wallet_setup import ensure_molty_wallet
 from bot.setup.whitelist import ensure_whitelist
@@ -19,8 +27,13 @@ from bot.game.settlement import settle_game
 from bot.memory.agent_memory import AgentMemory
 from bot.credentials import load_credentials, get_api_key
 from bot.config import (
-    ADVANCED_MODE, ROOM_MODE, AUTO_WHITELIST,
-    AUTO_SC_WALLET, ENABLE_MEMORY, AUTO_IDENTITY, HAVE_ACCOUNT,
+    ADVANCED_MODE,
+    ROOM_MODE,
+    AUTO_WHITELIST,
+    AUTO_SC_WALLET,
+    ENABLE_MEMORY,
+    AUTO_IDENTITY,
+    HAVE_ACCOUNT,
 )
 from bot.utils.logger import get_logger
 
@@ -56,7 +69,9 @@ class Heartbeat:
 
         # Log active config (answers to setup.md First-Run Intake)
         log.info("Config (First-Run Intake answers):")
-        log.info("  ADVANCED_MODE   = %s  (Q1-3: auto Owner+Agent wallet)", ADVANCED_MODE)
+        log.info(
+            "  ADVANCED_MODE   = %s  (Q1-3: auto Owner+Agent wallet)", ADVANCED_MODE
+        )
         log.info("  AUTO_SC_WALLET  = %s  (Q6: auto SC wallet)", AUTO_SC_WALLET)
         log.info("  AUTO_WHITELIST  = %s  (Q4: auto whitelist)", AUTO_WHITELIST)
         log.info("  ENABLE_MEMORY   = %s  (Q7: cross-game learning)", ENABLE_MEMORY)
@@ -65,29 +80,44 @@ class Heartbeat:
 
         # Get API key from per-agent config or fallback to env/file
         api_key = ""
-        
+
         # Check HAVE_ACCOUNT confirmation
         if HAVE_ACCOUNT == "yes":
             # YES - already have account, use AGENTS_JSON
             if self.agent_config:
                 api_key = self.agent_config.get("api_key", "").strip()
                 if api_key:
-                    log.info("Using API key from agent config for [%s] (HAVE_ACCOUNT=yes)", agent_name)
+                    log.info(
+                        "Using API key from agent config for [%s] (HAVE_ACCOUNT=yes)",
+                        agent_name,
+                    )
                 else:
-                    log.error("HAVE_ACCOUNT=yes but api_key empty for [%s]! Set api_key in AGENTS_JSON.", agent_name)
+                    log.error(
+                        "HAVE_ACCOUNT=yes but api_key empty for [%s]! Set api_key in AGENTS_JSON.",
+                        agent_name,
+                    )
                     return
             else:
                 api_key = get_api_key()
-                log.info("Using API key from env/file (single-agent mode, HAVE_ACCOUNT=yes)")
+                log.info(
+                    "Using API key from env/file (single-agent mode, HAVE_ACCOUNT=yes)"
+                )
         else:
             # NO or not set - need to create new account (FIRST-RUN INTAKE)
-            log.info("HAVE_ACCOUNT=%s — will run first-run intake to create new account", HAVE_ACCOUNT or "not set")
+            log.info(
+                "HAVE_ACCOUNT=%s — will run first-run intake to create new account",
+                HAVE_ACCOUNT or "not set",
+            )
             # If agent_config exists but no api_key, use agent name for new account
             if self.agent_config and self.agent_config.get("name"):
                 import os
+
                 os.environ["AGENT_NAME"] = self.agent_config["name"]
-                log.info("Set AGENT_NAME to [%s] from agent config", self.agent_config["name"])
-        
+                log.info(
+                    "Set AGENT_NAME to [%s] from agent config",
+                    self.agent_config["name"],
+                )
+
         # Phase 0: First-run intake + account setup (retry until success)
         creds = None
         while self.running and not creds:
@@ -99,7 +129,7 @@ class Heartbeat:
                 else:
                     # Already have api_key, just validate it
                     creds = {"api_key": api_key}
-                
+
                 if not api_key:
                     log.error("No API key available. Retrying in 60s...")
                     api_key = None
@@ -138,8 +168,12 @@ class Heartbeat:
                 consecutive_errors += 1
                 # Escalating backoff: 10s → 30s → 60s → 120s
                 wait = min(10 * (2 ** min(consecutive_errors - 1, 4)), 120)
-                log.error("Heartbeat error (#%d): %s. Retrying in %ds...",
-                          consecutive_errors, e, wait)
+                log.error(
+                    "Heartbeat error (#%d): %s. Retrying in %ds...",
+                    consecutive_errors,
+                    e,
+                    wait,
+                )
                 await asyncio.sleep(wait)
 
         if self.api:
@@ -157,7 +191,8 @@ class Heartbeat:
                     log.error(
                         "HAVE_ACCOUNT=yes but API key invalid (status %d). "
                         "Check AGENTS_JSON api_key for [%s]. Stopping.",
-                        e.status, self._agent_name
+                        e.status,
+                        self._agent_name,
                     )
                     self.running = False
                     return
@@ -175,12 +210,15 @@ class Heartbeat:
         self._agent_name = me.get("agentName", me.get("name", "Agent"))
         balance = me.get("balance", 0)
         dashboard_state.total_smoltz = balance
-        dashboard_state.update_agent(self._agent_key, {
-            "name": self._agent_name,
-            "status": "playing" if state == IN_GAME else "idle",
-            "smoltz": balance,
-            "whitelisted": state != NO_IDENTITY,
-        })
+        dashboard_state.update_agent(
+            self._agent_key,
+            {
+                "name": self._agent_name,
+                "status": "playing" if state == IN_GAME else "idle",
+                "smoltz": balance,
+                "whitelisted": state != NO_IDENTITY,
+            },
+        )
 
         # Step 3: Route based on state
         if state == NO_IDENTITY:
@@ -188,7 +226,7 @@ class Heartbeat:
                 log.error(
                     "HAVE_ACCOUNT=yes but server reports NO_IDENTITY for [%s]. "
                     "Check if agent is registered. Stopping.",
-                    self._agent_name
+                    self._agent_name,
                 )
                 self.running = False
                 return
@@ -235,12 +273,15 @@ class Heartbeat:
             if not wl_ok:
                 log.info(
                     "⏳ Whitelist pending — Owner EOA may need CROSS for gas. "
-                    "Fund Owner EOA: %s then bot will retry in 2 minutes.", owner_eoa
+                    "Fund Owner EOA: %s then bot will retry in 2 minutes.",
+                    owner_eoa,
                 )
                 await asyncio.sleep(120)  # 2 minutes to fund CROSS
                 return
         else:
-            log.info("Whitelist auto-approval skipped (AUTO_WHITELIST=false). Approve manually at https://www.moltyroyale.com")
+            log.info(
+                "Whitelist auto-approval skipped (AUTO_WHITELIST=false). Approve manually at https://www.moltyroyale.com"
+            )
 
         # Q9: ERC-8004 Identity
         if AUTO_IDENTITY:
@@ -288,7 +329,10 @@ class Heartbeat:
         entry_type = ctx.get("entry_type", "free")
 
         if not ctx.get("is_alive", True):
-            log.info("Agent is dead in game %s. Connecting WS to wait for game_ended.", game_id)
+            log.info(
+                "Agent is dead in game %s. Connecting WS to wait for game_ended.",
+                game_id,
+            )
 
         await self._play_game(game_id, agent_id, entry_type)
 
@@ -297,19 +341,41 @@ class Heartbeat:
         log.info("═══ PLAYING GAME: %s (type=%s) ═══", game_id, entry_type)
 
         # Feed dashboard — use SAME key as heartbeat so no duplicate card
-        dashboard_state.update_agent(self._agent_key, {
-            "status": "playing",
-            "room_id": game_id,
-            "room_name": entry_type + " room",
-        })
-        dashboard_state.add_log(f"Joined {entry_type} game: {game_id[:12]}", "info", self._agent_key)
+        dashboard_state.update_agent(
+            self._agent_key,
+            {
+                "status": "playing",
+                "room_id": game_id,
+                "room_name": entry_type + " room",
+            },
+        )
+        dashboard_state.add_log(
+            f"Joined {entry_type} game: {game_id[:12]}", "info", self._agent_key
+        )
 
-        # Set temp memory for this game
+        # Set temp memory for this game — populate with cross-game knowledge
         self.memory.set_temp_game(game_id)
-        await self.memory.save()
+        # Populate temp.knownAgents from persistent cross-game opponent profiles
+        if self.memory.known_agents:
+            self.memory.data["temp"]["knownAgents"] = {
+                name: profile.to_dict()
+                for name, profile in self.memory.known_agents.items()
+            }
+        # Populate temp with strategy rule count and win/loss stats for brain
+        self.memory.data["temp"]["strategy_rules_count"] = len(
+            self.memory.strategy_rules
+        )
+        stats = self.memory.get_stats()
+        self.memory.data["temp"]["win_loss"] = {
+            "wins": stats.get("wins", 0),
+            "total_games": stats.get("total_games", 0),
+            "win_rate": stats.get("win_rate", 0.0),
+        }
 
-        # Run WebSocket engine — pass agent_key + name for dashboard + api_key for WS auth
-        engine = WebSocketEngine(game_id, agent_id, api_key=self.api.api_key)
+        # Run WebSocket engine — pass memory for adaptive decision-making
+        engine = WebSocketEngine(
+            game_id, agent_id, api_key=self.api.api_key, memory=self.memory
+        )
         engine.dashboard_key = self._agent_key
         engine.dashboard_name = self._agent_name
         game_result = await engine.run()

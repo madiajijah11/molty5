@@ -37,9 +37,10 @@ function itemTag(i) {
 }
 
 // ─── State ───
-let S = { agents:{}, stats:{}, logs:[], agent_logs:{}, accounts:[] };
+let S = { agents:{}, stats:{}, logs:[], agent_logs:{}, accounts:[], learning:{} };
 let currentPage = 'dashboard', currentLogTab = 'all';
 let prevAgentHash = '';
+let learningTimer = null;
 
 // ─── Navigation ───
 function showPage(p) {
@@ -48,6 +49,13 @@ function showPage(p) {
   $('page-'+p).classList.add('active');
   document.querySelector('[data-page="'+p+'"]').classList.add('active');
   currentPage = p;
+  // Start/stop learning auto-refresh
+  if (p === 'learning') {
+    fetchAllLearning();
+    startLearningRefresh();
+  } else {
+    stopLearningRefresh();
+  }
 }
 
 // ─── WebSocket with fast reconnect ───
@@ -60,6 +68,7 @@ function connectWS() {
     try {
       const m = JSON.parse(e.data);
       if (m.type === 'snapshot') { S = m.data; render(); }
+      if (m.type === 'learning_update') { S.learning = m.data; if (currentPage === 'learning') renderLearning(); }
     } catch(err) {}
   };
   ws.onclose = () => setTimeout(connectWS, Math.min(1000 * (++wsRetry), 8000));
@@ -300,7 +309,7 @@ function saveAccount() {
   };
   if (!acc.api_key) { alert('API Key required'); return; }
   fetch('/api/accounts', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(acc) })
-    .then(r => r.json()).then(() => { alert('Saved!'); showPage('data'); }).catch(e => alert('Error: '+e));
+    .then(r => r.json()).then(() => { alert('Saved!'); showPage('accounts'); }).catch(e => alert('Error: '+e));
 }
 
 function exportData() {
@@ -319,6 +328,124 @@ function importData(e) {
       .then(() => alert('Imported!')).catch(err => alert('Error'));
   };
   r.readAsText(f);
+}
+
+// ─── Learning Tab ───
+
+function startLearningRefresh() {
+  stopLearningRefresh();
+  learningTimer = setInterval(fetchAllLearning, 10000);
+}
+
+function stopLearningRefresh() {
+  if (learningTimer) { clearInterval(learningTimer); learningTimer = null; }
+}
+
+async function fetchAllLearning() {
+  try {
+    const [lr, ll, lo] = await Promise.all([
+      fetch('/api/learning').then(r => r.json()),
+      fetch('/api/lessons').then(r => r.json()),
+      fetch('/api/opponents').then(r => r.json())
+    ]);
+    S.learning = { ...lr, lessons: ll.lessons || [], opponents: lo.opponents || [] };
+    renderLearning();
+  } catch(e) {}
+}
+
+function renderLearning() {
+  const L = S.learning || {};
+  renderLearningStats(L);
+  renderLessons(L.lessons || []);
+  renderRules(L.strategy_rules || []);
+  renderOpponents(L.opponents || []);
+}
+
+function renderLearningStats(L) {
+  animateNum('l-total-games', L.total_games || 0);
+  animateNum('l-wins', L.wins || 0);
+  const elRate = $('l-win-rate');
+  const rate = ((L.win_rate || 0) * 100).toFixed(1) + '%';
+  if (elRate && elRate.textContent !== rate) elRate.textContent = rate;
+  const elKills = $('l-avg-kills');
+  const kills = (L.avg_kills || 0).toFixed(1);
+  if (elKills && elKills.textContent !== kills) elKills.textContent = kills;
+  animateNum('l-lessons-count', (L.lessons || []).length);
+  animateNum('l-rules-count', (L.strategy_rules || []).length);
+  animateNum('l-opponents-count', (L.opponents || []).length);
+}
+
+function renderLessons(lessons) {
+  const el = $('lessons-list');
+  if (!el || !lessons.length) {
+    if (el) el.innerHTML = '<div style="color:var(--text2);text-align:center;padding:20px">No lessons yet — play games to learn</div>';
+    return;
+  }
+  el.innerHTML = lessons.slice().reverse().map(l => {
+    const type = l.lesson_type || 'loss';
+    const cause = l.cause || 'unknown';
+    const details = l.details || {};
+    const metrics = l.metrics || {};
+    const ts = l.created_at ? new Date(l.created_at * 1000).toLocaleDateString() : '';
+    const detailStr = Object.entries(details).map(([k,v]) => `${k}: ${v}`).join(', ');
+    const metricStr = Object.entries(metrics).map(([k,v]) => `${k}: ${typeof v === 'number' ? v.toFixed(1) : v}`).join(', ');
+    return `<div class="lesson-item">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <span class="lesson-type ${type}">${type.toUpperCase()}</span>
+        <span class="lesson-cause">${esc(cause.replace(/_/g,' '))}</span>
+        <span style="color:var(--text2);font-size:10px;margin-left:auto">${ts}</span>
+      </div>
+      ${detailStr ? `<div class="lesson-details">${esc(detailStr)}</div>` : ''}
+      ${metricStr ? `<div class="lesson-details" style="color:var(--cyan)">${esc(metricStr)}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function renderRules(rules) {
+  const el = $('rules-list');
+  if (!el || !rules.length) {
+    if (el) el.innerHTML = '<div style="color:var(--text2);text-align:center;padding:20px">No strategy rules learned yet</div>';
+    return;
+  }
+  el.innerHTML = rules.map(r => {
+    const confPct = Math.round((r.confidence || 0) * 100);
+    const condStr = r.condition && typeof r.condition === 'object' ? Object.entries(r.condition).map(([k,v]) => `${k}: ${v}`).join(', ') : '';
+    return `<div class="rule-item">
+      <div class="rule-header">
+        <span class="rule-type">${esc(r.rule_type || 'threshold')}</span>
+        <span style="font-size:10px;color:var(--text2)">${confPct}% confidence</span>
+      </div>
+      ${r.action ? `<div class="rule-action">▸ ${esc(r.action)}</div>` : ''}
+      ${condStr ? `<div class="rule-cond">IF ${esc(condStr)}</div>` : ''}
+      <div class="conf-bar"><div class="conf-fill" style="width:${confPct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderOpponents(opponents) {
+  const el = $('opponents-list');
+  if (!el || !opponents.length) {
+    if (el) el.innerHTML = '<div style="color:var(--text2);text-align:center;padding:20px">No opponent data yet</div>';
+    return;
+  }
+  el.innerHTML = opponents.sort((a,b) => (b.threat||0) - (a.threat||0)).map(o => {
+    const threat = o.threat || o.threat_rating || 0;
+    const threatPct = Math.round(threat * 100);
+    const threatClass = threat < 0.3 ? 'low' : threat < 0.6 ? 'mid' : 'high';
+    const name = o.name || 'Unknown';
+    return `<div class="opponent-item">
+      <div class="opponent-header">
+        <span class="opponent-name">${esc(name)}</span>
+        <span style="font-size:10px;color:var(--text2)">Threat: ${threatPct}%</span>
+      </div>
+      <div class="threat-bar"><div class="threat-fill ${threatClass}" style="width:${threatPct}%"></div></div>
+      <div class="opponent-stats">
+        <div class="opponent-stat-item">Games: <span>${o.games || o.games_faced || 0}</span></div>
+        <div class="opponent-stat-item">Killed by: <span style="color:var(--red)">${o.killed_by || o.killed_by_count || 0}</span></div>
+        <div class="opponent-stat-item">Losses: <span style="color:var(--red)">${o.losses_to || 0}</span></div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // ─── Boot ───

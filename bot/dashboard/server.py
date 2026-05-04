@@ -2,6 +2,7 @@
 Dashboard web server — serves the UI and real-time WebSocket updates.
 Uses aiohttp for lightweight async HTTP + WebSocket.
 """
+
 import os
 import json
 import asyncio
@@ -40,9 +41,9 @@ async def api_accounts(request):
 async def api_export(request):
     """Export all data as JSON download."""
     data = dashboard_state.get_snapshot()
-    return web.json_response(data, headers={
-        "Content-Disposition": "attachment; filename=molty-export.json"
-    })
+    return web.json_response(
+        data, headers={"Content-Disposition": "attachment; filename=molty-export.json"}
+    )
 
 
 async def ws_handler(request):
@@ -75,6 +76,7 @@ async def ws_handler(request):
 async def _push_loop(app):
     """Background task: push state snapshots to all WS clients every 1.5s."""
     log.info("Dashboard push loop started")
+    _last_learning_hash = ""
     try:
         while True:
             await asyncio.sleep(1.5)
@@ -83,15 +85,40 @@ async def _push_loop(app):
             try:
                 snapshot = dashboard_state.get_snapshot()
                 msg = json.dumps({"type": "snapshot", "data": snapshot})
-                dead = set()
-                for ws in list(_ws_clients):  # Copy set to avoid mutation during iteration
-                    try:
-                        await ws.send_str(msg)
-                    except Exception:
-                        dead.add(ws)
-                if dead:
-                    _ws_clients -= dead
-                    log.debug("Removed %d dead WS clients", len(dead))
+                # Check if learning data changed — push as separate message
+                learning_data = snapshot.get("learning", {})
+                learning_hash = json.dumps(learning_data, sort_keys=True, default=str)
+                if learning_hash != _last_learning_hash:
+                    _last_learning_hash = learning_hash
+                    learning_msg = json.dumps(
+                        {"type": "learning_update", "data": learning_data}
+                    )
+                    dead = set()
+                    for ws in list(_ws_clients):
+                        try:
+                            await ws.send_str(msg)
+                        except Exception:
+                            dead.add(ws)
+                    # Push learning update to all clients
+                    for ws in list(_ws_clients):
+                        if ws not in dead:
+                            try:
+                                await ws.send_str(learning_msg)
+                            except Exception:
+                                dead.add(ws)
+                    if dead:
+                        _ws_clients -= dead
+                        log.debug("Removed %d dead WS clients", len(dead))
+                else:
+                    dead = set()
+                    for ws in list(_ws_clients):
+                        try:
+                            await ws.send_str(msg)
+                        except Exception:
+                            dead.add(ws)
+                    if dead:
+                        _ws_clients -= dead
+                        log.debug("Removed %d dead WS clients", len(dead))
             except Exception as e:
                 log.warning("Dashboard push error: %s", e)
     except asyncio.CancelledError:
@@ -100,12 +127,12 @@ async def _push_loop(app):
 
 async def start_push_loop(app):
     """Start push loop as background task on app startup."""
-    app['push_task'] = asyncio.create_task(_push_loop(app))
+    app["push_task"] = asyncio.create_task(_push_loop(app))
 
 
 async def stop_push_loop(app):
     """Stop push loop on app shutdown."""
-    task = app.get('push_task')
+    task = app.get("push_task")
     if task:
         task.cancel()
         try:
@@ -136,6 +163,25 @@ async def api_import(request):
         return web.json_response({"error": str(e)}, status=400)
 
 
+async def api_learning(request):
+    """Return learning/memory stats."""
+    return web.json_response(dashboard_state.learning_data)
+
+
+async def api_lessons(request):
+    """Return structured lessons list."""
+    return web.json_response(
+        {"lessons": dashboard_state.learning_data.get("lessons", [])}
+    )
+
+
+async def api_opponents(request):
+    """Return opponent profiles."""
+    return web.json_response(
+        {"opponents": dashboard_state.learning_data.get("opponents", [])}
+    )
+
+
 def create_app() -> web.Application:
     """Create the aiohttp web application."""
     app = web.Application()
@@ -147,6 +193,9 @@ def create_app() -> web.Application:
     app.router.add_post("/api/accounts", api_accounts_post)
     app.router.add_get("/api/export", api_export)
     app.router.add_post("/api/import", api_import)
+    app.router.add_get("/api/learning", api_learning)
+    app.router.add_get("/api/lessons", api_lessons)
+    app.router.add_get("/api/opponents", api_opponents)
     app.router.add_get("/ws", ws_handler)
 
     # Static files

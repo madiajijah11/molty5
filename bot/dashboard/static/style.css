@@ -143,3 +143,49 @@ a{color:var(--cyan);text-decoration:none}
 
 @media(max-width:1100px){.agent-grid{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr 1fr}.combat-row{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){.sidebar{width:60px;overflow:hidden}.sidebar .nav-text,.sidebar .logo span{display:none}.sidebar .logo h2{font-size:12px}.main{margin-left:60px}.header{padding:12px 16px}.content{padding:16px}.form-row{grid-template-columns:1fr}.agent-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Learning Tab ── */
+.learning-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.learning-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.learning-stat{text-align:center;padding:14px 10px;background:var(--surface2);border-radius:10px}
+.learning-stat .ls-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--cyan);margin-bottom:4px}
+.learning-stat .ls-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.learning-scroll{max-height:280px;overflow-y:auto;font-size:12px}
+.lesson-item,.rule-item,.opponent-item{padding:10px 12px;border-bottom:1px solid var(--border);transition:background .15s}
+.lesson-item:hover,.rule-item:hover,.opponent-item:hover{background:rgba(0,210,255,.03)}
+.lesson-item:last-child,.rule-item:last-child,.opponent-item:last-child{border-bottom:none}
+.lesson-type{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:8px;flex-shrink:0}
+.lesson-type.win{background:rgba(0,255,136,.15);color:var(--green)}
+.lesson-type.loss{background:rgba(255,68,102,.15);color:var(--red)}
+.lesson-type.death{background:rgba(255,68,102,.2);color:var(--red)}
+.lesson-type.combat{background:rgba(255,184,0,.15);color:var(--amber)}
+.lesson-type.resource{background:rgba(0,210,255,.12);color:var(--cyan)}
+.lesson-type.movement{background:rgba(128,0,255,.12);color:#b388ff}
+.lesson-cause{color:var(--text2);font-size:11px}
+.lesson-details{color:var(--text2);font-size:10px;margin-top:3px}
+.conf-bar{height:6px;background:var(--bg);border-radius:3px;overflow:hidden;margin-top:5px;width:100%}
+.conf-fill{height:100%;border-radius:3px;transition:width .6s ease;background:linear-gradient(90deg,var(--red),var(--amber),var(--green))}
+.rule-header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rule-type{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(0,210,255,.12);color:var(--cyan);flex-shrink:0}
+.rule-action{color:var(--text);font-size:12px;margin-top:4px;font-style:italic}
+.rule-cond{color:var(--text2);font-size:10px;margin-top:2px}
+.threat-bar{height:6px;background:var(--bg);border-radius:3px;overflow:hidden;margin-top:4px;width:100%}
+.threat-fill{height:100%;border-radius:3px;transition:width .3s ease}
+.threat-fill.low{background:var(--green)}
+.threat-fill.mid{background:var(--amber)}
+.threat-fill.high{background:var(--red)}
+.opponent-header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.opponent-name{font-weight:600;color:var(--text)}
+.opponent-stats{display:flex;gap:12px;margin-top:6px}
+.opponent-stat-item{font-size:11px;color:var(--text2)}
+.opponent-stat-item span{color:var(--text);font-weight:600}
+.history-item{padding:10px 12px;border-bottom:1px solid var(--border)}
+.history-item:hover{background:rgba(0,210,255,.03)}
+.history-item:last-child{border-bottom:none}
+.history-game-id{font-size:10px;color:var(--text2);margin-bottom:2px}
+.history-result{font-weight:600;font-size:12px}
+.history-result.win{color:var(--green)}
+.history-result.loss{color:var(--red)}
+
+@media(max-width:1100px){.learning-layout{grid-template-columns:1fr}.learning-stats-row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.learning-stats-row{grid-template-columns:repeat(2,1fr)}}

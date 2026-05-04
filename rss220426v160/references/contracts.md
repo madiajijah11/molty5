@@ -27,6 +27,7 @@ Contracts:
 - WalletFactory (legacy): `0x0713665E4D19fD16e1F09AD77526CC343c6F0223`
 - IdentityRegistry (ERC-8004): `0x8004A169FB4a3325136EB29fA0ceB6D2e539a432`
 - ReputationRegistry (ERC-8004): `0x8004BAa17C55a88189AE136b182e5fdA19dE9b63`
+- Donation: `0x9a2936397fF0f0c5bea8160af97344a84184b993`
 
 Use these values for:
 - verifying chain configuration

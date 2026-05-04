@@ -10,6 +10,7 @@ Per game-loop.md:
 - can_act_changed: canAct at TOP LEVEL (not nested in data)
 - Only one WS session per API key
 """
+
 import json
 import asyncio
 import websockets
@@ -30,6 +31,7 @@ def _update_dz_knowledge(view: dict):
     v1.5.2: pendingDeathzones entries are {id, name} objects.
     """
     from bot.strategy.brain import _map_knowledge
+
     # Track DZ from visible regions
     for region in view.get("visibleRegions", []):
         if isinstance(region, dict) and region.get("isDeathZone"):
@@ -62,7 +64,7 @@ def _update_dz_knowledge(view: dict):
 class WebSocketEngine:
     """Manages the gameplay WebSocket session."""
 
-    def __init__(self, game_id: str, agent_id: str, api_key: str = ""):
+    def __init__(self, game_id: str, agent_id: str, api_key: str = "", memory=None):
         self.game_id = game_id
         self.agent_id = agent_id
         self.api_key = api_key
@@ -73,6 +75,7 @@ class WebSocketEngine:
         self._ping_task = None
         self._running = False
         self._map_just_used = False  # Track if Map was used for learning
+        self.memory = memory  # AgentMemory instance for adaptive decision-making
         # Dashboard key/name — set by heartbeat before .run()
         self.dashboard_key = agent_id  # fallback to agent_id
         self.dashboard_name = "Agent"
@@ -113,7 +116,9 @@ class WebSocketEngine:
                         try:
                             msg = json.loads(raw_msg)
                             if not isinstance(msg, dict):
-                                log.warning("Non-dict WS message: %s", type(msg).__name__)
+                                log.warning(
+                                    "Non-dict WS message: %s", type(msg).__name__
+                                )
                                 continue
                             msg_type = msg.get("type", "unknown")
                             log.debug("WS recv: type=%s", msg_type)
@@ -126,18 +131,25 @@ class WebSocketEngine:
 
             except websockets.exceptions.ConnectionClosed as e:
                 retry_count += 1
-                log.warning("WebSocket closed: code=%s reason=%s (retry %d/%d)",
-                            e.code, e.reason, retry_count, max_retries)
+                log.warning(
+                    "WebSocket closed: code=%s reason=%s (retry %d/%d)",
+                    e.code,
+                    e.reason,
+                    retry_count,
+                    max_retries,
+                )
                 if self._ping_task:
                     self._ping_task.cancel()
-                await asyncio.sleep(min(2 ** retry_count, 30))
+                await asyncio.sleep(min(2**retry_count, 30))
 
             except Exception as e:
                 retry_count += 1
-                log.error("WebSocket error: %s (retry %d/%d)", e, retry_count, max_retries)
+                log.error(
+                    "WebSocket error: %s (retry %d/%d)", e, retry_count, max_retries
+                )
                 if self._ping_task:
                     self._ping_task.cancel()
-                await asyncio.sleep(min(2 ** retry_count, 30))
+                await asyncio.sleep(min(2**retry_count, 30))
 
         return self.game_result or {"status": "disconnected"}
 
@@ -156,7 +168,9 @@ class WebSocketEngine:
                 alive = view.get("self", {}).get("isAlive", "?")
                 hp = view.get("self", {}).get("hp", "?")
                 ep = view.get("self", {}).get("ep", "?")
-                log.info("agent_view (reason=%s) alive=%s HP=%s EP=%s", reason, alive, hp, ep)
+                log.info(
+                    "agent_view (reason=%s) alive=%s HP=%s EP=%s", reason, alive, hp, ep
+                )
                 await self._on_agent_view(view)
             else:
                 log.warning("agent_view with empty/invalid view: %s", str(view)[:100])
@@ -171,7 +185,9 @@ class WebSocketEngine:
 
             if success:
                 data = msg.get("data", {})
-                action_msg = data.get("message", "") if isinstance(data, dict) else str(data)
+                action_msg = (
+                    data.get("message", "") if isinstance(data, dict) else str(data)
+                )
                 log.info("Action OK: %s (canAct=%s)", action_msg, msg.get("canAct"))
                 # Track map usage for learning on next view
                 if isinstance(data, dict) and "map" in str(action_msg).lower():
@@ -180,7 +196,12 @@ class WebSocketEngine:
                 err = msg.get("error", {})
                 err_code = err.get("code", "") if isinstance(err, dict) else str(err)
                 err_msg = err.get("message", "") if isinstance(err, dict) else ""
-                log.warning("Action FAILED: %s — %s (canAct=%s)", err_code, err_msg, msg.get("canAct"))
+                log.warning(
+                    "Action FAILED: %s — %s (canAct=%s)",
+                    err_code,
+                    err_msg,
+                    msg.get("canAct"),
+                )
 
         # ── can_act_changed ───────────────────────────────────────────
         # Per actions.md: canAct is at TOP LEVEL
@@ -240,8 +261,7 @@ class WebSocketEngine:
 
         # ── unknown ───────────────────────────────────────────────────
         else:
-            log.info("Unknown WS message type=%s keys=%s",
-                     msg_type, list(msg.keys()))
+            log.info("Unknown WS message type=%s keys=%s", msg_type, list(msg.keys()))
 
         return None
 
@@ -257,24 +277,29 @@ class WebSocketEngine:
         alive_count = view.get("aliveCount", "?")
 
         if not self_data.get("isAlive", True):
-            log.info("☠️ Agent DEAD — Alive remaining: %s. Waiting for game_ended...", alive_count)
+            log.info(
+                "☠️ Agent DEAD — Alive remaining: %s. Waiting for game_ended...",
+                alive_count,
+            )
             # Update dashboard with dead state (don't just return silently!)
             dk = self.dashboard_key
-            dashboard_state.update_agent(dk, {
-                "name": self.dashboard_name,
-                "status": "dead",
-                "hp": 0,
-                "ep": 0,
-                "maxHp": self_data.get("maxHp", 100),
-                "maxEp": self_data.get("maxEp", 10),
-                "alive_count": alive_count,
-                "last_action": "☠️ DEAD — waiting for game to end",
-                "enemies": [],
-                "region_items": [],
-            })
+            dashboard_state.update_agent(
+                dk,
+                {
+                    "name": self.dashboard_name,
+                    "status": "dead",
+                    "hp": 0,
+                    "ep": 0,
+                    "maxHp": self_data.get("maxHp", 100),
+                    "maxEp": self_data.get("maxEp", 10),
+                    "alive_count": alive_count,
+                    "last_action": "☠️ DEAD — waiting for game to end",
+                    "enemies": [],
+                    "region_items": [],
+                },
+            )
             dashboard_state.add_log(
-                f"☠️ Agent DEAD — Alive remaining: {alive_count}",
-                "warning", dk
+                f"☠️ Agent DEAD — Alive remaining: {alive_count}", "warning", dk
             )
             return
 
@@ -283,16 +308,28 @@ class WebSocketEngine:
         ep = self_data.get("ep", "?")
         region = view.get("currentRegion", {})
         region_name = region.get("name", "?") if isinstance(region, dict) else "?"
-        log.info("Status: HP=%s EP=%s Region=%s | Alive: %s", hp, ep, region_name, alive_count)
+        log.info(
+            "Status: HP=%s EP=%s Region=%s | Alive: %s",
+            hp,
+            ep,
+            region_name,
+            alive_count,
+        )
         dashboard_state.add_log(
             f"HP={hp} EP={ep} Region={region_name} | Alive: {alive_count}",
-            "info", self.dashboard_key
+            "info",
+            self.dashboard_key,
         )
 
         # Feed dashboard with live game data
         inv = self_data.get("inventory", [])
-        enemies = [a for a in view.get("visibleAgents", [])
-                   if isinstance(a, dict) and a.get("isAlive") and a.get("id") != self_data.get("id")]
+        enemies = [
+            a
+            for a in view.get("visibleAgents", [])
+            if isinstance(a, dict)
+            and a.get("isAlive")
+            and a.get("id") != self_data.get("id")
+        ]
 
         # Region items: visibleItems entries are WRAPPED: { regionId, item: {id, name, ...} }
         # We must unwrap the .item sub-object and attach regionId to it.
@@ -324,8 +361,7 @@ class WebSocketEngine:
         # Strategy 2: filter visibleItems by regionId
         if not region_items:
             all_visible = _unwrap_items(view.get("visibleItems", []))
-            region_items = [i for i in all_visible
-                            if i.get("regionId") == region_id]
+            region_items = [i for i in all_visible if i.get("regionId") == region_id]
 
         # Strategy 3: if regionId filter returns nothing, show ALL visible items
         if not region_items:
@@ -339,51 +375,78 @@ class WebSocketEngine:
         if equipped and isinstance(equipped, dict):
             weapon_name = equipped.get("typeId", "fist")
             from bot.strategy.brain import WEAPONS
-            weapon_bonus = WEAPONS.get(weapon_name.lower(), {}).get("bonus", 0)
 
+            weapon_bonus = WEAPONS.get(weapon_name.lower(), {}).get("bonus", 0)
 
         def _item_label(i):
             """Get best display label for an item.
             Try all possible field names the API might use.
             """
-            return (i.get("name")
-                    or i.get("typeId")
-                    or i.get("type")
-                    or i.get("itemType")
-                    or i.get("itemName")
-                    or i.get("label")
-                    or i.get("kind")
-                    or str(i.get("id", "?"))[:12])
+            return (
+                i.get("name")
+                or i.get("typeId")
+                or i.get("type")
+                or i.get("itemType")
+                or i.get("itemName")
+                or i.get("label")
+                or i.get("kind")
+                or str(i.get("id", "?"))[:12]
+            )
 
         def _item_cat(i):
             """Get item category from any available field."""
-            return (i.get("category")
-                    or i.get("cat")
-                    or i.get("itemCategory")
-                    or i.get("type")
-                    or "")
+            return (
+                i.get("category")
+                or i.get("cat")
+                or i.get("itemCategory")
+                or i.get("type")
+                or ""
+            )
 
         dk = self.dashboard_key
-        dashboard_state.update_agent(dk, {
-            "name": self.dashboard_name,
-            "hp": hp, "ep": ep,
-            "status": "playing",
-            "maxHp": self_data.get("maxHp", 100),
-            "maxEp": self_data.get("maxEp", 10),
-            "atk": self_data.get("atk", 0),
-            "def": self_data.get("def", 0),
-            "weapon": weapon_name,
-            "weapon_bonus": weapon_bonus,
-            "kills": self_data.get("kills", 0),
-            "region": region_name,
-            "alive_count": alive_count,
-            "inventory": [{"typeId": i.get("typeId","?"), "name": _item_label(i), "cat": _item_cat(i)}
-                          for i in inv if isinstance(i, dict)],
-            "enemies": [{"name": e.get("name","?"), "hp": e.get("hp","?"), "id": e.get("id","")}
-                        for e in enemies[:8]],
-            "region_items": [{"typeId": i.get("typeId","?"), "name": _item_label(i), "cat": _item_cat(i)}
-                             for i in region_items[:10]],
-        })
+        dashboard_state.update_agent(
+            dk,
+            {
+                "name": self.dashboard_name,
+                "hp": hp,
+                "ep": ep,
+                "status": "playing",
+                "maxHp": self_data.get("maxHp", 100),
+                "maxEp": self_data.get("maxEp", 10),
+                "atk": self_data.get("atk", 0),
+                "def": self_data.get("def", 0),
+                "weapon": weapon_name,
+                "weapon_bonus": weapon_bonus,
+                "kills": self_data.get("kills", 0),
+                "region": region_name,
+                "alive_count": alive_count,
+                "inventory": [
+                    {
+                        "typeId": i.get("typeId", "?"),
+                        "name": _item_label(i),
+                        "cat": _item_cat(i),
+                    }
+                    for i in inv
+                    if isinstance(i, dict)
+                ],
+                "enemies": [
+                    {
+                        "name": e.get("name", "?"),
+                        "hp": e.get("hp", "?"),
+                        "id": e.get("id", ""),
+                    }
+                    for e in enemies[:8]
+                ],
+                "region_items": [
+                    {
+                        "typeId": i.get("typeId", "?"),
+                        "name": _item_label(i),
+                        "cat": _item_cat(i),
+                    }
+                    for i in region_items[:10]
+                ],
+            },
+        )
 
         # Map learning: after Map item used, learn from the expanded vision
         if self._map_just_used:
@@ -394,9 +457,12 @@ class WebSocketEngine:
         # Continuous DZ tracking from every view
         _update_dz_knowledge(view)
 
-        # Run strategy brain
+        # Run strategy brain — pass memory for adaptive thresholds + opponent awareness
         can_act = self.action_sender.can_send_cooldown_action()
-        decision = decide_action(view, can_act)
+        memory_temp = self.memory.data.get("temp") if self.memory else None
+        decision = decide_action(
+            view, can_act, memory_temp=memory_temp, memory=self.memory
+        )
 
         if decision is None:
             return  # No action needed now
@@ -412,15 +478,22 @@ class WebSocketEngine:
 
         # Build and send per actions.md envelope spec
         payload = self.action_sender.build_action(
-            action_type, action_data, reason, action_type,
+            action_type,
+            action_data,
+            reason,
+            action_type,
         )
 
         await self._send(payload)
         log.info("→ %s | %s", action_type.upper(), reason)
 
         # Feed dashboard with action
-        dashboard_state.update_agent(self.dashboard_key, {"last_action": f"{action_type}: {reason[:60]}"})
-        dashboard_state.add_log(f"{action_type}: {reason[:80]}", "info", self.dashboard_key)
+        dashboard_state.update_agent(
+            self.dashboard_key, {"last_action": f"{action_type}: {reason[:60]}"}
+        )
+        dashboard_state.add_log(
+            f"{action_type}: {reason[:80]}", "info", self.dashboard_key
+        )
 
     async def _send(self, payload: dict):
         """Send a message through WebSocket with rate limiting."""
@@ -440,6 +513,8 @@ class WebSocketEngine:
             pass
         except Exception as e:
             log.debug("Ping loop error: %s", e)
+
+
 """
 Per game-loop.md §9 Message Types:
 | Type              | Key Fields                                           |

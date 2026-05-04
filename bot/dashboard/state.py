@@ -2,6 +2,7 @@
 Dashboard shared state — bridge between bot engine and web dashboard.
 Bot writes → Dashboard reads. Thread-safe via asyncio lock.
 """
+
 import time
 from collections import deque
 from bot.utils.logger import get_logger
@@ -45,6 +46,17 @@ class DashboardState:
         # ── Accounts ───────────────────────────────────────────
         self.accounts: list[dict] = []
 
+        # ── Learning / Memory ──────────────────────────────────
+        self.learning_data: dict = {
+            "total_games": 0,
+            "wins": 0,
+            "win_rate": 0.0,
+            "avg_kills": 0.0,
+            "lessons": [],
+            "strategy_rules": [],
+            "opponents": [],
+        }
+
         # ── Timestamps ─────────────────────────────────────────
         self.started_at = time.time()
         self.last_update = time.time()
@@ -81,6 +93,27 @@ class DashboardState:
                 return
         self.accounts.append(account_data)
 
+    def update_learning(
+        self,
+        memory_stats: dict,
+        lessons: list = None,
+        rules: list = None,
+        opponents: list = None,
+    ):
+        """Update learning data from AgentMemory."""
+        if memory_stats:
+            self.learning_data["total_games"] = memory_stats.get("total_games", 0)
+            self.learning_data["wins"] = memory_stats.get("wins", 0)
+            self.learning_data["win_rate"] = memory_stats.get("win_rate", 0.0)
+            self.learning_data["avg_kills"] = memory_stats.get("avg_kills", 0.0)
+        if lessons is not None:
+            self.learning_data["lessons"] = lessons
+        if rules is not None:
+            self.learning_data["strategy_rules"] = rules
+        if opponents is not None:
+            self.learning_data["opponents"] = opponents
+        self.last_update = time.time()
+
     # ── Dashboard reads ────────────────────────────────────────
 
     def get_snapshot(self) -> dict:
@@ -93,17 +126,24 @@ class DashboardState:
                 "total_smoltz": self.total_smoltz,
                 "total_cross": self.total_cross,
                 "bots_running": self.bots_running,
-                "agents_active": sum(1 for a in self.agents.values()
-                                     if a.get("status") == "playing"),
-                "agents_idle": sum(1 for a in self.agents.values()
-                                   if a.get("status") in ("idle", "queuing")),
-                "agents_dead": sum(1 for a in self.agents.values()
-                                   if a.get("status") == "dead"),
-                "agents_error": sum(1 for a in self.agents.values()
-                                    if a.get("status") == "error"),
+                "agents_active": sum(
+                    1 for a in self.agents.values() if a.get("status") == "playing"
+                ),
+                "agents_idle": sum(
+                    1
+                    for a in self.agents.values()
+                    if a.get("status") in ("idle", "queuing")
+                ),
+                "agents_dead": sum(
+                    1 for a in self.agents.values() if a.get("status") == "dead"
+                ),
+                "agents_error": sum(
+                    1 for a in self.agents.values() if a.get("status") == "error"
+                ),
                 "uptime": time.time() - self.started_at,
             },
             "accounts": self.accounts,
+            "learning": dict(self.learning_data),
             "logs": list(self.global_logs)[-200:],
             "agent_logs": {k: list(v)[-100:] for k, v in self.agent_logs.items()},
         }
