@@ -262,7 +262,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "L15",
       "id": "bot_api_client_apierror",
-      "community": 15,
+      "community": 16,
       "norm_label": "apierror"
     },
     {
@@ -271,7 +271,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "",
       "id": "exception",
-      "community": 15,
+      "community": 16,
       "norm_label": "exception"
     },
     {
@@ -637,7 +637,7 @@
     {
       "label": "config.py",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "config_py",
       "community": 10,
@@ -646,7 +646,7 @@
     {
       "label": "load_agents()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L93",
       "id": "bot_config_load_agents",
       "community": 10,
@@ -655,7 +655,7 @@
     {
       "label": "_filter_agents()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L138",
       "id": "bot_config_filter_agents",
       "community": 10,
@@ -664,7 +664,7 @@
     {
       "label": "_warn_shared_wallets()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L183",
       "id": "bot_config_warn_shared_wallets",
       "community": 10,
@@ -673,7 +673,7 @@
     {
       "label": "_select_primary_per_wallet()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L199",
       "id": "bot_config_select_primary_per_wallet",
       "community": 10,
@@ -682,7 +682,7 @@
     {
       "label": "Configuration & constants for Molty Royale AI Agent. All env vars loaded here. N",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "bot_config_rationale_1",
       "community": 10,
@@ -691,7 +691,7 @@
     {
       "label": "Load agent configs from AGENTS_JSON env var, fallback to credentials.json.     F",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L94",
       "id": "bot_config_rationale_94",
       "community": 10,
@@ -700,7 +700,7 @@
     {
       "label": "Filter agents by AGENT_NAMES env var (comma-separated list of agent names).",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L139",
       "id": "bot_config_rationale_139",
       "community": 10,
@@ -709,7 +709,7 @@
     {
       "label": "Warn if multiple agents share the same SC wallet.",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L184",
       "id": "bot_config_rationale_184",
       "community": 10,
@@ -718,7 +718,7 @@
     {
       "label": "Select only 1 agent per SC wallet (molty_royale_wallet).     If multiple agents",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L200",
       "id": "bot_config_rationale_200",
       "community": 10,
@@ -730,7 +730,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L1",
       "id": "heartbeat_py",
-      "community": 16,
+      "community": 15,
       "norm_label": "heartbeat.py"
     },
     {
@@ -739,7 +739,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L43",
       "id": "bot_heartbeat_heartbeat",
-      "community": 16,
+      "community": 15,
       "norm_label": "heartbeat"
     },
     {
@@ -748,7 +748,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L46",
       "id": "bot_heartbeat_heartbeat_init",
-      "community": 16,
+      "community": 15,
       "norm_label": ".__init__()"
     },
     {
@@ -775,7 +775,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L244",
       "id": "bot_heartbeat_heartbeat_handle_no_identity",
-      "community": 15,
+      "community": 16,
       "norm_label": "._handle_no_identity()"
     },
     {
@@ -811,7 +811,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L1",
       "id": "bot_heartbeat_rationale_1",
-      "community": 16,
+      "community": 15,
       "norm_label": "heartbeat loop \u2014 main orchestration per heartbeat.md. state machine: setup \u2192 joi"
     },
     {
@@ -820,7 +820,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L44",
       "id": "bot_heartbeat_rationale_44",
-      "community": 16,
+      "community": 15,
       "norm_label": "main heartbeat loop \u2014 runs forever, manages the full agent lifecycle."
     },
     {
@@ -847,7 +847,7 @@
       "source_file": "bot/heartbeat.py",
       "source_location": "L245",
       "id": "bot_heartbeat_rationale_245",
-      "community": 15,
+      "community": 16,
       "norm_label": "setup pipeline: wallet \u2192 whitelist \u2192 identity. respects config flags."
     },
     {
@@ -883,7 +883,7 @@
       "source_file": "bot/main.py",
       "source_location": "L1",
       "id": "main_py",
-      "community": 16,
+      "community": 15,
       "norm_label": "main.py"
     },
     {
@@ -892,7 +892,7 @@
       "source_file": "bot/main.py",
       "source_location": "L20",
       "id": "bot_main_main",
-      "community": 16,
+      "community": 15,
       "norm_label": "main()"
     },
     {
@@ -901,7 +901,7 @@
       "source_file": "bot/main.py",
       "source_location": "L1",
       "id": "bot_main_rationale_1",
-      "community": 16,
+      "community": 15,
       "norm_label": "molty royale ai agent \u2014 entry point v2.0. run: python -m bot.main dashboard + mu"
     },
     {
@@ -910,7 +910,7 @@
       "source_file": "bot/main.py",
       "source_location": "L21",
       "id": "bot_main_rationale_21",
-      "community": 16,
+      "community": 15,
       "norm_label": "entry point for the bot."
     },
     {
@@ -2917,7 +2917,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L1",
       "id": "setup_wallet_setup_py",
-      "community": 15,
+      "community": 16,
       "norm_label": "wallet_setup.py"
     },
     {
@@ -2926,7 +2926,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L14",
       "id": "setup_wallet_setup_ensure_molty_wallet",
-      "community": 15,
+      "community": 16,
       "norm_label": "ensure_molty_wallet()"
     },
     {
@@ -2935,7 +2935,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L57",
       "id": "setup_wallet_setup_recover_wallet_address",
-      "community": 15,
+      "community": 16,
       "norm_label": "_recover_wallet_address()"
     },
     {
@@ -2944,7 +2944,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L1",
       "id": "setup_wallet_setup_rationale_1",
-      "community": 15,
+      "community": 16,
       "norm_label": "moltyroyale wallet (sc wallet) setup \u2014 post /create/wallet. handles conflict, wa"
     },
     {
@@ -2953,7 +2953,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L15",
       "id": "setup_wallet_setup_rationale_15",
-      "community": 15,
+      "community": 16,
       "norm_label": "create or recover moltyroyale wallet. returns wallet address or \"\".     per setu"
     },
     {
@@ -2962,7 +2962,7 @@
       "source_file": "bot/setup/wallet_setup.py",
       "source_location": "L58",
       "id": "setup_wallet_setup_rationale_58",
-      "community": 15,
+      "community": 16,
       "norm_label": "try to recover wallet address on-chain via walletfactory.getwallets()."
     },
     {
@@ -3025,7 +3025,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L97",
       "id": "strategy_brain_calc_damage",
-      "community": 32,
+      "community": 31,
       "norm_label": "calc_damage()"
     },
     {
@@ -3034,7 +3034,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L109",
       "id": "strategy_brain_get_weapon_bonus",
-      "community": 24,
+      "community": 22,
       "norm_label": "get_weapon_bonus()"
     },
     {
@@ -3043,7 +3043,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L117",
       "id": "strategy_brain_get_weapon_range",
-      "community": 37,
+      "community": 38,
       "norm_label": "get_weapon_range()"
     },
     {
@@ -3052,7 +3052,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L130",
       "id": "strategy_brain_resolve_region",
-      "community": 33,
+      "community": 37,
       "norm_label": "_resolve_region()"
     },
     {
@@ -3079,7 +3079,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L163",
       "id": "strategy_brain_decide_action",
-      "community": 22,
+      "community": 24,
       "norm_label": "decide_action()"
     },
     {
@@ -3088,7 +3088,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L638",
       "id": "strategy_brain_get_move_ep_cost",
-      "community": 36,
+      "community": 35,
       "norm_label": "_get_move_ep_cost()"
     },
     {
@@ -3097,7 +3097,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L649",
       "id": "strategy_brain_estimate_enemy_weapon_bonus",
-      "community": 34,
+      "community": 41,
       "norm_label": "_estimate_enemy_weapon_bonus()"
     },
     {
@@ -3124,7 +3124,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L772",
       "id": "strategy_brain_check_equip",
-      "community": 24,
+      "community": 22,
       "norm_label": "_check_equip()"
     },
     {
@@ -3133,7 +3133,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L795",
       "id": "strategy_brain_find_safe_region",
-      "community": 22,
+      "community": 43,
       "norm_label": "_find_safe_region()"
     },
     {
@@ -3142,7 +3142,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L841",
       "id": "strategy_brain_find_healing_item",
-      "community": 39,
+      "community": 40,
       "norm_label": "_find_healing_item()"
     },
     {
@@ -3151,7 +3151,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L868",
       "id": "strategy_brain_find_energy_drink",
-      "community": 31,
+      "community": 33,
       "norm_label": "_find_energy_drink()"
     },
     {
@@ -3160,7 +3160,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L876",
       "id": "strategy_brain_select_weakest",
-      "community": 40,
+      "community": 32,
       "norm_label": "_select_weakest()"
     },
     {
@@ -3169,7 +3169,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L881",
       "id": "strategy_brain_is_in_range",
-      "community": 43,
+      "community": 24,
       "norm_label": "_is_in_range()"
     },
     {
@@ -3178,7 +3178,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L911",
       "id": "strategy_brain_select_facility",
-      "community": 41,
+      "community": 34,
       "norm_label": "_select_facility()"
     },
     {
@@ -3196,7 +3196,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L998",
       "id": "strategy_brain_use_utility_item",
-      "community": 35,
+      "community": 39,
       "norm_label": "_use_utility_item()"
     },
     {
@@ -3214,7 +3214,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1068",
       "id": "strategy_brain_choose_move_target",
-      "community": 38,
+      "community": 36,
       "norm_label": "_choose_move_target()"
     },
     {
@@ -3232,7 +3232,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L100",
       "id": "strategy_brain_rationale_100",
-      "community": 32,
+      "community": 31,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:"
     },
     {
@@ -3241,7 +3241,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L110",
       "id": "strategy_brain_rationale_110",
-      "community": 24,
+      "community": 22,
       "norm_label": "get atk bonus from equipped weapon."
     },
     {
@@ -3250,7 +3250,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L118",
       "id": "strategy_brain_rationale_118",
-      "community": 37,
+      "community": 38,
       "norm_label": "get range from equipped weapon."
     },
     {
@@ -3259,7 +3259,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L131",
       "id": "strategy_brain_rationale_131",
-      "community": 33,
+      "community": 37,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotchas"
     },
     {
@@ -3286,7 +3286,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L166",
       "id": "strategy_brain_rationale_166",
-      "community": 22,
+      "community": 24,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain pe"
     },
     {
@@ -3295,7 +3295,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L639",
       "id": "strategy_brain_rationale_639",
-      "community": 36,
+      "community": 35,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terrai"
     },
     {
@@ -3304,7 +3304,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L650",
       "id": "strategy_brain_rationale_650",
-      "community": 34,
+      "community": 41,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon."
     },
     {
@@ -3331,7 +3331,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L773",
       "id": "strategy_brain_rationale_773",
-      "community": 24,
+      "community": 22,
       "norm_label": "auto-equip best weapon from inventory."
     },
     {
@@ -3340,7 +3340,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L796",
       "id": "strategy_brain_rationale_796",
-      "community": 22,
+      "community": 43,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     pe"
     },
     {
@@ -3349,7 +3349,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L842",
       "id": "strategy_brain_rationale_842",
-      "community": 39,
+      "community": 40,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer banda"
     },
     {
@@ -3358,7 +3358,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L869",
       "id": "strategy_brain_rationale_869",
-      "community": 31,
+      "community": 33,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md)."
     },
     {
@@ -3367,7 +3367,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L877",
       "id": "strategy_brain_rationale_877",
-      "community": 40,
+      "community": 32,
       "norm_label": "select target with lowest hp."
     },
     {
@@ -3376,7 +3376,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L884",
       "id": "strategy_brain_rationale_884",
-      "community": 43,
+      "community": 24,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same region"
     },
     {
@@ -3385,7 +3385,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L912",
       "id": "strategy_brain_rationale_912",
-      "community": 41,
+      "community": 34,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: suppl"
     },
     {
@@ -3403,7 +3403,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1001",
       "id": "strategy_brain_rationale_1001",
-      "community": 35,
+      "community": 39,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigge"
     },
     {
@@ -3421,7 +3421,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1075",
       "id": "strategy_brain_rationale_1075",
-      "community": 38,
+      "community": 36,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pen"
     },
     {
@@ -4086,7 +4086,7 @@
       "file_type": "rationale",
       "source_file": "heartbeat.py",
       "source_location": "L31",
-      "community": 16,
+      "community": 15,
       "norm_label": "main heartbeat loop \u2014 runs forever, manages the full agent lifecycle.",
       "id": "bot_heartbeat_rationale_31"
     },
@@ -4113,7 +4113,7 @@
       "file_type": "rationale",
       "source_file": "heartbeat.py",
       "source_location": "L207",
-      "community": 15,
+      "community": 16,
       "norm_label": "setup pipeline: wallet \u2192 whitelist \u2192 identity. respects config flags.",
       "id": "bot_heartbeat_rationale_207"
     },
@@ -4401,7 +4401,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L75",
-      "community": 32,
+      "community": 31,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:",
       "id": "strategy_brain_rationale_75"
     },
@@ -4410,7 +4410,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L85",
-      "community": 24,
+      "community": 22,
       "norm_label": "get atk bonus from equipped weapon.",
       "id": "strategy_brain_rationale_85"
     },
@@ -4419,7 +4419,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L93",
-      "community": 37,
+      "community": 38,
       "norm_label": "get range from equipped weapon.",
       "id": "strategy_brain_rationale_93"
     },
@@ -4428,7 +4428,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L105",
-      "community": 33,
+      "community": 37,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotcha",
       "id": "strategy_brain_rationale_105"
     },
@@ -4455,7 +4455,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L138",
-      "community": 22,
+      "community": 24,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain",
       "id": "strategy_brain_rationale_138"
     },
@@ -4464,7 +4464,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L393",
-      "community": 36,
+      "community": 35,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terra",
       "id": "strategy_brain_rationale_393"
     },
@@ -4473,7 +4473,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L404",
-      "community": 34,
+      "community": 41,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon.",
       "id": "strategy_brain_rationale_404"
     },
@@ -4500,7 +4500,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L516",
-      "community": 24,
+      "community": 22,
       "norm_label": "auto-equip best weapon from inventory.",
       "id": "strategy_brain_rationale_516"
     },
@@ -4509,7 +4509,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L536",
-      "community": 22,
+      "community": 43,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     p",
       "id": "strategy_brain_rationale_536"
     },
@@ -4518,7 +4518,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L572",
-      "community": 39,
+      "community": 40,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer band",
       "id": "strategy_brain_rationale_572"
     },
@@ -4527,7 +4527,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L596",
-      "community": 31,
+      "community": 33,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md).",
       "id": "strategy_brain_rationale_596"
     },
@@ -4536,7 +4536,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L604",
-      "community": 40,
+      "community": 32,
       "norm_label": "select target with lowest hp.",
       "id": "strategy_brain_rationale_604"
     },
@@ -4545,7 +4545,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L610",
-      "community": 43,
+      "community": 24,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same regio",
       "id": "strategy_brain_rationale_610"
     },
@@ -4554,7 +4554,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L638",
-      "community": 41,
+      "community": 34,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: supp",
       "id": "strategy_brain_rationale_638"
     },
@@ -4572,7 +4572,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L685",
-      "community": 35,
+      "community": 39,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigg",
       "id": "strategy_brain_rationale_685"
     },
@@ -4590,7 +4590,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L744",
-      "community": 38,
+      "community": 36,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pe",
       "id": "strategy_brain_rationale_744"
     },
@@ -4967,7 +4967,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 15,
       "norm_label": "whitelist setup module",
       "id": "bot_setup_whitelist"
     },
@@ -7652,9 +7652,9 @@
       "source_file": "config.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_94",
-      "target": "bot_config_load_agents",
-      "confidence_score": 1.0
+      "target": "bot_config_load_agents"
     },
     {
       "relation": "calls",
@@ -7716,9 +7716,9 @@
       "source_file": "config.py",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_139",
-      "target": "bot_config_filter_agents",
-      "confidence_score": 1.0
+      "target": "bot_config_filter_agents"
     },
     {
       "relation": "calls",
@@ -7747,9 +7747,9 @@
       "source_file": "config.py",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_184",
-      "target": "bot_config_warn_shared_wallets",
-      "confidence_score": 1.0
+      "target": "bot_config_warn_shared_wallets"
     },
     {
       "relation": "rationale_for",
@@ -7767,9 +7767,9 @@
       "source_file": "config.py",
       "source_location": "L200",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_200",
-      "target": "bot_config_select_primary_per_wallet",
-      "confidence_score": 1.0
+      "target": "bot_config_select_primary_per_wallet"
     },
     {
       "relation": "rationale_for",
@@ -16100,5 +16100,5 @@
       "source_location": "621-794"
     }
   ],
-  "built_at_commit": "00250b0a32edc20cbb36df9048b6c6ed3952dc6c"
+  "built_at_commit": "29b022ed92055055a93cd0adc4ee7b471f762878"
 }
