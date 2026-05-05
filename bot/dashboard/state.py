@@ -93,25 +93,24 @@ class DashboardState:
                 return
         self.accounts.append(account_data)
 
-    def update_learning(
-        self,
-        memory_stats: dict,
-        lessons: list = None,
-        rules: list = None,
-        opponents: list = None,
-    ):
-        """Update learning data from AgentMemory."""
-        if memory_stats:
-            self.learning_data["total_games"] = memory_stats.get("total_games", 0)
-            self.learning_data["wins"] = memory_stats.get("wins", 0)
-            self.learning_data["win_rate"] = memory_stats.get("win_rate", 0.0)
-            self.learning_data["avg_kills"] = memory_stats.get("avg_kills", 0.0)
-        if lessons is not None:
-            self.learning_data["lessons"] = lessons
-        if rules is not None:
-            self.learning_data["strategy_rules"] = rules
-        if opponents is not None:
-            self.learning_data["opponents"] = opponents
+    def update_learning(self, memory_stats: dict):
+        """Update learning data from AgentMemory.get_stats()."""
+        if not memory_stats:
+            return
+        self.learning_data["total_games"] = memory_stats.get("total_games", 0)
+        self.learning_data["wins"] = memory_stats.get("wins", 0)
+        self.learning_data["win_rate"] = memory_stats.get("win_rate", 0.0)
+        self.learning_data["avg_kills"] = memory_stats.get("avg_kills", 0.0)
+        self.learning_data["lessons_count"] = memory_stats.get("lessons_count", 0)
+        self.learning_data["rules_count"] = memory_stats.get("rules_count", 0)
+        self.learning_data["opponents_count"] = memory_stats.get("opponents_count", 0)
+        # Full lists for tab display
+        self.learning_data["lessons"] = memory_stats.get("lessons", [])
+        self.learning_data["strategy_rules"] = memory_stats.get("strategy_rules", [])
+        self.learning_data["opponents"] = memory_stats.get("opponents", [])
+        self.learning_data["dangerous_opponents"] = memory_stats.get(
+            "dangerous_opponents", []
+        )
         self.last_update = time.time()
 
     # ── Dashboard reads ────────────────────────────────────────

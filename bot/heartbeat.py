@@ -220,6 +220,9 @@ class Heartbeat:
             },
         )
 
+        # Push learning data to dashboard every cycle
+        dashboard_state.update_learning(self.memory.get_stats())
+
         # Step 3: Route based on state
         if state == NO_IDENTITY:
             # Always try to register identity (ERC-8004) — whether

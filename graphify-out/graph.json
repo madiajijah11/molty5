@@ -199,7 +199,7 @@
       "source_file": "bot/__init__.py",
       "source_location": "L1",
       "id": "init_py",
-      "community": 46,
+      "community": 47,
       "norm_label": "__init__.py"
     },
     {
@@ -208,7 +208,7 @@
       "source_file": "bot/__init__.py",
       "source_location": "L1",
       "id": "bot_init_rationale_1",
-      "community": 46,
+      "community": 47,
       "norm_label": "molty royale ai agent bot"
     },
     {
@@ -217,7 +217,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L1",
       "id": "state_router_py",
-      "community": 27,
+      "community": 28,
       "norm_label": "state_router.py"
     },
     {
@@ -226,7 +226,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L18",
       "id": "bot_state_router_determine_state",
-      "community": 27,
+      "community": 28,
       "norm_label": "determine_state()"
     },
     {
@@ -235,7 +235,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L1",
       "id": "bot_state_router_rationale_1",
-      "community": 27,
+      "community": 28,
       "norm_label": "state router \u2014 determines agent state from get /accounts/me response. routes per"
     },
     {
@@ -244,7 +244,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L19",
       "id": "bot_state_router_rationale_19",
-      "community": 27,
+      "community": 28,
       "norm_label": "analyze /accounts/me response \u2192 return (state, context).     context contains re"
     },
     {
@@ -253,7 +253,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "L1",
       "id": "api_client_py",
-      "community": 20,
+      "community": 17,
       "norm_label": "api_client.py"
     },
     {
@@ -478,7 +478,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "L1",
       "id": "bot_api_client_rationale_1",
-      "community": 20,
+      "community": 17,
       "norm_label": "async rest api client for molty royale. all endpoints from api-summary.md with r"
     },
     {
@@ -637,7 +637,7 @@
     {
       "label": "config.py",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "config_py",
       "community": 9,
@@ -646,7 +646,7 @@
     {
       "label": "load_agents()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L93",
       "id": "bot_config_load_agents",
       "community": 9,
@@ -655,7 +655,7 @@
     {
       "label": "_filter_agents()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L138",
       "id": "bot_config_filter_agents",
       "community": 9,
@@ -664,7 +664,7 @@
     {
       "label": "_warn_shared_wallets()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L197",
       "id": "bot_config_warn_shared_wallets",
       "community": 9,
@@ -673,7 +673,7 @@
     {
       "label": "_select_primary_per_wallet()",
       "file_type": "code",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L213",
       "id": "bot_config_select_primary_per_wallet",
       "community": 9,
@@ -682,7 +682,7 @@
     {
       "label": "Configuration & constants for Molty Royale AI Agent. All env vars loaded here. N",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "bot_config_rationale_1",
       "community": 9,
@@ -691,7 +691,7 @@
     {
       "label": "Load agent configs from AGENTS_JSON env var, fallback to credentials.json.     F",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L94",
       "id": "bot_config_rationale_94",
       "community": 9,
@@ -700,7 +700,7 @@
     {
       "label": "Filter agents by AGENT_NAMES env var (comma-separated list of agent names).",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L139",
       "id": "bot_config_rationale_139",
       "community": 9,
@@ -709,7 +709,7 @@
     {
       "label": "Warn if multiple agents share the same SC wallet.",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L198",
       "id": "bot_config_rationale_198",
       "community": 9,
@@ -718,7 +718,7 @@
     {
       "label": "Select only 1 agent per SC wallet (molty_royale_wallet).     If multiple agents",
       "file_type": "rationale",
-      "source_file": "config.py",
+      "source_file": "bot/config.py",
       "source_location": "L214",
       "id": "bot_config_rationale_214",
       "community": 9,
@@ -727,16 +727,16 @@
     {
       "label": "heartbeat.py",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L1",
       "id": "heartbeat_py",
-      "community": 29,
+      "community": 15,
       "norm_label": "heartbeat.py"
     },
     {
       "label": "Heartbeat",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L43",
       "id": "bot_heartbeat_heartbeat",
       "community": 1,
@@ -745,7 +745,7 @@
     {
       "label": ".__init__()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L46",
       "id": "bot_heartbeat_heartbeat_init",
       "community": 12,
@@ -754,7 +754,7 @@
     {
       "label": ".run()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L63",
       "id": "bot_heartbeat_heartbeat_run",
       "community": 1,
@@ -763,7 +763,7 @@
     {
       "label": "._heartbeat_cycle()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L183",
       "id": "bot_heartbeat_heartbeat_heartbeat_cycle",
       "community": 1,
@@ -772,7 +772,7 @@
     {
       "label": "._handle_no_identity()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L242",
       "id": "bot_heartbeat_heartbeat_handle_no_identity",
       "community": 1,
@@ -781,7 +781,7 @@
     {
       "label": "._handle_ready()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L296",
       "id": "bot_heartbeat_heartbeat_handle_ready",
       "community": 1,
@@ -790,7 +790,7 @@
     {
       "label": "._handle_in_game()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L320",
       "id": "bot_heartbeat_heartbeat_handle_in_game",
       "community": 1,
@@ -799,7 +799,7 @@
     {
       "label": "._play_game()",
       "file_type": "code",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L337",
       "id": "bot_heartbeat_heartbeat_play_game",
       "community": 1,
@@ -808,16 +808,16 @@
     {
       "label": "Heartbeat loop \u2014 main orchestration per heartbeat.md. State machine: setup \u2192 joi",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L1",
       "id": "bot_heartbeat_rationale_1",
-      "community": 29,
+      "community": 15,
       "norm_label": "heartbeat loop \u2014 main orchestration per heartbeat.md. state machine: setup \u2192 joi"
     },
     {
       "label": "Main heartbeat loop \u2014 runs forever, manages the full agent lifecycle.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L44",
       "id": "bot_heartbeat_rationale_44",
       "community": 1,
@@ -826,7 +826,7 @@
     {
       "label": "Entry point \u2014 runs the heartbeat loop indefinitely.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L64",
       "id": "bot_heartbeat_rationale_64",
       "community": 1,
@@ -835,7 +835,7 @@
     {
       "label": "Single heartbeat cycle: check state \u2192 route \u2192 act.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L184",
       "id": "bot_heartbeat_rationale_184",
       "community": 1,
@@ -844,7 +844,7 @@
     {
       "label": "Setup pipeline: wallet \u2192 whitelist \u2192 identity. Respects config flags.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L243",
       "id": "bot_heartbeat_rationale_243",
       "community": 1,
@@ -853,7 +853,7 @@
     {
       "label": "Join a game based on room selection.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L297",
       "id": "bot_heartbeat_rationale_297",
       "community": 1,
@@ -862,7 +862,7 @@
     {
       "label": "Resume or start playing an active game.         Per game-loop.md: always connect",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L321",
       "id": "bot_heartbeat_rationale_321",
       "community": 1,
@@ -871,7 +871,7 @@
     {
       "label": "Run the WebSocket gameplay engine.",
       "file_type": "rationale",
-      "source_file": "heartbeat.py",
+      "source_file": "bot/heartbeat.py",
       "source_location": "L338",
       "id": "bot_heartbeat_rationale_338",
       "community": 1,
@@ -919,7 +919,7 @@
       "source_file": "bot/dashboard/__init__.py",
       "source_location": "L1",
       "id": "dashboard_init_py",
-      "community": 52,
+      "community": 53,
       "norm_label": "__init__.py"
     },
     {
@@ -1621,7 +1621,7 @@
       "source_file": "bot/game/__init__.py",
       "source_location": "L1",
       "id": "game_init_py",
-      "community": 53,
+      "community": 54,
       "norm_label": "__init__.py"
     },
     {
@@ -1882,7 +1882,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L1",
       "id": "game_paid_join_py",
-      "community": 15,
+      "community": 31,
       "norm_label": "paid_join.py"
     },
     {
@@ -1900,7 +1900,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L1",
       "id": "game_paid_join_rationale_1",
-      "community": 15,
+      "community": 31,
       "norm_label": "paid game join \u2014 eip-712 sign \u2192 post /games/{id}/join-paid. per paid-games.md: c"
     },
     {
@@ -2134,7 +2134,7 @@
       "source_file": "bot/game/websocket_engine.py",
       "source_location": "L1",
       "id": "game_websocket_engine_py",
-      "community": 20,
+      "community": 17,
       "norm_label": "websocket_engine.py"
     },
     {
@@ -2215,7 +2215,7 @@
       "source_file": "bot/game/websocket_engine.py",
       "source_location": "L1",
       "id": "game_websocket_engine_rationale_1",
-      "community": 20,
+      "community": 17,
       "norm_label": "websocket gameplay engine \u2014 wss://cdn.moltyroyale.com/ws/agent. core loop: conne"
     },
     {
@@ -2323,7 +2323,7 @@
       "source_file": "bot/memory/__init__.py",
       "source_location": "L1",
       "id": "memory_init_py",
-      "community": 54,
+      "community": 55,
       "norm_label": "__init__.py"
     },
     {
@@ -2332,7 +2332,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L1",
       "id": "memory_agent_memory_py",
-      "community": 18,
+      "community": 23,
       "norm_label": "agent_memory.py"
     },
     {
@@ -2341,7 +2341,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L47",
       "id": "memory_agent_memory_opponentprofile",
-      "community": 18,
+      "community": 24,
       "norm_label": "opponentprofile"
     },
     {
@@ -2350,7 +2350,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L60",
       "id": "memory_agent_memory_opponentprofile_to_dict",
-      "community": 18,
+      "community": 24,
       "norm_label": ".to_dict()"
     },
     {
@@ -2359,7 +2359,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L64",
       "id": "memory_agent_memory_from_dict",
-      "community": 21,
+      "community": 19,
       "norm_label": "from_dict()"
     },
     {
@@ -2386,7 +2386,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L109",
       "id": "memory_agent_memory_strategyrule",
-      "community": 16,
+      "community": 23,
       "norm_label": "strategyrule"
     },
     {
@@ -2395,7 +2395,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L121",
       "id": "memory_agent_memory_strategyrule_to_dict",
-      "community": 16,
+      "community": 23,
       "norm_label": ".to_dict()"
     },
     {
@@ -2422,7 +2422,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L160",
       "id": "memory_agent_memory_agentmemory_load",
-      "community": 21,
+      "community": 19,
       "norm_label": ".load()"
     },
     {
@@ -2431,7 +2431,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L183",
       "id": "memory_agent_memory_agentmemory_save",
-      "community": 16,
+      "community": 25,
       "norm_label": ".save()"
     },
     {
@@ -2440,7 +2440,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L196",
       "id": "memory_agent_memory_agentmemory_serialize_to_data",
-      "community": 16,
+      "community": 25,
       "norm_label": "._serialize_to_data()"
     },
     {
@@ -2449,7 +2449,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L205",
       "id": "memory_agent_memory_agentmemory_deserialize_from_data",
-      "community": 21,
+      "community": 19,
       "norm_label": "._deserialize_from_data()"
     },
     {
@@ -2485,7 +2485,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L248",
       "id": "memory_agent_memory_agentmemory_get_adaptive_thresholds",
-      "community": 48,
+      "community": 51,
       "norm_label": ".get_adaptive_thresholds()"
     },
     {
@@ -2494,7 +2494,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L293",
       "id": "memory_agent_memory_agentmemory_get_opponent_profile",
-      "community": 12,
+      "community": 49,
       "norm_label": ".get_opponent_profile()"
     },
     {
@@ -2503,7 +2503,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L297",
       "id": "memory_agent_memory_agentmemory_get_dangerous_opponents",
-      "community": 28,
+      "community": 29,
       "norm_label": ".get_dangerous_opponents()"
     },
     {
@@ -2548,7 +2548,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L339",
       "id": "memory_agent_memory_agentmemory_add_lesson",
-      "community": 32,
+      "community": 33,
       "norm_label": ".add_lesson()"
     },
     {
@@ -2566,7 +2566,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L355",
       "id": "memory_agent_memory_agentmemory_add_strategy_rule",
-      "community": 49,
+      "community": 48,
       "norm_label": ".add_strategy_rule()"
     },
     {
@@ -2575,7 +2575,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L371",
       "id": "memory_agent_memory_agentmemory_update_opponent_profile",
-      "community": 18,
+      "community": 24,
       "norm_label": ".update_opponent_profile()"
     },
     {
@@ -2584,7 +2584,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L387",
       "id": "memory_agent_memory_agentmemory_recompute_threat_ratings",
-      "community": 47,
+      "community": 12,
       "norm_label": ".recompute_threat_ratings()"
     },
     {
@@ -2593,7 +2593,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L402",
       "id": "memory_agent_memory_agentmemory_get_stats",
-      "community": 28,
+      "community": 29,
       "norm_label": ".get_stats()"
     },
     {
@@ -2602,7 +2602,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L1",
       "id": "memory_agent_memory_rationale_1",
-      "community": 18,
+      "community": 23,
       "norm_label": "agent memory \u2014 persistent cross-game learning via molty-royale-context.json. two"
     },
     {
@@ -2611,7 +2611,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L48",
       "id": "memory_agent_memory_rationale_48",
-      "community": 18,
+      "community": 24,
       "norm_label": "cross-game tracking of a specific opponent agent."
     },
     {
@@ -2629,7 +2629,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L110",
       "id": "memory_agent_memory_rationale_110",
-      "community": 16,
+      "community": 23,
       "norm_label": "adaptive rule that modifies decision thresholds based on learned experience."
     },
     {
@@ -2647,7 +2647,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L161",
       "id": "memory_agent_memory_rationale_161",
-      "community": 21,
+      "community": 19,
       "norm_label": "load memory from disk. create default if missing."
     },
     {
@@ -2656,7 +2656,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L184",
       "id": "memory_agent_memory_rationale_184",
-      "community": 16,
+      "community": 25,
       "norm_label": "persist memory to disk, including structured learning data."
     },
     {
@@ -2665,7 +2665,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L197",
       "id": "memory_agent_memory_rationale_197",
-      "community": 16,
+      "community": 25,
       "norm_label": "write structured fields into self.data for json persistence."
     },
     {
@@ -2674,7 +2674,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L206",
       "id": "memory_agent_memory_rationale_206",
-      "community": 21,
+      "community": 19,
       "norm_label": "read structured fields from self.data after json load."
     },
     {
@@ -2683,7 +2683,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L249",
       "id": "memory_agent_memory_rationale_249",
-      "community": 48,
+      "community": 51,
       "norm_label": "return learned threshold values for brain.py decisions.          returns dict wi"
     },
     {
@@ -2692,7 +2692,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L294",
       "id": "memory_agent_memory_rationale_294",
-      "community": 12,
+      "community": 49,
       "norm_label": "get cross-game profile for a specific opponent."
     },
     {
@@ -2701,7 +2701,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L298",
       "id": "memory_agent_memory_rationale_298",
-      "community": 28,
+      "community": 29,
       "norm_label": "return opponents with threat_rating above threshold, sorted."
     },
     {
@@ -2710,7 +2710,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L340",
       "id": "memory_agent_memory_rationale_340",
-      "community": 32,
+      "community": 33,
       "norm_label": "append a new lesson, keeping max_lessons most recent."
     },
     {
@@ -2728,7 +2728,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L356",
       "id": "memory_agent_memory_rationale_356",
-      "community": 49,
+      "community": 48,
       "norm_label": "add or update a strategy rule. deduplicates by rule_type + condition."
     },
     {
@@ -2737,7 +2737,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L372",
       "id": "memory_agent_memory_rationale_372",
-      "community": 18,
+      "community": 24,
       "norm_label": "update or create an opponent profile with new data."
     },
     {
@@ -2746,7 +2746,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L388",
       "id": "memory_agent_memory_rationale_388",
-      "community": 47,
+      "community": 12,
       "norm_label": "recalculate threat_rating for all opponents based on stats."
     },
     {
@@ -2755,7 +2755,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L403",
       "id": "memory_agent_memory_rationale_403",
-      "community": 28,
+      "community": 29,
       "norm_label": "return memory statistics for dashboard display."
     },
     {
@@ -2764,7 +2764,7 @@
       "source_file": "bot/setup/__init__.py",
       "source_location": "L1",
       "id": "setup_init_py",
-      "community": 55,
+      "community": 56,
       "norm_label": "__init__.py"
     },
     {
@@ -2881,7 +2881,7 @@
       "source_file": "bot/setup/identity.py",
       "source_location": "L1",
       "id": "setup_identity_py",
-      "community": 30,
+      "community": 32,
       "norm_label": "identity.py"
     },
     {
@@ -2899,7 +2899,7 @@
       "source_file": "bot/setup/identity.py",
       "source_location": "L1",
       "id": "setup_identity_rationale_1",
-      "community": 30,
+      "community": 32,
       "norm_label": "erc-8004 identity registration \u2014 on-chain register() + post /api/identity. never"
     },
     {
@@ -2968,16 +2968,16 @@
     {
       "label": "whitelist.py",
       "file_type": "code",
-      "source_file": "setup/whitelist.py",
+      "source_file": "bot/setup/whitelist.py",
       "source_location": "L1",
       "id": "setup_whitelist_py",
-      "community": 31,
+      "community": 30,
       "norm_label": "whitelist.py"
     },
     {
       "label": "ensure_whitelist()",
       "file_type": "code",
-      "source_file": "setup/whitelist.py",
+      "source_file": "bot/setup/whitelist.py",
       "source_location": "L17",
       "id": "setup_whitelist_ensure_whitelist",
       "community": 6,
@@ -2986,16 +2986,16 @@
     {
       "label": "Whitelist request + auto-approval (advanced mode). POST /whitelist/request \u2192 on-",
       "file_type": "rationale",
-      "source_file": "setup/whitelist.py",
+      "source_file": "bot/setup/whitelist.py",
       "source_location": "L1",
       "id": "setup_whitelist_rationale_1",
-      "community": 31,
+      "community": 30,
       "norm_label": "whitelist request + auto-approval (advanced mode). post /whitelist/request \u2192 on-"
     },
     {
       "label": "Request whitelist + auto-approve if advanced mode.     Returns True if whitelist",
       "file_type": "rationale",
-      "source_file": "setup/whitelist.py",
+      "source_file": "bot/setup/whitelist.py",
       "source_location": "L18",
       "id": "setup_whitelist_rationale_18",
       "community": 6,
@@ -3007,7 +3007,7 @@
       "source_file": "bot/strategy/__init__.py",
       "source_location": "L1",
       "id": "strategy_init_py",
-      "community": 56,
+      "community": 57,
       "norm_label": "__init__.py"
     },
     {
@@ -3016,7 +3016,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1",
       "id": "strategy_brain_py",
-      "community": 25,
+      "community": 26,
       "norm_label": "brain.py"
     },
     {
@@ -3025,7 +3025,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L97",
       "id": "strategy_brain_calc_damage",
-      "community": 40,
+      "community": 21,
       "norm_label": "calc_damage()"
     },
     {
@@ -3034,7 +3034,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L109",
       "id": "strategy_brain_get_weapon_bonus",
-      "community": 24,
+      "community": 20,
       "norm_label": "get_weapon_bonus()"
     },
     {
@@ -3043,7 +3043,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L117",
       "id": "strategy_brain_get_weapon_range",
-      "community": 34,
+      "community": 42,
       "norm_label": "get_weapon_range()"
     },
     {
@@ -3052,7 +3052,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L130",
       "id": "strategy_brain_resolve_region",
-      "community": 37,
+      "community": 44,
       "norm_label": "_resolve_region()"
     },
     {
@@ -3061,7 +3061,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L146",
       "id": "strategy_brain_get_region_id",
-      "community": 25,
+      "community": 26,
       "norm_label": "_get_region_id()"
     },
     {
@@ -3079,7 +3079,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L163",
       "id": "strategy_brain_decide_action",
-      "community": 23,
+      "community": 21,
       "norm_label": "decide_action()"
     },
     {
@@ -3088,7 +3088,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L638",
       "id": "strategy_brain_get_move_ep_cost",
-      "community": 33,
+      "community": 40,
       "norm_label": "_get_move_ep_cost()"
     },
     {
@@ -3097,7 +3097,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L649",
       "id": "strategy_brain_estimate_enemy_weapon_bonus",
-      "community": 23,
+      "community": 39,
       "norm_label": "_estimate_enemy_weapon_bonus()"
     },
     {
@@ -3124,7 +3124,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L772",
       "id": "strategy_brain_check_equip",
-      "community": 24,
+      "community": 20,
       "norm_label": "_check_equip()"
     },
     {
@@ -3133,7 +3133,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L795",
       "id": "strategy_brain_find_safe_region",
-      "community": 42,
+      "community": 37,
       "norm_label": "_find_safe_region()"
     },
     {
@@ -3142,7 +3142,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L841",
       "id": "strategy_brain_find_healing_item",
-      "community": 38,
+      "community": 36,
       "norm_label": "_find_healing_item()"
     },
     {
@@ -3151,7 +3151,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L868",
       "id": "strategy_brain_find_energy_drink",
-      "community": 43,
+      "community": 45,
       "norm_label": "_find_energy_drink()"
     },
     {
@@ -3160,7 +3160,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L876",
       "id": "strategy_brain_select_weakest",
-      "community": 41,
+      "community": 38,
       "norm_label": "_select_weakest()"
     },
     {
@@ -3169,7 +3169,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L881",
       "id": "strategy_brain_is_in_range",
-      "community": 36,
+      "community": 46,
       "norm_label": "_is_in_range()"
     },
     {
@@ -3178,7 +3178,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L911",
       "id": "strategy_brain_select_facility",
-      "community": 35,
+      "community": 41,
       "norm_label": "_select_facility()"
     },
     {
@@ -3187,7 +3187,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L933",
       "id": "strategy_brain_track_agents",
-      "community": 44,
+      "community": 43,
       "norm_label": "_track_agents()"
     },
     {
@@ -3196,7 +3196,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L998",
       "id": "strategy_brain_use_utility_item",
-      "community": 39,
+      "community": 34,
       "norm_label": "_use_utility_item()"
     },
     {
@@ -3214,7 +3214,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1068",
       "id": "strategy_brain_choose_move_target",
-      "community": 45,
+      "community": 35,
       "norm_label": "_choose_move_target()"
     },
     {
@@ -3223,7 +3223,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1",
       "id": "strategy_brain_rationale_1",
-      "community": 25,
+      "community": 26,
       "norm_label": "strategy brain \u2014 main decision engine with priority-based action selection. impl"
     },
     {
@@ -3232,7 +3232,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L100",
       "id": "strategy_brain_rationale_100",
-      "community": 40,
+      "community": 21,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:"
     },
     {
@@ -3241,7 +3241,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L110",
       "id": "strategy_brain_rationale_110",
-      "community": 24,
+      "community": 20,
       "norm_label": "get atk bonus from equipped weapon."
     },
     {
@@ -3250,7 +3250,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L118",
       "id": "strategy_brain_rationale_118",
-      "community": 34,
+      "community": 42,
       "norm_label": "get range from equipped weapon."
     },
     {
@@ -3259,7 +3259,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L131",
       "id": "strategy_brain_rationale_131",
-      "community": 37,
+      "community": 44,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotchas"
     },
     {
@@ -3268,7 +3268,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L147",
       "id": "strategy_brain_rationale_147",
-      "community": 25,
+      "community": 26,
       "norm_label": "extract region id from either a string or dict entry."
     },
     {
@@ -3286,7 +3286,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L166",
       "id": "strategy_brain_rationale_166",
-      "community": 23,
+      "community": 21,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain pe"
     },
     {
@@ -3295,7 +3295,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L639",
       "id": "strategy_brain_rationale_639",
-      "community": 33,
+      "community": 40,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terrai"
     },
     {
@@ -3304,7 +3304,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L650",
       "id": "strategy_brain_rationale_650",
-      "community": 23,
+      "community": 39,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon."
     },
     {
@@ -3331,7 +3331,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L773",
       "id": "strategy_brain_rationale_773",
-      "community": 24,
+      "community": 20,
       "norm_label": "auto-equip best weapon from inventory."
     },
     {
@@ -3340,7 +3340,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L796",
       "id": "strategy_brain_rationale_796",
-      "community": 42,
+      "community": 37,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     pe"
     },
     {
@@ -3349,7 +3349,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L842",
       "id": "strategy_brain_rationale_842",
-      "community": 38,
+      "community": 36,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer banda"
     },
     {
@@ -3358,7 +3358,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L869",
       "id": "strategy_brain_rationale_869",
-      "community": 43,
+      "community": 45,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md)."
     },
     {
@@ -3367,7 +3367,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L877",
       "id": "strategy_brain_rationale_877",
-      "community": 41,
+      "community": 38,
       "norm_label": "select target with lowest hp."
     },
     {
@@ -3376,7 +3376,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L884",
       "id": "strategy_brain_rationale_884",
-      "community": 36,
+      "community": 46,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same region"
     },
     {
@@ -3385,7 +3385,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L912",
       "id": "strategy_brain_rationale_912",
-      "community": 35,
+      "community": 41,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: suppl"
     },
     {
@@ -3394,7 +3394,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L936",
       "id": "strategy_brain_rationale_936",
-      "community": 44,
+      "community": 43,
       "norm_label": "track observed agents for threat assessment (agent-memory.md temp.knownagents)."
     },
     {
@@ -3403,7 +3403,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1001",
       "id": "strategy_brain_rationale_1001",
-      "community": 39,
+      "community": 34,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigge"
     },
     {
@@ -3421,7 +3421,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1075",
       "id": "strategy_brain_rationale_1075",
-      "community": 45,
+      "community": 35,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pen"
     },
     {
@@ -3430,7 +3430,7 @@
       "source_file": "bot/utils/__init__.py",
       "source_location": "L1",
       "id": "utils_init_py",
-      "community": 57,
+      "community": 58,
       "norm_label": "__init__.py"
     },
     {
@@ -3574,7 +3574,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L1",
       "id": "utils_rate_limiter_py",
-      "community": 17,
+      "community": 16,
       "norm_label": "rate_limiter.py"
     },
     {
@@ -3583,7 +3583,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L9",
       "id": "utils_rate_limiter_ratelimiter",
-      "community": 17,
+      "community": 16,
       "norm_label": "ratelimiter"
     },
     {
@@ -3592,7 +3592,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L12",
       "id": "utils_rate_limiter_ratelimiter_init",
-      "community": 17,
+      "community": 16,
       "norm_label": ".__init__()"
     },
     {
@@ -3601,7 +3601,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L19",
       "id": "utils_rate_limiter_ratelimiter_refill",
-      "community": 17,
+      "community": 16,
       "norm_label": "._refill()"
     },
     {
@@ -3610,7 +3610,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L26",
       "id": "utils_rate_limiter_ratelimiter_acquire",
-      "community": 17,
+      "community": 16,
       "norm_label": ".acquire()"
     },
     {
@@ -3619,7 +3619,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L1",
       "id": "utils_rate_limiter_rationale_1",
-      "community": 17,
+      "community": 16,
       "norm_label": "token-bucket rate limiter for rest (300/min) and websocket (120/min). non-blocki"
     },
     {
@@ -3628,7 +3628,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L10",
       "id": "utils_rate_limiter_rationale_10",
-      "community": 17,
+      "community": 16,
       "norm_label": "async token-bucket rate limiter."
     },
     {
@@ -3637,7 +3637,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L27",
       "id": "utils_rate_limiter_rationale_27",
-      "community": 17,
+      "community": 16,
       "norm_label": "wait until tokens are available. non-blocking via asyncio.sleep."
     },
     {
@@ -3646,7 +3646,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L1",
       "id": "utils_version_check_py",
-      "community": 19,
+      "community": 18,
       "norm_label": "version_check.py"
     },
     {
@@ -3655,7 +3655,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L12",
       "id": "utils_version_check_check_version",
-      "community": 19,
+      "community": 18,
       "norm_label": "check_version()"
     },
     {
@@ -3664,7 +3664,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L27",
       "id": "utils_version_check_get_version_header",
-      "community": 19,
+      "community": 18,
       "norm_label": "get_version_header()"
     },
     {
@@ -3673,7 +3673,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L1",
       "id": "utils_version_check_rationale_1",
-      "community": 19,
+      "community": 18,
       "norm_label": "version check \u2014 get /api/version and x-version header management. returns 426 ve"
     },
     {
@@ -3682,7 +3682,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L13",
       "id": "utils_version_check_rationale_13",
-      "community": 19,
+      "community": 18,
       "norm_label": "fetch current server version. returns version string."
     },
     {
@@ -3691,7 +3691,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L28",
       "id": "utils_version_check_rationale_28",
-      "community": 19,
+      "community": 18,
       "norm_label": "return x-version header dict."
     },
     {
@@ -3700,7 +3700,7 @@
       "source_file": "bot/web3/__init__.py",
       "source_location": "L1",
       "id": "web3_init_py",
-      "community": 58,
+      "community": 59,
       "norm_label": "__init__.py"
     },
     {
@@ -3709,7 +3709,7 @@
       "source_file": "bot/web3/contracts.py",
       "source_location": "L1",
       "id": "web3_contracts_py",
-      "community": 51,
+      "community": 52,
       "norm_label": "contracts.py"
     },
     {
@@ -3718,7 +3718,7 @@
       "source_file": "bot/web3/contracts.py",
       "source_location": "L1",
       "id": "web3_contracts_rationale_1",
-      "community": 51,
+      "community": 52,
       "norm_label": "contract abis and helpers for on-chain interactions. all addresses from contract"
     },
     {
@@ -3727,7 +3727,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L1",
       "id": "web3_eip712_signer_py",
-      "community": 26,
+      "community": 27,
       "norm_label": "eip712_signer.py"
     },
     {
@@ -3736,7 +3736,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L12",
       "id": "web3_eip712_signer_sign_join_paid",
-      "community": 26,
+      "community": 27,
       "norm_label": "sign_join_paid()"
     },
     {
@@ -3745,7 +3745,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L1",
       "id": "web3_eip712_signer_rationale_1",
-      "community": 26,
+      "community": 27,
       "norm_label": "eip-712 typed data signing for paid room join. signs jointournament typed data w"
     },
     {
@@ -3754,7 +3754,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L13",
       "id": "web3_eip712_signer_rationale_13",
-      "community": 26,
+      "community": 27,
       "norm_label": "sign eip-712 typed data for paid room join.     eip712_data comes from get /game"
     },
     {
@@ -4437,7 +4437,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L41",
-      "community": 21,
+      "community": 19,
       "norm_label": "load memory from disk. create default if missing.",
       "id": "memory_agent_memory_rationale_41"
     },
@@ -4446,7 +4446,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L58",
-      "community": 16,
+      "community": 25,
       "norm_label": "persist memory to disk.",
       "id": "memory_agent_memory_rationale_58"
     },
@@ -4455,7 +4455,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L109",
-      "community": 32,
+      "community": 33,
       "norm_label": "append a new lesson, keeping max_lessons most recent.",
       "id": "memory_agent_memory_rationale_109"
     },
@@ -4464,7 +4464,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L75",
-      "community": 40,
+      "community": 21,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:",
       "id": "strategy_brain_rationale_75"
     },
@@ -4473,7 +4473,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L85",
-      "community": 24,
+      "community": 20,
       "norm_label": "get atk bonus from equipped weapon.",
       "id": "strategy_brain_rationale_85"
     },
@@ -4482,7 +4482,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L93",
-      "community": 34,
+      "community": 42,
       "norm_label": "get range from equipped weapon.",
       "id": "strategy_brain_rationale_93"
     },
@@ -4491,7 +4491,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L105",
-      "community": 37,
+      "community": 44,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotcha",
       "id": "strategy_brain_rationale_105"
     },
@@ -4500,7 +4500,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L121",
-      "community": 25,
+      "community": 26,
       "norm_label": "extract region id from either a string or dict entry.",
       "id": "strategy_brain_rationale_121"
     },
@@ -4518,7 +4518,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L138",
-      "community": 23,
+      "community": 21,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain",
       "id": "strategy_brain_rationale_138"
     },
@@ -4527,7 +4527,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L393",
-      "community": 33,
+      "community": 40,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terra",
       "id": "strategy_brain_rationale_393"
     },
@@ -4536,7 +4536,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L404",
-      "community": 23,
+      "community": 39,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon.",
       "id": "strategy_brain_rationale_404"
     },
@@ -4563,7 +4563,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L516",
-      "community": 24,
+      "community": 20,
       "norm_label": "auto-equip best weapon from inventory.",
       "id": "strategy_brain_rationale_516"
     },
@@ -4572,7 +4572,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L536",
-      "community": 42,
+      "community": 37,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     p",
       "id": "strategy_brain_rationale_536"
     },
@@ -4581,7 +4581,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L572",
-      "community": 38,
+      "community": 36,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer band",
       "id": "strategy_brain_rationale_572"
     },
@@ -4590,7 +4590,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L596",
-      "community": 43,
+      "community": 45,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md).",
       "id": "strategy_brain_rationale_596"
     },
@@ -4599,7 +4599,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L604",
-      "community": 41,
+      "community": 38,
       "norm_label": "select target with lowest hp.",
       "id": "strategy_brain_rationale_604"
     },
@@ -4608,7 +4608,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L610",
-      "community": 36,
+      "community": 46,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same regio",
       "id": "strategy_brain_rationale_610"
     },
@@ -4617,7 +4617,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L638",
-      "community": 35,
+      "community": 41,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: supp",
       "id": "strategy_brain_rationale_638"
     },
@@ -4626,7 +4626,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L660",
-      "community": 44,
+      "community": 43,
       "norm_label": "track observed agents for threat assessment (agent-memory.md temp.knownagents).",
       "id": "strategy_brain_rationale_660"
     },
@@ -4635,7 +4635,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L685",
-      "community": 39,
+      "community": 34,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigg",
       "id": "strategy_brain_rationale_685"
     },
@@ -4653,7 +4653,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L744",
-      "community": 45,
+      "community": 35,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pe",
       "id": "strategy_brain_rationale_744"
     },
@@ -4744,7 +4744,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 59,
+      "community": 60,
       "norm_label": "bot/api_client.py",
       "id": "api_client"
     },
@@ -4770,7 +4770,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 60,
+      "community": 61,
       "norm_label": "bot/state_router.py",
       "id": "state_router"
     },
@@ -4809,7 +4809,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 62,
       "norm_label": "bot/dashboard/state.py",
       "id": "dashboard_state"
     },
@@ -4848,7 +4848,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 62,
+      "community": 63,
       "norm_label": "bot/game/action_sender.py",
       "id": "game_action_sender"
     },
@@ -4874,7 +4874,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 63,
+      "community": 64,
       "norm_label": "bot/game/free_join.py",
       "id": "game_free_join"
     },
@@ -4887,7 +4887,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 64,
+      "community": 65,
       "norm_label": "bot/game/paid_join.py",
       "id": "game_paid_join"
     },
@@ -4900,7 +4900,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 66,
       "norm_label": "bot/game/room_selector.py",
       "id": "game_room_selector"
     },
@@ -4913,7 +4913,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 66,
+      "community": 67,
       "norm_label": "bot/game/settlement.py",
       "id": "game_settlement"
     },
@@ -4926,7 +4926,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 68,
       "norm_label": "bot/game/websocket_engine.py",
       "id": "game_websocket_engine"
     },
@@ -4952,7 +4952,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 68,
+      "community": 69,
       "norm_label": "bot/memory/agent_memory.py",
       "id": "memory_agent_memory"
     },
@@ -4978,7 +4978,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 69,
+      "community": 70,
       "norm_label": "bot/setup/account_setup.py",
       "id": "setup_account_setup"
     },
@@ -4991,7 +4991,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 71,
       "norm_label": "bot/setup/identity.py",
       "id": "setup_identity"
     },
@@ -5004,7 +5004,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 71,
+      "community": 72,
       "norm_label": "bot/setup/wallet_setup.py",
       "id": "setup_wallet_setup"
     },
@@ -5017,7 +5017,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 72,
+      "community": 73,
       "norm_label": "bot/dashboard/static/app.js",
       "id": "dashboard_app_js"
     },
@@ -5030,7 +5030,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 29,
+      "community": 15,
       "norm_label": "whitelist setup module",
       "id": "bot_setup_whitelist"
     },
@@ -5056,7 +5056,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 17,
       "norm_label": "strategy brain module",
       "id": "bot_strategy_brain"
     },
@@ -5108,7 +5108,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 17,
       "norm_label": "rate limiter utility",
       "id": "bot_utils_rate_limiter"
     },
@@ -5160,7 +5160,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 31,
       "norm_label": "eip-712 signer module",
       "id": "bot_web3_eip712_signer"
     },
@@ -5186,7 +5186,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 32,
       "norm_label": "identity contract module",
       "id": "bot_web3_identity_contract"
     },
@@ -5225,7 +5225,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 31,
+      "community": 30,
       "norm_label": "whitelist contract module",
       "id": "bot_web3_whitelist_contract"
     },
@@ -6237,7 +6237,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 73,
+      "community": 74,
       "norm_label": "ethers.js",
       "id": "setup_ethers.js"
     },
@@ -6250,7 +6250,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 74,
+      "community": 75,
       "norm_label": "eth_account (python)",
       "id": "setup_eth_account"
     },
@@ -6263,7 +6263,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 75,
+      "community": 76,
       "norm_label": "web3.py",
       "id": "setup_web3.py"
     },
@@ -6998,16 +6998,6 @@
       "target": "bot_api_client_moltyapi"
     },
     {
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "source_file": "heartbeat.py",
-      "source_location": "L7",
-      "weight": 0.8,
-      "confidence_score": 0.5,
-      "source": "bot_heartbeat_heartbeat",
-      "target": "bot_api_client_moltyapi"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -7027,6 +7017,16 @@
       "source_location": "L161",
       "weight": 1.0,
       "source": "setup_account_setup_run_first_run_intake",
+      "target": "bot_api_client_moltyapi"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "heartbeat.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "bot_heartbeat_heartbeat",
       "target": "bot_api_client_moltyapi"
     },
     {
@@ -7810,9 +7810,9 @@
       "source_file": "config.py",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_198",
-      "target": "bot_config_warn_shared_wallets",
-      "confidence_score": 1.0
+      "target": "bot_config_warn_shared_wallets"
     },
     {
       "relation": "rationale_for",
@@ -7840,9 +7840,9 @@
       "source_file": "config.py",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_config_rationale_214",
-      "target": "bot_config_select_primary_per_wallet",
-      "confidence_score": 1.0
+      "target": "bot_config_select_primary_per_wallet"
     },
     {
       "relation": "rationale_for",
@@ -7987,6 +7987,17 @@
       "target": "bot_heartbeat_heartbeat"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "main.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "bot_main_main",
+      "target": "bot_heartbeat_heartbeat"
+    },
+    {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "heartbeat.py",
@@ -8005,17 +8016,6 @@
       "confidence_score": 0.5,
       "source": "bot_heartbeat_heartbeat",
       "target": "memory_agent_memory_agentmemory"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "main.py",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "bot_main_main",
-      "target": "bot_heartbeat_heartbeat"
     },
     {
       "relation": "rationale_for",
@@ -8170,9 +8170,9 @@
       "source_file": "heartbeat.py",
       "source_location": "L243",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_heartbeat_rationale_243",
-      "target": "bot_heartbeat_heartbeat_handle_no_identity",
-      "confidence_score": 1.0
+      "target": "bot_heartbeat_heartbeat_handle_no_identity"
     },
     {
       "relation": "calls",
@@ -8244,9 +8244,9 @@
       "source_file": "heartbeat.py",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_heartbeat_rationale_297",
-      "target": "bot_heartbeat_heartbeat_handle_ready",
-      "confidence_score": 1.0
+      "target": "bot_heartbeat_heartbeat_handle_ready"
     },
     {
       "relation": "calls",
@@ -8318,9 +8318,9 @@
       "source_file": "heartbeat.py",
       "source_location": "L321",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_heartbeat_rationale_321",
-      "target": "bot_heartbeat_heartbeat_handle_in_game",
-      "confidence_score": 1.0
+      "target": "bot_heartbeat_heartbeat_handle_in_game"
     },
     {
       "relation": "rationale_for",
@@ -8348,9 +8348,9 @@
       "source_file": "heartbeat.py",
       "source_location": "L338",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bot_heartbeat_rationale_338",
-      "target": "bot_heartbeat_heartbeat_play_game",
-      "confidence_score": 1.0
+      "target": "bot_heartbeat_heartbeat_play_game"
     },
     {
       "relation": "calls",
@@ -12486,9 +12486,9 @@
       "source_file": "setup/whitelist.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "setup_whitelist_rationale_18",
-      "target": "setup_whitelist_ensure_whitelist",
-      "confidence_score": 1.0
+      "target": "setup_whitelist_ensure_whitelist"
     },
     {
       "relation": "calls",
@@ -16233,5 +16233,5 @@
       "source_location": "621-794"
     }
   ],
-  "built_at_commit": "d919b6c502e5dfdbc78e6748508e67b50f2404ab"
+  "built_at_commit": "3a4aa04f118fb61fb8b114a99bf1271d500d2342"
 }

@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 627 nodes · 946 edges · 69 communities detected
+- 627 nodes · 946 edges · 70 communities detected
 - Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 137 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d919b6c5`
+- Built from commit: `3a4aa04f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -67,7 +67,7 @@
 - [[_COMMUNITY_Community 49|Community 49]]
 - [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
-- [[_COMMUNITY_Community 59|Community 59]]
+- [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
 - [[_COMMUNITY_Community 62|Community 62]]
@@ -84,6 +84,7 @@
 - [[_COMMUNITY_Community 73|Community 73]]
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
+- [[_COMMUNITY_Community 76|Community 76]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `MoltyAPI` - 50 edges
@@ -124,7 +125,7 @@
 - **Setup Flow** — setup_PostAccounts, setup_PutAccountsWallet, setup_PostWhitelistRequest, setup_PostCreateWallet [EXTRACTED 1.00]
 - **Legacy Withdraw Flow** — setup_LegacyWalletFactory, setup_MoltzERC20, setup_CROSS, setup_OwnerEOA [EXTRACTED 1.00]
 
-## Communities (76 total, 28 thin omitted)
+## Communities (77 total, 28 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -176,7 +177,7 @@ Nodes (16): Agent Instructions Document, Project Readme Document, Dashboard Inde
 
 ### Community 12 - "Community 12"
 Cohesion: 0.14
-Nodes (4): AgentMemory, Read/write molty-royale-context.json with overall + temp sections.      New stru, Get cross-game profile for a specific opponent., Read/write molty-royale-context.json with overall + temp sections.
+Nodes (4): AgentMemory, Read/write molty-royale-context.json with overall + temp sections.      New stru, Read/write molty-royale-context.json with overall + temp sections., Recalculate threat_rating for all opponents based on stats.
 
 ### Community 13 - "Community 13"
 Cohesion: 0.26
@@ -188,107 +189,111 @@ Nodes (9): Autonomous WebSocket Runner Mode, Cost Guidance, Heartbeat Mode, Runt
 
 ### Community 15 - "Community 15"
 Cohesion: 0.25
-Nodes (5): Logger Utility, EIP-712 Signer Module, Action envelope builder + cooldown state tracker. Builds action messages per act, Paid game join — EIP-712 sign → POST /games/{id}/join-paid. Per paid-games.md: c, Room selector — choose free or paid room based on readiness and config. room_mod
+Nodes (5): Heartbeat loop — main orchestration per heartbeat.md. State machine: setup → joi, Whitelist Setup Module, Logger Utility, Action envelope builder + cooldown state tracker. Builds action messages per act, Room selector — choose free or paid room based on readiness and config. room_mod
 
 ### Community 16 - "Community 16"
-Cohesion: 0.25
-Nodes (5): Adaptive rule that modifies decision thresholds based on learned experience., Persist memory to disk, including structured learning data., Write structured fields into self.data for JSON persistence., Persist memory to disk., StrategyRule
-
-### Community 17 - "Community 17"
 Cohesion: 0.29
 Nodes (4): RateLimiter, Token-bucket rate limiter for REST (300/min) and WebSocket (120/min). Non-blocki, Async token-bucket rate limiter., Wait until tokens are available. Non-blocking via asyncio.sleep.
 
-### Community 18 - "Community 18"
-Cohesion: 0.29
-Nodes (4): OpponentProfile, Agent memory — persistent cross-game learning via molty-royale-context.json. Two, Update or create an opponent profile with new data., Cross-game tracking of a specific opponent agent.
-
-### Community 19 - "Community 19"
-Cohesion: 0.33
-Nodes (5): check_version(), get_version_header(), Version check — GET /api/version and X-Version header management. Returns 426 VE, Fetch current server version. Returns version string., Return X-Version header dict.
-
-### Community 20 - "Community 20"
+### Community 17 - "Community 17"
 Cohesion: 0.33
 Nodes (4): Async REST API client for Molty Royale. All endpoints from api-summary.md with r, Strategy Brain Module, Rate Limiter Utility, WebSocket gameplay engine — wss://cdn.moltyroyale.com/ws/agent. Core loop: conne
 
-### Community 21 - "Community 21"
+### Community 18 - "Community 18"
+Cohesion: 0.33
+Nodes (5): check_version(), get_version_header(), Version check — GET /api/version and X-Version header management. Returns 426 VE, Fetch current server version. Returns version string., Return X-Version header dict.
+
+### Community 19 - "Community 19"
 Cohesion: 0.33
 Nodes (4): from_dict(), Load memory from disk. Create default if missing., Read structured fields from self.data after JSON load., Load memory from disk. Create default if missing.
+
+### Community 20 - "Community 20"
+Cohesion: 0.33
+Nodes (6): _check_equip(), get_weapon_bonus(), Get ATK bonus from equipped weapon., Auto-equip best weapon from inventory., Auto-equip best weapon from inventory., Get ATK bonus from equipped weapon.
+
+### Community 21 - "Community 21"
+Cohesion: 0.33
+Nodes (6): calc_damage(), decide_action(), Damage formula per combat-items.md + game-systems.md weather penalty.     Base:, Main decision engine. Returns action dict or None (wait).      Priority chain, Main decision engine. Returns action dict or None (wait).      Priority chain pe, Damage formula per combat-items.md + game-systems.md weather penalty.     Base:
 
 ### Community 22 - "Community 22"
 Cohesion: 0.33
 Nodes (6): _check_pickup(), _pickup_score(), Smart pickup: weapons > healing stockpile > utility > Moltz (always).     Max i, Calculate dynamic pickup score based on current inventory state., Smart pickup: weapons > healing stockpile > utility > Moltz (always).     Max in, Calculate dynamic pickup score based on current inventory state.
 
 ### Community 23 - "Community 23"
-Cohesion: 0.33
-Nodes (6): decide_action(), _estimate_enemy_weapon_bonus(), Main decision engine. Returns action dict or None (wait).      Priority chain, Main decision engine. Returns action dict or None (wait).      Priority chain pe, Estimate enemy's weapon bonus from their equipped weapon., Estimate enemy's weapon bonus from their equipped weapon.
+Cohesion: 0.4
+Nodes (3): Agent memory — persistent cross-game learning via molty-royale-context.json. Two, Adaptive rule that modifies decision thresholds based on learned experience., StrategyRule
 
 ### Community 24 - "Community 24"
-Cohesion: 0.33
-Nodes (6): _check_equip(), get_weapon_bonus(), Get ATK bonus from equipped weapon., Auto-equip best weapon from inventory., Auto-equip best weapon from inventory., Get ATK bonus from equipped weapon.
+Cohesion: 0.4
+Nodes (3): OpponentProfile, Update or create an opponent profile with new data., Cross-game tracking of a specific opponent agent.
 
 ### Community 25 - "Community 25"
 Cohesion: 0.4
-Nodes (4): _get_region_id(), Strategy brain — main decision engine with priority-based action selection. Impl, Extract region ID from either a string or dict entry., Extract region ID from either a string or dict entry.
+Nodes (3): Persist memory to disk, including structured learning data., Write structured fields into self.data for JSON persistence., Persist memory to disk.
 
 ### Community 26 - "Community 26"
-Cohesion: 0.5
-Nodes (3): EIP-712 typed data signing for paid room join. Signs JoinTournament typed data w, Sign EIP-712 typed data for paid room join.     eip712_data comes from GET /game, sign_join_paid()
+Cohesion: 0.4
+Nodes (4): _get_region_id(), Strategy brain — main decision engine with priority-based action selection. Impl, Extract region ID from either a string or dict entry., Extract region ID from either a string or dict entry.
 
 ### Community 27 - "Community 27"
 Cohesion: 0.5
-Nodes (3): determine_state(), State router — determines agent state from GET /accounts/me response. Routes per, Analyze /accounts/me response → return (state, context).     Context contains re
+Nodes (3): EIP-712 typed data signing for paid room join. Signs JoinTournament typed data w, Sign EIP-712 typed data for paid room join.     eip712_data comes from GET /game, sign_join_paid()
 
-### Community 33 - "Community 33"
-Cohesion: 0.67
-Nodes (3): _get_move_ep_cost(), Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terra, Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terrai
+### Community 28 - "Community 28"
+Cohesion: 0.5
+Nodes (3): determine_state(), State router — determines agent state from GET /accounts/me response. Routes per, Analyze /accounts/me response → return (state, context).     Context contains re
 
 ### Community 34 - "Community 34"
 Cohesion: 0.67
-Nodes (3): get_weapon_range(), Get range from equipped weapon., Get range from equipped weapon.
+Nodes (3): Use utility items immediately after pickup.     Map: reveals entire map → trigge, Use utility items immediately after pickup.     Map: reveals entire map → trigg, _use_utility_item()
 
 ### Community 35 - "Community 35"
 Cohesion: 0.67
-Nodes (3): Select best facility to interact with per game-systems.md.     Facilities: supp, Select best facility to interact with per game-systems.md.     Facilities: suppl, _select_facility()
+Nodes (3): _choose_move_target(), Choose best region to move to.     CRITICAL: NEVER move into a death zone or pen, Choose best region to move to.     CRITICAL: NEVER move into a death zone or pe
 
 ### Community 36 - "Community 36"
 Cohesion: 0.67
-Nodes (3): _is_in_range(), Check if target is in weapon range.     Per combat-items.md: melee = same regio, Check if target is in weapon range.     Per combat-items.md: melee = same region
+Nodes (3): _find_healing_item(), Find best healing item based on urgency.     critical=True (HP<30): prefer Band, Find best healing item based on urgency.     critical=True (HP<30): prefer Banda
 
 ### Community 37 - "Community 37"
 Cohesion: 0.67
-Nodes (3): Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotcha, Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotchas, _resolve_region()
+Nodes (3): _find_safe_region(), Find nearest connected region that's NOT a death zone AND NOT pending DZ.     P, Find nearest connected region that's NOT a death zone AND NOT pending DZ.     Pe
 
 ### Community 38 - "Community 38"
 Cohesion: 0.67
-Nodes (3): _find_healing_item(), Find best healing item based on urgency.     critical=True (HP<30): prefer Band, Find best healing item based on urgency.     critical=True (HP<30): prefer Banda
+Nodes (3): Select target with lowest HP., Select target with lowest HP., _select_weakest()
 
 ### Community 39 - "Community 39"
 Cohesion: 0.67
-Nodes (3): Use utility items immediately after pickup.     Map: reveals entire map → trigge, Use utility items immediately after pickup.     Map: reveals entire map → trigg, _use_utility_item()
+Nodes (3): _estimate_enemy_weapon_bonus(), Estimate enemy's weapon bonus from their equipped weapon., Estimate enemy's weapon bonus from their equipped weapon.
 
 ### Community 40 - "Community 40"
 Cohesion: 0.67
-Nodes (3): calc_damage(), Damage formula per combat-items.md + game-systems.md weather penalty.     Base:, Damage formula per combat-items.md + game-systems.md weather penalty.     Base:
+Nodes (3): _get_move_ep_cost(), Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terra, Calculate move EP cost per game-systems.md.     Base: 2. Storm: +1. Water terrai
 
 ### Community 41 - "Community 41"
 Cohesion: 0.67
-Nodes (3): Select target with lowest HP., Select target with lowest HP., _select_weakest()
+Nodes (3): Select best facility to interact with per game-systems.md.     Facilities: supp, Select best facility to interact with per game-systems.md.     Facilities: suppl, _select_facility()
 
 ### Community 42 - "Community 42"
 Cohesion: 0.67
-Nodes (3): _find_safe_region(), Find nearest connected region that's NOT a death zone AND NOT pending DZ.     P, Find nearest connected region that's NOT a death zone AND NOT pending DZ.     Pe
+Nodes (3): get_weapon_range(), Get range from equipped weapon., Get range from equipped weapon.
 
 ### Community 43 - "Community 43"
 Cohesion: 0.67
-Nodes (3): _find_energy_drink(), Find energy drink for EP recovery (+5 EP per combat-items.md)., Find energy drink for EP recovery (+5 EP per combat-items.md).
+Nodes (3): Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., _track_agents()
 
 ### Community 44 - "Community 44"
 Cohesion: 0.67
-Nodes (3): Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., Track observed agents for threat assessment (agent-memory.md temp.knownAgents)., _track_agents()
+Nodes (3): Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotcha, Resolve a connectedRegions entry to a full region object.     Per v1.5.2 gotchas, _resolve_region()
 
 ### Community 45 - "Community 45"
 Cohesion: 0.67
-Nodes (3): _choose_move_target(), Choose best region to move to.     CRITICAL: NEVER move into a death zone or pen, Choose best region to move to.     CRITICAL: NEVER move into a death zone or pe
+Nodes (3): _find_energy_drink(), Find energy drink for EP recovery (+5 EP per combat-items.md)., Find energy drink for EP recovery (+5 EP per combat-items.md).
+
+### Community 46 - "Community 46"
+Cohesion: 0.67
+Nodes (3): _is_in_range(), Check if target is in weapon range.     Per combat-items.md: melee = same regio, Check if target is in weapon range.     Per combat-items.md: melee = same region
 
 ## Knowledge Gaps
 - **256 isolated node(s):** `Molty Royale AI Agent Bot`, `State router — determines agent state from GET /accounts/me response. Routes per`, `Analyze /accounts/me response → return (state, context).     Context contains re`, `Exception`, `Async REST API client for Molty Royale. All endpoints from api-summary.md with r` (+251 more)
@@ -298,15 +303,15 @@ Nodes (3): _choose_move_target(), Choose best region to move to.     CRITICAL: N
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Logger Utility` connect `Community 15` to `Community 0`, `Community 1`, `Community 3`, `Community 6`, `Community 7`, `Community 10`, `Community 11`, `Community 13`, `Community 18`, `Community 19`, `Community 20`, `Community 25`, `Community 26`, `Community 27`, `Community 29`, `Community 30`, `Community 31`?**
+- **Why does `Logger Utility` connect `Community 15` to `Community 0`, `Community 1`, `Community 32`, `Community 3`, `Community 6`, `Community 7`, `Community 10`, `Community 11`, `Community 13`, `Community 17`, `Community 18`, `Community 23`, `Community 26`, `Community 27`, `Community 28`, `Community 30`, `Community 31`?**
   _High betweenness centrality (0.378) - this node is a cross-community bridge._
 - **Why does `Heartbeat` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 7`?**
   _High betweenness centrality (0.121) - this node is a cross-community bridge._
-- **Why does `MoltyAPI` connect `Community 0` to `Community 1`, `Community 6`, `Community 15`, `Community 20`, `Community 29`, `Community 30`, `Community 31`?**
+- **Why does `MoltyAPI` connect `Community 0` to `Community 32`, `Community 1`, `Community 6`, `Community 15`, `Community 17`, `Community 30`, `Community 31`?**
   _High betweenness centrality (0.113) - this node is a cross-community bridge._
-- **Are the 28 inferred relationships involving `MoltyAPI` (e.g. with `Heartbeat` and `.run()`) actually correct?**
+- **Are the 28 inferred relationships involving `MoltyAPI` (e.g. with `.run()` and `run_first_run_intake()`) actually correct?**
   _`MoltyAPI` has 28 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 12 inferred relationships involving `AgentMemory` (e.g. with `Heartbeat` and `.__init__()`) actually correct?**
+- **Are the 12 inferred relationships involving `AgentMemory` (e.g. with `.__init__()` and `Heartbeat`) actually correct?**
   _`AgentMemory` has 12 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 26 inferred relationships involving `APIError` (e.g. with `Heartbeat` and `Heartbeat loop — main orchestration per heartbeat.md. State machine: setup → joi`) actually correct?**
   _`APIError` has 26 INFERRED edges - model-reasoned connections that need verification._

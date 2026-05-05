@@ -411,6 +411,46 @@ class AgentMemory:
             "lessons_count": len(self.lessons),
             "rules_count": len(self.strategy_rules),
             "opponents_count": len(self.known_agents),
+            # Full structured data for dashboard Learning tab
+            "lessons": [
+                {
+                    "game_id": l.game_id,
+                    "lesson_type": l.lesson_type,
+                    "cause": l.cause,
+                    "details": l.details,
+                    "metrics": l.metrics,
+                    "created_at": l.created_at,
+                }
+                for l in self.lessons[-20:]  # last 20 lessons
+            ],
+            "strategy_rules": [
+                {
+                    "rule_type": r.rule_type,
+                    "condition": r.condition,
+                    "action": r.action,
+                    "confidence": r.confidence,
+                    "source_game": r.source_game,
+                    "created_at": r.created_at,
+                }
+                for r in self.strategy_rules[-15:]  # last 15 rules
+            ],
+            "opponents": [
+                {
+                    "name": p.name,
+                    "threat": p.threat_rating,
+                    "killed_by": p.killed_by_count,
+                    "kills": p.kill_count,
+                    "games": p.games_faced,
+                    "wins_against": p.wins_against,
+                    "losses_to": p.losses_to,
+                    "avg_hp_left": p.avg_hp_left,
+                }
+                for p in sorted(
+                    self.known_agents.values(),
+                    key=lambda p: p.threat_rating,
+                    reverse=True,
+                )[:15]
+            ],
             "dangerous_opponents": [
                 {
                     "name": p.name,
