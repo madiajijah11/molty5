@@ -64,7 +64,10 @@ def _extract_death_cause(result: dict, last_view: dict | None = None) -> str:
 
 
 def _extract_death_details(
-    result: dict, death_cause: str, last_view: dict | None = None
+    result: dict,
+    death_cause: str,
+    last_view: dict | None = None,
+    stats: dict | None = None,
 ) -> dict:
     """Build a details dict with contextual information about the death."""
     details: dict[str, object] = {
@@ -88,28 +91,34 @@ def _extract_death_details(
                 else "unknown"
             )
 
-    # Killer identity if available
-    death_info = result.get("deathCause") or result.get("death") or {}
-    if isinstance(death_info, dict):
-        killer = (
-            death_info.get("killerId")
-            or death_info.get("killedBy")
-            or death_info.get("attackerName")
+    # Killer identity if available (prefer tracked stats, then result)
+    if stats and stats.get("killer_name"):
+        details["killer_id"] = stats.get("killer_name") or str(
+            stats.get("killer_id", "")
         )
-        if killer:
-            details["killer_id"] = str(killer)
-        killer_hp = death_info.get("killerHp") or death_info.get("attackerHp")
-        if killer_hp is not None:
-            details["killer_hp_remaining"] = int(killer_hp)
+    else:
+        death_info = result.get("deathCause") or result.get("death") or {}
+        if isinstance(death_info, dict):
+            killer = (
+                death_info.get("killerId")
+                or death_info.get("killedBy")
+                or death_info.get("attackerName")
+            )
+            if killer:
+                details["killer_id"] = str(killer)
+            killer_hp = death_info.get("killerHp") or death_info.get("attackerHp")
+            if killer_hp is not None:
+                details["killer_hp_remaining"] = int(killer_hp)
 
     return details
 
 
 def _build_combat_metrics(
-    result: dict, last_view: dict | None = None
+    result: dict, last_view: dict | None = None, stats: dict | None = None
 ) -> dict[str, float]:
-    """Extract numeric combat metrics from the game result."""
-    kills = result.get("kills", 0)
+    """Extract numeric combat metrics from the game result + tracked stats."""
+    # Use tracked stats (preferred) or fall back to result fields
+    kills = (stats or {}).get("kills", result.get("kills", 0))
     rank = result.get("finalRank", 0)
     is_winner = result.get("isWinner", False)
     rewards = result.get("rewards", {})
@@ -122,21 +131,27 @@ def _build_combat_metrics(
         "is_winner": 1.0 if is_winner else 0.0,
     }
 
-    # Damage metrics from result if available
-    combat_stats = result.get("combatStats") or result.get("damage") or {}
-    if isinstance(combat_stats, dict):
-        metrics["damage_dealt"] = float(
-            combat_stats.get("damageDealt", combat_stats.get("dealt", 0))
-        )
-        metrics["damage_taken"] = float(
-            combat_stats.get("damageTaken", combat_stats.get("taken", 0))
-        )
-        metrics["fights_won"] = float(
-            combat_stats.get("fightsWon", combat_stats.get("wins", kills))
-        )
-        metrics["fights_lost"] = float(
-            combat_stats.get("fightsLost", 0 if kills > 0 else 1)
-        )
+    # Damage metrics: tracked stats first, then result fields
+    if stats:
+        metrics["damage_dealt"] = float(stats.get("damage_dealt", 0))
+        metrics["damage_taken"] = float(stats.get("damage_taken", 0))
+        metrics["fights_won"] = float(stats.get("fights_won", 0))
+        metrics["fights_lost"] = float(stats.get("fights_lost", 0 if kills > 0 else 1))
+    else:
+        combat_stats = result.get("combatStats") or result.get("damage") or {}
+        if isinstance(combat_stats, dict):
+            metrics["damage_dealt"] = float(
+                combat_stats.get("damageDealt", combat_stats.get("dealt", 0))
+            )
+            metrics["damage_taken"] = float(
+                combat_stats.get("damageTaken", combat_stats.get("taken", 0))
+            )
+            metrics["fights_won"] = float(
+                combat_stats.get("fightsWon", combat_stats.get("wins", kills))
+            )
+            metrics["fights_lost"] = float(
+                combat_stats.get("fightsLost", 0 if kills > 0 else 1)
+            )
 
     # Items used during game
     item_stats = result.get("itemStats") or result.get("itemsUsed") or {}
@@ -266,9 +281,10 @@ def _analyze_death(
     death_cause: str,
     metrics: dict[str, float],
     last_view: dict | None = None,
+    stats: dict | None = None,
 ) -> CombatLesson:
     """Generate the primary death-cause CombatLesson."""
-    details = _extract_death_details(result, death_cause, last_view)
+    details = _extract_death_details(result, death_cause, last_view, stats)
     final_hp = metrics.get("final_hp", 0)
     killer_hp = (
         details.pop("killer_hp_remaining", None)
@@ -370,6 +386,19 @@ def _update_opponent_profiles(memory: AgentMemory, result: dict, game_id: str):
             profile.wins_against += 1
         else:
             profile.losses_to += 1
+
+    # If we were killed by a known agent, track that
+    stats = result.get("_stats", {})
+    killer = stats.get("killer_name")
+    if killer:
+        kp = memory.known_agents.get(killer)
+        if kp is None:
+            kp = OpponentProfile(name=killer)
+            memory.known_agents[killer] = kp
+        kp.games_faced += 1
+        kp.killed_by_count += 1
+        kp.last_seen = game_id
+        log.info("  👤 Killer tracked: %s (killed_by=%d)", killer, kp.killed_by_count)
 
     # Recompute all threat ratings after updates
     memory.recompute_threat_ratings()
@@ -540,7 +569,7 @@ async def settle_game(
 ):
     """
     Process game end with structured analysis pipeline:
-    1. Extract final stats from game result
+    1. Extract final stats from game result + tracked in-game stats
     2. Analyze death cause from result + optional last_view
     3. Build structured CombatLesson objects (death, combat, resource)
     4. Update opponent profiles from brain._known_agents
@@ -548,13 +577,34 @@ async def settle_game(
     6. Migrate legacy string lessons to structured format
     7. Clear temp memory for next game
     """
+    # The game_ended WebSocket message has attached _stats and _last_view
+    # from the engine in-game tracking (raw message only has gameId + agentId).
+    stats = game_result.get("_stats", {})
+    last_view = last_view or game_result.get("_last_view")
+
+    # Extract from tracked stats (preferred) or fall back to result fields
+    kills = stats.get("kills", game_result.get("kills", 0))
+    damage_dealt = stats.get("damage_dealt", 0)
+    damage_taken = stats.get("damage_taken", 0)
+    fights_won = stats.get("fights_won", 0)
+    fights_lost = stats.get("fights_lost", 0)
+    killer_name = stats.get("killer_name")
+
+    # Try to derive is_winner from context
     result = game_result.get("result", game_result)
-    is_winner = result.get("isWinner", False)
-    final_rank = result.get("finalRank", 0)
-    kills = result.get("kills", 0)
-    rewards = result.get("rewards", {})
-    smoltz_earned = rewards.get("sMoltz", 0)
-    moltz_earned = rewards.get("moltz", 0)
+    is_winner = result.get(
+        "isWinner", kills > 0 and fights_lost == 0 and not killer_name
+    )
+
+    final_rank = 0
+    if last_view:
+        final_rank = last_view.get("rank", last_view.get("finalRank", 0))
+    if not final_rank:
+        final_rank = result.get("finalRank", game_result.get("finalRank", 0))
+
+    rewards = result.get("rewards", game_result.get("rewards", {}))
+    smoltz_earned = rewards.get("sMoltz", game_result.get("sMoltz", 0))
+    moltz_earned = rewards.get("moltz", game_result.get("moltz", 0))
     game_id = game_result.get("gameId", game_result.get("game_id", ""))
 
     log.info("═══ GAME SETTLEMENT ═══")
@@ -576,7 +626,7 @@ async def settle_game(
 
     # ── Step 2: Analyze death cause ───────────────────────────────────
     death_cause = _extract_death_cause(result, last_view)
-    metrics = _build_combat_metrics(result, last_view)
+    metrics = _build_combat_metrics(result, last_view, stats)
 
     log.info(
         "  Death cause: %s | Final HP: %.0f | DMG dealt/taken: %.0f/%.0f",
@@ -588,7 +638,7 @@ async def settle_game(
 
     # ── Step 3: Generate structured CombatLesson objects ──────────────
     # Primary death-analysis lesson
-    death_lesson = _analyze_death(result, death_cause, metrics, last_view)
+    death_lesson = _analyze_death(result, death_cause, metrics, last_view, stats)
     death_lesson.game_id = game_id
     memory.add_combat_lesson(death_lesson)
     log.info("  📝 Death lesson: %s", death_cause)
@@ -655,7 +705,7 @@ async def settle_game(
 def _analyze_action_log(
     memory: AgentMemory, game_id: str, action_log: list, death_cause: str
 ):
-    """Analyze the game's action log for patterns about what went wrong.
+    """Analyze the game action log for patterns about what went wrong.
 
     Looks for:
       - Repeated failed actions (suggesting poor decision loop)

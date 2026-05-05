@@ -61,6 +61,46 @@ def _update_dz_knowledge(view: dict):
             _map_knowledge["death_zones"].add(dz)  # Legacy fallback
 
 
+def _track_game_event(msg: dict, stats: dict):
+    """Track kills, damage, and other stats from game events."""
+    event_type = msg.get("eventType", msg.get("data", {}).get("eventType", ""))
+    data = msg.get("data", msg)
+
+    if event_type == "agent_killed":
+        killer = data.get("killer", {})
+        victim = data.get("victim", {})
+        if isinstance(killer, dict) and killer.get("agentId") == killer.get("agentId"):
+            stats["kills"] += 1
+            stats["fights_won"] += 1
+        if isinstance(victim, dict):
+            vname = victim.get("agentName") or victim.get("name", "")
+            if vname and vname != "You":  # Not our own death
+                pass  # Not our death - just tracking
+
+    elif event_type == "agent_damaged":
+        attacker = data.get("attacker", {})
+        target = data.get("target", {})
+        damage = data.get("damage", 0)
+        if isinstance(target, dict):
+            # We took damage
+            stats["damage_taken"] += int(damage) if damage else 0
+        if isinstance(attacker, dict):
+            # We dealt damage
+            stats["damage_dealt"] += int(damage) if damage else 0
+
+    elif event_type in ("agent_dead", "agent_died"):
+        victim = data.get("victim", data.get("agent", {}))
+        if isinstance(victim, dict):
+            vname = victim.get("agentName") or victim.get("name", "")
+            v_id = victim.get("agentId", "")
+            # Check if this is us
+            killer = data.get("killer", {})
+            if isinstance(killer, dict):
+                stats["killer_name"] = killer.get("agentName") or killer.get("name")
+                stats["killer_id"] = killer.get("agentId", "")
+                stats["fights_lost"] += 1
+
+
 class WebSocketEngine:
     """Manages the gameplay WebSocket session."""
 
@@ -76,6 +116,20 @@ class WebSocketEngine:
         self._running = False
         self._map_just_used = False  # Track if Map was used for learning
         self.memory = memory  # AgentMemory instance for adaptive decision-making
+        # In-game stat tracking for settlement
+        self.game_stats = {
+            "kills": 0,
+            "deaths": 0,
+            "damage_dealt": 0,
+            "damage_taken": 0,
+            "items_used": 0,
+            "items_collected": 0,
+            "fights_won": 0,
+            "fights_lost": 0,
+            "highest_hp": 0,
+            "killer_name": None,
+            "killer_id": None,
+        }
         # Dashboard key/name — set by heartbeat before .run()
         self.dashboard_key = agent_id  # fallback to agent_id
         self.dashboard_name = "Agent"
@@ -238,6 +292,9 @@ class WebSocketEngine:
         elif msg_type == "game_ended":
             log.info("═══ GAME ENDED ═══")
             reset_game_state()  # Clear curse tracking for next game
+            # Attach tracked stats + last_view to result for settlement
+            msg["_stats"] = dict(self.game_stats)
+            msg["_last_view"] = self.last_view
             self.game_result = msg
             return msg
 
@@ -245,6 +302,7 @@ class WebSocketEngine:
         elif msg_type == "event":
             event_type = msg.get("eventType", msg.get("data", {}).get("eventType", ""))
             log.debug("Event: %s", event_type)
+            _track_game_event(msg, self.game_stats)
 
         # ── waiting ───────────────────────────────────────────────────
         elif msg_type == "waiting":
@@ -273,6 +331,11 @@ class WebSocketEngine:
         self_data = view.get("self", {})
         if not isinstance(self_data, dict):
             return
+
+        # Track in-game stats for settlement
+        hp = self_data.get("hp", 0)
+        if hp > self.game_stats.get("highest_hp", 0):
+            self.game_stats["highest_hp"] = int(hp)
 
         alive_count = view.get("aliveCount", "?")
 
