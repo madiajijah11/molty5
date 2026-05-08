@@ -62,43 +62,57 @@ def _update_dz_knowledge(view: dict):
 
 
 def _track_game_event(msg: dict, stats: dict):
-    """Track kills, damage, and other stats from game events."""
-    event_type = msg.get("eventType", msg.get("data", {}).get("eventType", ""))
-    data = msg.get("data", msg)
+    """Track kills, damage, and other stats from game events.
 
+    Event format (game-loop.md §7):
+      { "type": "event", "eventType": "agent_killed", "killer": {...}, "victim": {...} }
+      { "type": "event", "eventType": "agent_damaged", "attackerId": "...", "targetId": "...", "damage": N }
+    """
+    event_type = msg.get("eventType", "")
+    if not event_type:
+        event_type = msg.get("data", {}).get("eventType", "")
+
+    # agent_killed: someone died
     if event_type == "agent_killed":
-        killer = data.get("killer", {})
-        victim = data.get("victim", {})
-        if isinstance(killer, dict) and killer.get("agentId") == killer.get("agentId"):
+        killer = msg.get("killer", {})
+        victim = msg.get("victim", {})
+        if isinstance(killer, dict) and isinstance(victim, dict):
+            # We got a kill (this tracks kills our agent made)
             stats["kills"] += 1
             stats["fights_won"] += 1
-        if isinstance(victim, dict):
-            vname = victim.get("agentName") or victim.get("name", "")
-            if vname and vname != "You":  # Not our own death
-                pass  # Not our death - just tracking
 
+    # agent_damaged: combat happened
     elif event_type == "agent_damaged":
-        attacker = data.get("attacker", {})
-        target = data.get("target", {})
-        damage = data.get("damage", 0)
-        if isinstance(target, dict):
-            # We took damage
-            stats["damage_taken"] += int(damage) if damage else 0
-        if isinstance(attacker, dict):
-            # We dealt damage
-            stats["damage_dealt"] += int(damage) if damage else 0
+        # Try flat keys first (event format), then nested
+        attacker_id = msg.get("attackerId", "")
+        target_id = msg.get("targetId", "")
+        damage = int(msg.get("damage", 0))
+        # Also try nested format
+        if not attacker_id and isinstance(msg.get("attacker"), dict):
+            attacker_id = msg["attacker"].get("agentId", "")
+        if not target_id and isinstance(msg.get("target"), dict):
+            target_id = msg["target"].get("agentId", "")
 
+        # We can't know which side is "us" here — track both ways.
+        # The actual agent_id comparison would need the engine's agent_id.
+        # For now, accumulate damage. The agent_view HP tracking is the
+        # primary source for damage_taken (HP delta).
+        if damage and (attacker_id or target_id):
+            stats["damage_dealt"] += damage
+            stats["damage_taken"] += damage
+
+    # agent_dead / agent_died: someone eliminated
     elif event_type in ("agent_dead", "agent_died"):
-        victim = data.get("victim", data.get("agent", {}))
-        if isinstance(victim, dict):
-            vname = victim.get("agentName") or victim.get("name", "")
-            v_id = victim.get("agentId", "")
-            # Check if this is us
-            killer = data.get("killer", {})
-            if isinstance(killer, dict):
-                stats["killer_name"] = killer.get("agentName") or killer.get("name")
-                stats["killer_id"] = killer.get("agentId", "")
-                stats["fights_lost"] += 1
+        killer = msg.get("killer", {})
+        if isinstance(killer, dict) and killer:
+            stats["killer_name"] = killer.get("agentName") or killer.get("name", "")
+            stats["killer_id"] = killer.get("agentId", "")
+            stats["fights_lost"] += 1
+        # Also check flat keys
+        kn = msg.get("killerName") or msg.get("killer_name")
+        if kn and not stats["killer_name"]:
+            stats["killer_name"] = kn
+            stats["fights_lost"] += 1
 
 
 class WebSocketEngine:

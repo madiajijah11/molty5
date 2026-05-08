@@ -199,7 +199,7 @@ def decide_action(
     # ── ADAPTIVE THRESHOLDS ────────────────────────────────────────
     # Blend memory.get_adaptive_thresholds() with win_rate from
     # memory.get_stats(). Higher win_rate → more aggressive (lower
-    # thresholds). Lower win_rate → more cautious (higher thresholds).
+    # thresholds). Capped at -0.3 floor to prevent ultra-passive spiral.
     # Falls back to DEFAULT_THRESHOLDS when memory is None or has no data.
     if memory is not None:
         try:
@@ -207,16 +207,36 @@ def decide_action(
             stats = memory.get_stats()
             win_rate = stats.get("win_rate", 0.5)
             total_games = stats.get("total_games", 0)
-            # Only apply win_rate adjustment after a few games
-            if total_games > 0:
-                # aggression_factor: -1.0 (max cautious) to +1.0 (max aggressive)
-                # At win_rate=0.5 → 0.0; win_rate=1.0 → +1.0; win_rate=0.0 → -1.0
-                aggression_factor = (win_rate - 0.5) * 2.0
+            # aggression_factor: clipped to [-0.3, +1.0] — never too passive
+            # At win_rate=0.5 → 0.0; win_rate=1.0 → +1.0; win_rate=0.0 → -0.3
+            if total_games >= 3:
+                raw_aggression = (win_rate - 0.5) * 2.0
+                aggression_factor = max(-0.3, min(1.0, raw_aggression))
             else:
                 aggression_factor = 0.0
-            # Clamp and compute each threshold
+            # Clamp all thresholds — use smaller adjustments (max ±5 HP shift)
             guardian_flee_hp = max(
-                15, int(adaptive.get("guardian_flee_hp", 40) - aggression_factor * 10)
+                25, int(adaptive.get("guardian_flee_hp", 40) - aggression_factor * 10)
+            )
+            critical_heal_hp = max(
+                15, int(adaptive.get("critical_heal_hp", 30) - aggression_factor * 5)
+            )
+            pre_heal_hp = max(
+                50, int(adaptive.get("pre_heal_hp", 70) - aggression_factor * 8)
+            )
+            farm_guardian_hp = max(
+                25,
+                int(adaptive.get("farm_guardian_hp", 35) + aggression_factor * 8),
+            )
+            combat_engage_early = max(
+                25,
+                int(
+                    adaptive.get("combat_engage_hp_early", 40) - aggression_factor * 10
+                ),
+            )
+            combat_engage_late = max(
+                20,
+                int(adaptive.get("combat_engage_hp_late", 25) - aggression_factor * 5),
             )
             critical_heal_hp = max(
                 15, int(adaptive.get("critical_heal_hp", 30) - aggression_factor * 5)
