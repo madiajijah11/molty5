@@ -231,8 +231,20 @@ class Heartbeat:
 
         # Step 3: Route based on state
         if state == NO_IDENTITY:
-            # Always try to register identity (ERC-8004) — whether
-            # HAVE_ACCOUNT=yes or no. AUTO_IDENTITY must be true.
+            # Anti-loop: if identity setup completed but server still
+            # reports NO_IDENTITY, after 3 cycles skip setup and go
+            # directly to free room join (server verifies on /ws/join anyway).
+            no_id_cycles = getattr(self, "_no_identity_cycles", 0)
+            if no_id_cycles >= 3:
+                log.warning(
+                    "NO_IDENTITY persists after %d setup cycles — bypassing, "
+                    "trying free room join directly...",
+                    no_id_cycles,
+                )
+                self._no_identity_cycles = 0
+                await self._handle_ready(me, READY_FREE)
+                return
+
             log.info(
                 "NO_IDENTITY for [%s] — attempting identity registration...",
                 self._agent_name,
@@ -249,7 +261,15 @@ class Heartbeat:
             return
 
     async def _handle_no_identity(self, me: dict):
-        """Setup pipeline: wallet → whitelist → identity. Respects config flags."""
+        """Setup pipeline: wallet → whitelist → identity. Respects config flags.
+
+        On success, bypasses the state router and directly proceeds to READY_FREE
+        to avoid infinite loop where server /api/identity reports success but
+        /accounts/me still shows erc8004Id=null (server-side on-chain re-verify).
+        """
+        # Anti-loop: track consecutive NO_IDENTITY cycles
+        self._no_identity_cycles = getattr(self, "_no_identity_cycles", 0) + 1
+
         # Use per-agent config first, fallback to credentials file
         if self.agent_config:
             owner_eoa = self.agent_config.get("owner_eoa", "")
@@ -300,7 +320,14 @@ class Heartbeat:
         else:
             log.info("Identity auto-registration skipped (AUTO_IDENTITY=false)")
 
+        self._no_identity_cycles = 0  # Reset on success
         log.info("✅ Full setup complete!")
+
+        # After successful setup, skip re-checking state and go straight
+        # to READY_FREE. The /accounts/me endpoint may not reflect the
+        # identity registration immediately (server re-verifies on-chain).
+        log.info("Bypassing state re-check — proceeding directly to READY_FREE...")
+        await self._handle_ready(me, READY_FREE)
 
     async def _handle_ready(self, me: dict, state: str):
         """Join a game based on room selection."""
