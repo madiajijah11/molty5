@@ -1,12 +1,17 @@
 """
 Free game join via matchmaking queue.
 POST /join (Long Poll ~15s) → assigned → open WS immediately.
-No extra sleep between retries per free-games.md.
+Rate-limited: max 30 attempts, 0.5s delay between retries.
 """
+
+import asyncio
 from bot.api_client import MoltyAPI, APIError
 from bot.utils.logger import get_logger
 
 log = get_logger(__name__)
+
+MAX_ATTEMPTS = 30  # ~15 seconds at 0.5s delay
+RETRY_DELAY = 0.5  # seconds between attempts
 
 
 async def join_free_game(api: MoltyAPI) -> tuple[str, str]:
@@ -30,16 +35,17 @@ async def join_free_game(api: MoltyAPI) -> tuple[str, str]:
     except APIError:
         pass
 
-    # Queue loop — no extra sleep, server Long Poll throttles (per free-games.md)
+    # Queue loop with rate limiting
     attempt = 0
-    while True:
+    last_log_at = 0  # throttle logging
+    while attempt < MAX_ATTEMPTS:
         attempt += 1
-        log.info("Free queue attempt #%d...", attempt)
 
         try:
             resp = await api.post_join("free")
             if not isinstance(resp, dict):
                 log.warning("Unexpected join response type: %s", type(resp).__name__)
+                await asyncio.sleep(RETRY_DELAY)
                 continue
 
             status = resp.get("status", "")
@@ -52,11 +58,12 @@ async def join_free_game(api: MoltyAPI) -> tuple[str, str]:
                     return gid, aid
                 log.warning("Assigned but missing gameId/agentId: %s", resp)
 
-            if status in ("not_selected", "queued"):
-                log.debug("Queue status: %s — retrying immediately", status)
-                continue
+            # Log every 10th attempt to reduce noise
+            if attempt - last_log_at >= 10:
+                log.info("Free queue attempt #%d (status=%s)...", attempt, status)
+                last_log_at = attempt
 
-            log.warning("Unexpected queue response: %s", resp)
+            await asyncio.sleep(RETRY_DELAY)
 
         except APIError as e:
             if e.code == "NO_IDENTITY":
@@ -65,10 +72,33 @@ async def join_free_game(api: MoltyAPI) -> tuple[str, str]:
             if e.code == "OWNERSHIP_LOST":
                 log.error("❌ NFT ownership changed. Re-register identity.")
                 raise
+            if e.code == "SERVICE_UNAVAILABLE":
+                log.warning(
+                    "Service unavailable — matchmaking paused (attempt %d). "
+                    "Waiting 10s...",
+                    attempt,
+                )
+                await asyncio.sleep(10)
+                continue
             if e.code == "TOO_MANY_AGENTS_PER_IP":
                 log.error("❌ IP agent limit reached for this game")
+                raise
+            if e.code in ("FORBIDDEN", "UNAUTHORIZED"):
+                log.error("❌ API key rejected (403). Stopping.")
                 raise
             if e.code == "ACCOUNT_ALREADY_IN_GAME":
                 log.info("Already in a game. Returning to heartbeat.")
                 raise
-            log.warning("Join error: %s — retrying", e)
+            # Unknown errors: back off
+            log.warning(
+                "Join error: %s — retrying (attempt %d/%d)",
+                e,
+                attempt,
+                MAX_ATTEMPTS,
+            )
+            await asyncio.sleep(RETRY_DELAY * 2)
+
+    log.warning(
+        "Free queue exhausted after %d attempts — trying again next cycle", MAX_ATTEMPTS
+    )
+    return "", ""

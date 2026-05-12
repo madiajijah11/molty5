@@ -338,6 +338,11 @@ class Heartbeat:
                 game_id, agent_id = await join_paid_game(self.api)
             else:
                 game_id, agent_id = await join_free_game(self.api)
+
+            if not game_id or not agent_id:
+                # Queue exhausted or rate limited — retry next cycle
+                log.info("Join returned empty — retrying next cycle...")
+                return
         except APIError as e:
             if e.code == "NO_IDENTITY":
                 log.error("Identity required. Will setup next cycle.")

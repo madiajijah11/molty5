@@ -199,7 +199,7 @@
       "source_file": "bot/__init__.py",
       "source_location": "L1",
       "id": "init_py",
-      "community": 46,
+      "community": 37,
       "norm_label": "__init__.py"
     },
     {
@@ -208,7 +208,7 @@
       "source_file": "bot/__init__.py",
       "source_location": "L1",
       "id": "bot_init_rationale_1",
-      "community": 46,
+      "community": 37,
       "norm_label": "molty royale ai agent bot"
     },
     {
@@ -217,7 +217,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L1",
       "id": "state_router_py",
-      "community": 43,
+      "community": 3,
       "norm_label": "state_router.py"
     },
     {
@@ -226,7 +226,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L18",
       "id": "bot_state_router_determine_state",
-      "community": 43,
+      "community": 3,
       "norm_label": "determine_state()"
     },
     {
@@ -235,7 +235,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L1",
       "id": "bot_state_router_rationale_1",
-      "community": 43,
+      "community": 3,
       "norm_label": "state router \u2014 determines agent state from get /accounts/me response. routes per"
     },
     {
@@ -244,7 +244,7 @@
       "source_file": "bot/state_router.py",
       "source_location": "L19",
       "id": "bot_state_router_rationale_19",
-      "community": 43,
+      "community": 3,
       "norm_label": "analyze /accounts/me response \u2192 return (state, context).     context contains re"
     },
     {
@@ -253,7 +253,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "L1",
       "id": "api_client_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "api_client.py"
     },
     {
@@ -478,7 +478,7 @@
       "source_file": "bot/api_client.py",
       "source_location": "L1",
       "id": "bot_api_client_rationale_1",
-      "community": 15,
+      "community": 3,
       "norm_label": "async rest api client for molty royale. all endpoints from api-summary.md with r"
     },
     {
@@ -640,7 +640,7 @@
       "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "config_py",
-      "community": 10,
+      "community": 12,
       "norm_label": "config.py"
     },
     {
@@ -649,7 +649,7 @@
       "source_file": "bot/config.py",
       "source_location": "L93",
       "id": "bot_config_load_agents",
-      "community": 10,
+      "community": 12,
       "norm_label": "load_agents()"
     },
     {
@@ -658,7 +658,7 @@
       "source_file": "bot/config.py",
       "source_location": "L138",
       "id": "bot_config_filter_agents",
-      "community": 10,
+      "community": 12,
       "norm_label": "_filter_agents()"
     },
     {
@@ -667,7 +667,7 @@
       "source_file": "bot/config.py",
       "source_location": "L197",
       "id": "bot_config_warn_shared_wallets",
-      "community": 10,
+      "community": 12,
       "norm_label": "_warn_shared_wallets()"
     },
     {
@@ -676,7 +676,7 @@
       "source_file": "bot/config.py",
       "source_location": "L213",
       "id": "bot_config_select_primary_per_wallet",
-      "community": 10,
+      "community": 12,
       "norm_label": "_select_primary_per_wallet()"
     },
     {
@@ -685,7 +685,7 @@
       "source_file": "bot/config.py",
       "source_location": "L1",
       "id": "bot_config_rationale_1",
-      "community": 10,
+      "community": 12,
       "norm_label": "configuration & constants for molty royale ai agent. all env vars loaded here. n"
     },
     {
@@ -694,7 +694,7 @@
       "source_file": "bot/config.py",
       "source_location": "L94",
       "id": "bot_config_rationale_94",
-      "community": 10,
+      "community": 12,
       "norm_label": "load agent configs from agents_json env var, fallback to credentials.json.     f"
     },
     {
@@ -703,7 +703,7 @@
       "source_file": "bot/config.py",
       "source_location": "L139",
       "id": "bot_config_rationale_139",
-      "community": 10,
+      "community": 12,
       "norm_label": "filter agents by agent_names env var (comma-separated list of agent names)."
     },
     {
@@ -712,7 +712,7 @@
       "source_file": "bot/config.py",
       "source_location": "L198",
       "id": "bot_config_rationale_198",
-      "community": 10,
+      "community": 12,
       "norm_label": "warn if multiple agents share the same sc wallet."
     },
     {
@@ -721,13 +721,13 @@
       "source_file": "bot/config.py",
       "source_location": "L214",
       "id": "bot_config_rationale_214",
-      "community": 10,
+      "community": 12,
       "norm_label": "select only 1 agent per sc wallet (molty_royale_wallet).     if multiple agents"
     },
     {
       "label": "heartbeat.py",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L1",
       "id": "heartbeat_py",
       "community": 0,
@@ -736,7 +736,7 @@
     {
       "label": "Heartbeat",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L43",
       "id": "bot_heartbeat_heartbeat",
       "community": 0,
@@ -745,16 +745,16 @@
     {
       "label": ".__init__()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L46",
       "id": "bot_heartbeat_heartbeat_init",
-      "community": 13,
+      "community": 14,
       "norm_label": ".__init__()"
     },
     {
       "label": ".run()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L63",
       "id": "bot_heartbeat_heartbeat_run",
       "community": 0,
@@ -763,7 +763,7 @@
     {
       "label": "._heartbeat_cycle()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L189",
       "id": "bot_heartbeat_heartbeat_heartbeat_cycle",
       "community": 0,
@@ -772,8 +772,8 @@
     {
       "label": "._handle_no_identity()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L251",
+      "source_file": "heartbeat.py",
+      "source_location": "L263",
       "id": "bot_heartbeat_heartbeat_handle_no_identity",
       "community": 0,
       "norm_label": "._handle_no_identity()"
@@ -781,8 +781,8 @@
     {
       "label": "._handle_ready()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L305",
+      "source_file": "heartbeat.py",
+      "source_location": "L332",
       "id": "bot_heartbeat_heartbeat_handle_ready",
       "community": 0,
       "norm_label": "._handle_ready()"
@@ -790,8 +790,8 @@
     {
       "label": "._handle_in_game()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L329",
+      "source_file": "heartbeat.py",
+      "source_location": "L356",
       "id": "bot_heartbeat_heartbeat_handle_in_game",
       "community": 0,
       "norm_label": "._handle_in_game()"
@@ -799,8 +799,8 @@
     {
       "label": "._play_game()",
       "file_type": "code",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L346",
+      "source_file": "heartbeat.py",
+      "source_location": "L373",
       "id": "bot_heartbeat_heartbeat_play_game",
       "community": 0,
       "norm_label": "._play_game()"
@@ -808,7 +808,7 @@
     {
       "label": "Heartbeat loop \u2014 main orchestration per heartbeat.md. State machine: setup \u2192 joi",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L1",
       "id": "bot_heartbeat_rationale_1",
       "community": 0,
@@ -817,7 +817,7 @@
     {
       "label": "Main heartbeat loop \u2014 runs forever, manages the full agent lifecycle.",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L44",
       "id": "bot_heartbeat_rationale_44",
       "community": 0,
@@ -826,7 +826,7 @@
     {
       "label": "Entry point \u2014 runs the heartbeat loop indefinitely.",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L64",
       "id": "bot_heartbeat_rationale_64",
       "community": 0,
@@ -835,45 +835,45 @@
     {
       "label": "Single heartbeat cycle: check state \u2192 route \u2192 act.",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
+      "source_file": "heartbeat.py",
       "source_location": "L190",
       "id": "bot_heartbeat_rationale_190",
       "community": 0,
       "norm_label": "single heartbeat cycle: check state \u2192 route \u2192 act."
     },
     {
-      "label": "Setup pipeline: wallet \u2192 whitelist \u2192 identity. Respects config flags.",
+      "label": "Setup pipeline: wallet \u2192 whitelist \u2192 identity. Respects config flags.          O",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L252",
-      "id": "bot_heartbeat_rationale_252",
+      "source_file": "heartbeat.py",
+      "source_location": "L264",
+      "id": "bot_heartbeat_rationale_264",
       "community": 0,
-      "norm_label": "setup pipeline: wallet \u2192 whitelist \u2192 identity. respects config flags."
+      "norm_label": "setup pipeline: wallet \u2192 whitelist \u2192 identity. respects config flags.          o"
     },
     {
       "label": "Join a game based on room selection.",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L306",
-      "id": "bot_heartbeat_rationale_306",
+      "source_file": "heartbeat.py",
+      "source_location": "L333",
+      "id": "bot_heartbeat_rationale_333",
       "community": 0,
       "norm_label": "join a game based on room selection."
     },
     {
       "label": "Resume or start playing an active game.         Per game-loop.md: always connect",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L330",
-      "id": "bot_heartbeat_rationale_330",
+      "source_file": "heartbeat.py",
+      "source_location": "L357",
+      "id": "bot_heartbeat_rationale_357",
       "community": 0,
       "norm_label": "resume or start playing an active game.         per game-loop.md: always connect"
     },
     {
       "label": "Run the WebSocket gameplay engine.",
       "file_type": "rationale",
-      "source_file": "bot/heartbeat.py",
-      "source_location": "L347",
-      "id": "bot_heartbeat_rationale_347",
+      "source_file": "heartbeat.py",
+      "source_location": "L374",
+      "id": "bot_heartbeat_rationale_374",
       "community": 0,
       "norm_label": "run the websocket gameplay engine."
     },
@@ -919,7 +919,7 @@
       "source_file": "bot/dashboard/__init__.py",
       "source_location": "L1",
       "id": "dashboard_init_py",
-      "community": 52,
+      "community": 43,
       "norm_label": "__init__.py"
     },
     {
@@ -928,7 +928,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L1",
       "id": "dashboard_server_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "server.py"
     },
     {
@@ -937,7 +937,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L22",
       "id": "dashboard_server_index_handler",
-      "community": 3,
+      "community": 4,
       "norm_label": "index_handler()"
     },
     {
@@ -946,7 +946,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L31",
       "id": "dashboard_server_api_state",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_state()"
     },
     {
@@ -955,7 +955,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L36",
       "id": "dashboard_server_api_accounts",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_accounts()"
     },
     {
@@ -964,7 +964,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L41",
       "id": "dashboard_server_api_export",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_export()"
     },
     {
@@ -973,7 +973,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L49",
       "id": "dashboard_server_ws_handler",
-      "community": 3,
+      "community": 4,
       "norm_label": "ws_handler()"
     },
     {
@@ -982,7 +982,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L76",
       "id": "dashboard_server_push_loop",
-      "community": 3,
+      "community": 4,
       "norm_label": "_push_loop()"
     },
     {
@@ -991,7 +991,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L128",
       "id": "dashboard_server_start_push_loop",
-      "community": 3,
+      "community": 4,
       "norm_label": "start_push_loop()"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L133",
       "id": "dashboard_server_stop_push_loop",
-      "community": 3,
+      "community": 4,
       "norm_label": "stop_push_loop()"
     },
     {
@@ -1009,7 +1009,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L144",
       "id": "dashboard_server_api_accounts_post",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_accounts_post()"
     },
     {
@@ -1018,7 +1018,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L154",
       "id": "dashboard_server_api_import",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_import()"
     },
     {
@@ -1027,7 +1027,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L166",
       "id": "dashboard_server_api_learning",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_learning()"
     },
     {
@@ -1036,7 +1036,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L171",
       "id": "dashboard_server_api_lessons",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_lessons()"
     },
     {
@@ -1045,7 +1045,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L178",
       "id": "dashboard_server_api_opponents",
-      "community": 3,
+      "community": 4,
       "norm_label": "api_opponents()"
     },
     {
@@ -1054,7 +1054,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L185",
       "id": "dashboard_server_create_app",
-      "community": 8,
+      "community": 10,
       "norm_label": "create_app()"
     },
     {
@@ -1063,7 +1063,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L212",
       "id": "dashboard_server_start_dashboard",
-      "community": 8,
+      "community": 10,
       "norm_label": "start_dashboard()"
     },
     {
@@ -1072,7 +1072,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L1",
       "id": "dashboard_server_rationale_1",
-      "community": 3,
+      "community": 4,
       "norm_label": "dashboard web server \u2014 serves the ui and real-time websocket updates. uses aioht"
     },
     {
@@ -1081,7 +1081,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L23",
       "id": "dashboard_server_rationale_23",
-      "community": 3,
+      "community": 4,
       "norm_label": "serve the dashboard html (no cache to always get latest)."
     },
     {
@@ -1090,7 +1090,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L32",
       "id": "dashboard_server_rationale_32",
-      "community": 3,
+      "community": 4,
       "norm_label": "return full dashboard state snapshot."
     },
     {
@@ -1099,7 +1099,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L37",
       "id": "dashboard_server_rationale_37",
-      "community": 3,
+      "community": 4,
       "norm_label": "return accounts list."
     },
     {
@@ -1108,7 +1108,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L42",
       "id": "dashboard_server_rationale_42",
-      "community": 3,
+      "community": 4,
       "norm_label": "export all data as json download."
     },
     {
@@ -1117,7 +1117,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L50",
       "id": "dashboard_server_rationale_50",
-      "community": 3,
+      "community": 4,
       "norm_label": "websocket endpoint \u2014 client stays connected for push updates."
     },
     {
@@ -1126,7 +1126,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L77",
       "id": "dashboard_server_rationale_77",
-      "community": 3,
+      "community": 4,
       "norm_label": "background task: push state snapshots to all ws clients every 1.5s."
     },
     {
@@ -1135,7 +1135,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L129",
       "id": "dashboard_server_rationale_129",
-      "community": 3,
+      "community": 4,
       "norm_label": "start push loop as background task on app startup."
     },
     {
@@ -1144,7 +1144,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L134",
       "id": "dashboard_server_rationale_134",
-      "community": 3,
+      "community": 4,
       "norm_label": "stop push loop on app shutdown."
     },
     {
@@ -1153,7 +1153,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L145",
       "id": "dashboard_server_rationale_145",
-      "community": 3,
+      "community": 4,
       "norm_label": "save account from dashboard form."
     },
     {
@@ -1162,7 +1162,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L155",
       "id": "dashboard_server_rationale_155",
-      "community": 3,
+      "community": 4,
       "norm_label": "import data from json."
     },
     {
@@ -1171,7 +1171,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L167",
       "id": "dashboard_server_rationale_167",
-      "community": 3,
+      "community": 4,
       "norm_label": "return learning/memory stats."
     },
     {
@@ -1180,7 +1180,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L172",
       "id": "dashboard_server_rationale_172",
-      "community": 3,
+      "community": 4,
       "norm_label": "return structured lessons list."
     },
     {
@@ -1189,7 +1189,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L179",
       "id": "dashboard_server_rationale_179",
-      "community": 3,
+      "community": 4,
       "norm_label": "return opponent profiles."
     },
     {
@@ -1198,7 +1198,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L186",
       "id": "dashboard_server_rationale_186",
-      "community": 8,
+      "community": 10,
       "norm_label": "create the aiohttp web application."
     },
     {
@@ -1207,7 +1207,7 @@
       "source_file": "bot/dashboard/server.py",
       "source_location": "L213",
       "id": "dashboard_server_rationale_213",
-      "community": 8,
+      "community": 10,
       "norm_label": "start the dashboard server (non-blocking)."
     },
     {
@@ -1216,7 +1216,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L1",
       "id": "dashboard_state_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "state.py"
     },
     {
@@ -1225,7 +1225,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L16",
       "id": "dashboard_state_dashboardstate",
-      "community": 11,
+      "community": 13,
       "norm_label": "dashboardstate"
     },
     {
@@ -1234,7 +1234,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L21",
       "id": "dashboard_state_dashboardstate_new",
-      "community": 11,
+      "community": 13,
       "norm_label": ".__new__()"
     },
     {
@@ -1243,7 +1243,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L27",
       "id": "dashboard_state_dashboardstate_init",
-      "community": 11,
+      "community": 13,
       "norm_label": ".__init__()"
     },
     {
@@ -1252,7 +1252,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L66",
       "id": "dashboard_state_dashboardstate_update_agent",
-      "community": 11,
+      "community": 13,
       "norm_label": ".update_agent()"
     },
     {
@@ -1261,7 +1261,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L75",
       "id": "dashboard_state_dashboardstate_add_log",
-      "community": 11,
+      "community": 13,
       "norm_label": ".add_log()"
     },
     {
@@ -1270,7 +1270,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L87",
       "id": "dashboard_state_dashboardstate_set_account",
-      "community": 11,
+      "community": 13,
       "norm_label": ".set_account()"
     },
     {
@@ -1279,7 +1279,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L96",
       "id": "dashboard_state_dashboardstate_update_learning",
-      "community": 11,
+      "community": 13,
       "norm_label": ".update_learning()"
     },
     {
@@ -1288,7 +1288,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L118",
       "id": "dashboard_state_dashboardstate_get_snapshot",
-      "community": 11,
+      "community": 13,
       "norm_label": ".get_snapshot()"
     },
     {
@@ -1297,7 +1297,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L1",
       "id": "dashboard_state_rationale_1",
-      "community": 15,
+      "community": 3,
       "norm_label": "dashboard shared state \u2014 bridge between bot engine and web dashboard. bot writes"
     },
     {
@@ -1306,7 +1306,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L17",
       "id": "dashboard_state_rationale_17",
-      "community": 11,
+      "community": 13,
       "norm_label": "singleton shared state between bot and dashboard."
     },
     {
@@ -1315,7 +1315,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L67",
       "id": "dashboard_state_rationale_67",
-      "community": 11,
+      "community": 13,
       "norm_label": "update agent state from bot engine."
     },
     {
@@ -1324,7 +1324,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L88",
       "id": "dashboard_state_rationale_88",
-      "community": 11,
+      "community": 13,
       "norm_label": "add or update account."
     },
     {
@@ -1333,7 +1333,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L97",
       "id": "dashboard_state_rationale_97",
-      "community": 11,
+      "community": 13,
       "norm_label": "update learning data from agentmemory.get_stats()."
     },
     {
@@ -1342,7 +1342,7 @@
       "source_file": "bot/dashboard/state.py",
       "source_location": "L119",
       "id": "dashboard_state_rationale_119",
-      "community": 11,
+      "community": 13,
       "norm_label": "full state snapshot for dashboard api."
     },
     {
@@ -1351,7 +1351,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L1",
       "id": "dashboard_static_app_js",
-      "community": 6,
+      "community": 7,
       "norm_label": "app.js"
     },
     {
@@ -1360,7 +1360,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L6",
       "id": "static_app",
-      "community": 6,
+      "community": 7,
       "norm_label": "$()"
     },
     {
@@ -1369,7 +1369,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L7",
       "id": "static_app_esc",
-      "community": 6,
+      "community": 7,
       "norm_label": "esc()"
     },
     {
@@ -1378,7 +1378,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L8",
       "id": "static_app_fmt",
-      "community": 6,
+      "community": 7,
       "norm_label": "fmt()"
     },
     {
@@ -1387,7 +1387,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L20",
       "id": "static_app_itemname",
-      "community": 6,
+      "community": 7,
       "norm_label": "itemname()"
     },
     {
@@ -1396,7 +1396,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L31",
       "id": "static_app_itemtag",
-      "community": 6,
+      "community": 7,
       "norm_label": "itemtag()"
     },
     {
@@ -1405,7 +1405,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L46",
       "id": "static_app_showpage",
-      "community": 6,
+      "community": 7,
       "norm_label": "showpage()"
     },
     {
@@ -1414,7 +1414,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L63",
       "id": "static_app_connectws",
-      "community": 6,
+      "community": 7,
       "norm_label": "connectws()"
     },
     {
@@ -1423,7 +1423,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L84",
       "id": "static_app_render",
-      "community": 6,
+      "community": 7,
       "norm_label": "render()"
     },
     {
@@ -1432,7 +1432,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L93",
       "id": "static_app_settext",
-      "community": 6,
+      "community": 7,
       "norm_label": "settext()"
     },
     {
@@ -1441,7 +1441,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L102",
       "id": "static_app_animatenum",
-      "community": 6,
+      "community": 7,
       "norm_label": "animatenum()"
     },
     {
@@ -1450,7 +1450,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L126",
       "id": "static_app_renderheader",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderheader()"
     },
     {
@@ -1459,7 +1459,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L142",
       "id": "static_app_renderagentcards",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderagentcards()"
     },
     {
@@ -1468,7 +1468,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L170",
       "id": "static_app_patchagentcard",
-      "community": 6,
+      "community": 7,
       "norm_label": "patchagentcard()"
     },
     {
@@ -1477,7 +1477,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L236",
       "id": "static_app_renderagentstable",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderagentstable()"
     },
     {
@@ -1486,7 +1486,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L260",
       "id": "static_app_renderdatatable",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderdatatable()"
     },
     {
@@ -1495,7 +1495,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L272",
       "id": "static_app_renderlogs",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderlogs()"
     },
     {
@@ -1504,7 +1504,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L285",
       "id": "static_app_logline",
-      "community": 6,
+      "community": 7,
       "norm_label": "_logline()"
     },
     {
@@ -1513,7 +1513,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L294",
       "id": "static_app_switchlogtab",
-      "community": 6,
+      "community": 7,
       "norm_label": "switchlogtab()"
     },
     {
@@ -1522,7 +1522,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L302",
       "id": "static_app_saveaccount",
-      "community": 6,
+      "community": 7,
       "norm_label": "saveaccount()"
     },
     {
@@ -1531,7 +1531,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L315",
       "id": "static_app_exportdata",
-      "community": 6,
+      "community": 7,
       "norm_label": "exportdata()"
     },
     {
@@ -1540,7 +1540,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L323",
       "id": "static_app_importdata",
-      "community": 6,
+      "community": 7,
       "norm_label": "importdata()"
     },
     {
@@ -1549,7 +1549,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L335",
       "id": "static_app_startlearningrefresh",
-      "community": 6,
+      "community": 7,
       "norm_label": "startlearningrefresh()"
     },
     {
@@ -1558,7 +1558,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L340",
       "id": "static_app_stoplearningrefresh",
-      "community": 6,
+      "community": 7,
       "norm_label": "stoplearningrefresh()"
     },
     {
@@ -1567,7 +1567,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L344",
       "id": "static_app_fetchalllearning",
-      "community": 6,
+      "community": 7,
       "norm_label": "fetchalllearning()"
     },
     {
@@ -1576,7 +1576,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L356",
       "id": "static_app_renderlearning",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderlearning()"
     },
     {
@@ -1585,7 +1585,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L364",
       "id": "static_app_renderlearningstats",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderlearningstats()"
     },
     {
@@ -1594,7 +1594,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L378",
       "id": "static_app_renderlessons",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderlessons()"
     },
     {
@@ -1603,7 +1603,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L404",
       "id": "static_app_renderrules",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderrules()"
     },
     {
@@ -1612,7 +1612,7 @@
       "source_file": "bot/dashboard/static/app.js",
       "source_location": "L425",
       "id": "static_app_renderopponents",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderopponents()"
     },
     {
@@ -1621,7 +1621,7 @@
       "source_file": "bot/game/__init__.py",
       "source_location": "L1",
       "id": "game_init_py",
-      "community": 53,
+      "community": 44,
       "norm_label": "__init__.py"
     },
     {
@@ -1882,7 +1882,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L1",
       "id": "game_paid_join_py",
-      "community": 45,
+      "community": 3,
       "norm_label": "paid_join.py"
     },
     {
@@ -1891,7 +1891,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L15",
       "id": "game_paid_join_join_paid_game",
-      "community": 0,
+      "community": 3,
       "norm_label": "join_paid_game()"
     },
     {
@@ -1900,7 +1900,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L1",
       "id": "game_paid_join_rationale_1",
-      "community": 45,
+      "community": 3,
       "norm_label": "paid game join \u2014 eip-712 sign \u2192 post /games/{id}/join-paid. per paid-games.md: c"
     },
     {
@@ -1909,7 +1909,7 @@
       "source_file": "bot/game/paid_join.py",
       "source_location": "L16",
       "id": "game_paid_join_rationale_16",
-      "community": 0,
+      "community": 3,
       "norm_label": "join a paid room via eip-712 signed flow.     returns (game_id, agent_id) when r"
     },
     {
@@ -1918,7 +1918,7 @@
       "source_file": "bot/game/websocket_engine.py",
       "source_location": "L1",
       "id": "game_websocket_engine_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "websocket_engine.py"
     },
     {
@@ -2008,7 +2008,7 @@
       "source_file": "bot/game/websocket_engine.py",
       "source_location": "L1",
       "id": "game_websocket_engine_rationale_1",
-      "community": 15,
+      "community": 3,
       "norm_label": "websocket gameplay engine \u2014 wss://cdn.moltyroyale.com/ws/agent. core loop: conne"
     },
     {
@@ -2089,7 +2089,7 @@
       "source_file": "bot/game/room_selector.py",
       "source_location": "L1",
       "id": "game_room_selector_py",
-      "community": 8,
+      "community": 10,
       "norm_label": "room_selector.py"
     },
     {
@@ -2098,7 +2098,7 @@
       "source_file": "bot/game/room_selector.py",
       "source_location": "L11",
       "id": "game_room_selector_select_room",
-      "community": 8,
+      "community": 10,
       "norm_label": "select_room()"
     },
     {
@@ -2107,7 +2107,7 @@
       "source_file": "bot/game/room_selector.py",
       "source_location": "L1",
       "id": "game_room_selector_rationale_1",
-      "community": 8,
+      "community": 10,
       "norm_label": "room selector \u2014 choose free or paid room based on readiness and config. room_mod"
     },
     {
@@ -2116,7 +2116,7 @@
       "source_file": "bot/game/room_selector.py",
       "source_location": "L12",
       "id": "game_room_selector_rationale_12",
-      "community": 8,
+      "community": 10,
       "norm_label": "determine which room type to join.     returns 'free' or 'paid'."
     },
     {
@@ -2125,7 +2125,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L1",
       "id": "game_settlement_py",
-      "community": 4,
+      "community": 5,
       "norm_label": "settlement.py"
     },
     {
@@ -2134,7 +2134,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L24",
       "id": "game_settlement_extract_death_cause",
-      "community": 4,
+      "community": 5,
       "norm_label": "_extract_death_cause()"
     },
     {
@@ -2143,7 +2143,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L66",
       "id": "game_settlement_extract_death_details",
-      "community": 4,
+      "community": 5,
       "norm_label": "_extract_death_details()"
     },
     {
@@ -2152,7 +2152,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L116",
       "id": "game_settlement_build_combat_metrics",
-      "community": 4,
+      "community": 5,
       "norm_label": "_build_combat_metrics()"
     },
     {
@@ -2161,7 +2161,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L182",
       "id": "game_settlement_analyze_resource_efficiency",
-      "community": 4,
+      "community": 5,
       "norm_label": "_analyze_resource_efficiency()"
     },
     {
@@ -2170,7 +2170,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L230",
       "id": "game_settlement_analyze_combat_performance",
-      "community": 4,
+      "community": 5,
       "norm_label": "_analyze_combat_performance()"
     },
     {
@@ -2179,7 +2179,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L279",
       "id": "game_settlement_analyze_death",
-      "community": 4,
+      "community": 5,
       "norm_label": "_analyze_death()"
     },
     {
@@ -2188,7 +2188,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L333",
       "id": "game_settlement_update_opponent_profiles",
-      "community": 4,
+      "community": 5,
       "norm_label": "_update_opponent_profiles()"
     },
     {
@@ -2197,7 +2197,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L407",
       "id": "game_settlement_generate_strategy_rules",
-      "community": 4,
+      "community": 5,
       "norm_label": "_generate_strategy_rules()"
     },
     {
@@ -2206,7 +2206,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L510",
       "id": "game_settlement_migrate_legacy_lessons",
-      "community": 4,
+      "community": 5,
       "norm_label": "_migrate_legacy_lessons()"
     },
     {
@@ -2215,7 +2215,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L563",
       "id": "game_settlement_settle_game",
-      "community": 4,
+      "community": 5,
       "norm_label": "settle_game()"
     },
     {
@@ -2224,7 +2224,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L705",
       "id": "game_settlement_analyze_action_log",
-      "community": 4,
+      "community": 5,
       "norm_label": "_analyze_action_log()"
     },
     {
@@ -2233,7 +2233,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L1",
       "id": "game_settlement_rationale_1",
-      "community": 4,
+      "community": 5,
       "norm_label": "game settlement \u2014 phase 3: process game end, update memory, prepare for next gam"
     },
     {
@@ -2242,7 +2242,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L25",
       "id": "game_settlement_rationale_25",
-      "community": 4,
+      "community": 5,
       "norm_label": "determine what killed the agent: death_zone, agent_kill, guardian_kill,     mons"
     },
     {
@@ -2251,7 +2251,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L72",
       "id": "game_settlement_rationale_72",
-      "community": 4,
+      "community": 5,
       "norm_label": "build a details dict with contextual information about the death."
     },
     {
@@ -2260,7 +2260,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L119",
       "id": "game_settlement_rationale_119",
-      "community": 4,
+      "community": 5,
       "norm_label": "extract numeric combat metrics from the game result + tracked stats."
     },
     {
@@ -2269,7 +2269,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L185",
       "id": "game_settlement_rationale_185",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate a resource-efficiency combatlesson from game metrics."
     },
     {
@@ -2278,7 +2278,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L233",
       "id": "game_settlement_rationale_233",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate a combat-performance combatlesson."
     },
     {
@@ -2287,7 +2287,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L286",
       "id": "game_settlement_rationale_286",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate the primary death-cause combatlesson."
     },
     {
@@ -2296,7 +2296,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L334",
       "id": "game_settlement_rationale_334",
-      "community": 4,
+      "community": 5,
       "norm_label": "sync opponent profiles from brain's _known_agents into memory.      for each age"
     },
     {
@@ -2305,7 +2305,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L414",
       "id": "game_settlement_rationale_414",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate adaptive strategyrules from lesson patterns observed in this game."
     },
     {
@@ -2314,7 +2314,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L511",
       "id": "game_settlement_rationale_511",
-      "community": 4,
+      "community": 5,
       "norm_label": "convert old string-based lessons to structured combatlesson format."
     },
     {
@@ -2323,7 +2323,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L570",
       "id": "game_settlement_rationale_570",
-      "community": 4,
+      "community": 5,
       "norm_label": "process game end with structured analysis pipeline:     1. extract final stats f"
     },
     {
@@ -2332,7 +2332,7 @@
       "source_file": "bot/game/settlement.py",
       "source_location": "L708",
       "id": "game_settlement_rationale_708",
-      "community": 4,
+      "community": 5,
       "norm_label": "analyze the game action log for patterns about what went wrong.      looks for:"
     },
     {
@@ -2341,7 +2341,7 @@
       "source_file": "bot/memory/__init__.py",
       "source_location": "L1",
       "id": "memory_init_py",
-      "community": 54,
+      "community": 45,
       "norm_label": "__init__.py"
     },
     {
@@ -2350,7 +2350,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L1",
       "id": "memory_agent_memory_py",
-      "community": 29,
+      "community": 21,
       "norm_label": "agent_memory.py"
     },
     {
@@ -2359,7 +2359,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L47",
       "id": "memory_agent_memory_opponentprofile",
-      "community": 28,
+      "community": 21,
       "norm_label": "opponentprofile"
     },
     {
@@ -2368,7 +2368,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L60",
       "id": "memory_agent_memory_opponentprofile_to_dict",
-      "community": 28,
+      "community": 21,
       "norm_label": ".to_dict()"
     },
     {
@@ -2386,7 +2386,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L79",
       "id": "memory_agent_memory_combatlesson",
-      "community": 4,
+      "community": 5,
       "norm_label": "combatlesson"
     },
     {
@@ -2395,7 +2395,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L91",
       "id": "memory_agent_memory_combatlesson_to_dict",
-      "community": 4,
+      "community": 5,
       "norm_label": ".to_dict()"
     },
     {
@@ -2404,7 +2404,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L109",
       "id": "memory_agent_memory_strategyrule",
-      "community": 29,
+      "community": 18,
       "norm_label": "strategyrule"
     },
     {
@@ -2413,7 +2413,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L121",
       "id": "memory_agent_memory_strategyrule_to_dict",
-      "community": 29,
+      "community": 18,
       "norm_label": ".to_dict()"
     },
     {
@@ -2422,7 +2422,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L143",
       "id": "memory_agent_memory_agentmemory",
-      "community": 13,
+      "community": 14,
       "norm_label": "agentmemory"
     },
     {
@@ -2431,7 +2431,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L152",
       "id": "memory_agent_memory_agentmemory_init",
-      "community": 13,
+      "community": 14,
       "norm_label": ".__init__()"
     },
     {
@@ -2449,7 +2449,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L183",
       "id": "memory_agent_memory_agentmemory_save",
-      "community": 27,
+      "community": 18,
       "norm_label": ".save()"
     },
     {
@@ -2458,7 +2458,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L196",
       "id": "memory_agent_memory_agentmemory_serialize_to_data",
-      "community": 27,
+      "community": 18,
       "norm_label": "._serialize_to_data()"
     },
     {
@@ -2476,7 +2476,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L237",
       "id": "memory_agent_memory_agentmemory_set_agent_name",
-      "community": 13,
+      "community": 14,
       "norm_label": ".set_agent_name()"
     },
     {
@@ -2485,7 +2485,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L240",
       "id": "memory_agent_memory_agentmemory_get_strategy",
-      "community": 13,
+      "community": 14,
       "norm_label": ".get_strategy()"
     },
     {
@@ -2494,7 +2494,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L243",
       "id": "memory_agent_memory_agentmemory_get_lessons",
-      "community": 13,
+      "community": 14,
       "norm_label": ".get_lessons()"
     },
     {
@@ -2503,7 +2503,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L248",
       "id": "memory_agent_memory_agentmemory_get_adaptive_thresholds",
-      "community": 13,
+      "community": 14,
       "norm_label": ".get_adaptive_thresholds()"
     },
     {
@@ -2512,7 +2512,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L293",
       "id": "memory_agent_memory_agentmemory_get_opponent_profile",
-      "community": 47,
+      "community": 40,
       "norm_label": ".get_opponent_profile()"
     },
     {
@@ -2521,7 +2521,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L297",
       "id": "memory_agent_memory_agentmemory_get_dangerous_opponents",
-      "community": 31,
+      "community": 25,
       "norm_label": ".get_dangerous_opponents()"
     },
     {
@@ -2530,7 +2530,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L307",
       "id": "memory_agent_memory_agentmemory_set_temp_game",
-      "community": 13,
+      "community": 14,
       "norm_label": ".set_temp_game()"
     },
     {
@@ -2539,7 +2539,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L315",
       "id": "memory_agent_memory_agentmemory_update_temp_note",
-      "community": 13,
+      "community": 14,
       "norm_label": ".update_temp_note()"
     },
     {
@@ -2548,7 +2548,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L321",
       "id": "memory_agent_memory_agentmemory_clear_temp",
-      "community": 13,
+      "community": 14,
       "norm_label": ".clear_temp()"
     },
     {
@@ -2557,7 +2557,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L326",
       "id": "memory_agent_memory_agentmemory_record_game_end",
-      "community": 13,
+      "community": 14,
       "norm_label": ".record_game_end()"
     },
     {
@@ -2566,7 +2566,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L339",
       "id": "memory_agent_memory_agentmemory_add_lesson",
-      "community": 44,
+      "community": 34,
       "norm_label": ".add_lesson()"
     },
     {
@@ -2575,7 +2575,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L349",
       "id": "memory_agent_memory_agentmemory_add_combat_lesson",
-      "community": 48,
+      "community": 38,
       "norm_label": ".add_combat_lesson()"
     },
     {
@@ -2584,7 +2584,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L355",
       "id": "memory_agent_memory_agentmemory_add_strategy_rule",
-      "community": 49,
+      "community": 39,
       "norm_label": ".add_strategy_rule()"
     },
     {
@@ -2593,7 +2593,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L371",
       "id": "memory_agent_memory_agentmemory_update_opponent_profile",
-      "community": 28,
+      "community": 21,
       "norm_label": ".update_opponent_profile()"
     },
     {
@@ -2602,7 +2602,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L387",
       "id": "memory_agent_memory_agentmemory_recompute_threat_ratings",
-      "community": 50,
+      "community": 41,
       "norm_label": ".recompute_threat_ratings()"
     },
     {
@@ -2611,7 +2611,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L402",
       "id": "memory_agent_memory_agentmemory_get_stats",
-      "community": 31,
+      "community": 25,
       "norm_label": ".get_stats()"
     },
     {
@@ -2620,7 +2620,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L1",
       "id": "memory_agent_memory_rationale_1",
-      "community": 29,
+      "community": 21,
       "norm_label": "agent memory \u2014 persistent cross-game learning via molty-royale-context.json. two"
     },
     {
@@ -2629,7 +2629,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L48",
       "id": "memory_agent_memory_rationale_48",
-      "community": 28,
+      "community": 21,
       "norm_label": "cross-game tracking of a specific opponent agent."
     },
     {
@@ -2638,7 +2638,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L80",
       "id": "memory_agent_memory_rationale_80",
-      "community": 4,
+      "community": 5,
       "norm_label": "structured lesson extracted from game outcome analysis."
     },
     {
@@ -2647,7 +2647,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L110",
       "id": "memory_agent_memory_rationale_110",
-      "community": 29,
+      "community": 18,
       "norm_label": "adaptive rule that modifies decision thresholds based on learned experience."
     },
     {
@@ -2656,7 +2656,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L144",
       "id": "memory_agent_memory_rationale_144",
-      "community": 13,
+      "community": 14,
       "norm_label": "read/write molty-royale-context.json with overall + temp sections.      new stru"
     },
     {
@@ -2674,7 +2674,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L184",
       "id": "memory_agent_memory_rationale_184",
-      "community": 27,
+      "community": 18,
       "norm_label": "persist memory to disk, including structured learning data."
     },
     {
@@ -2683,7 +2683,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L197",
       "id": "memory_agent_memory_rationale_197",
-      "community": 27,
+      "community": 18,
       "norm_label": "write structured fields into self.data for json persistence."
     },
     {
@@ -2701,7 +2701,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L249",
       "id": "memory_agent_memory_rationale_249",
-      "community": 13,
+      "community": 14,
       "norm_label": "return learned threshold values for brain.py decisions.          returns dict wi"
     },
     {
@@ -2710,7 +2710,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L294",
       "id": "memory_agent_memory_rationale_294",
-      "community": 47,
+      "community": 40,
       "norm_label": "get cross-game profile for a specific opponent."
     },
     {
@@ -2719,7 +2719,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L298",
       "id": "memory_agent_memory_rationale_298",
-      "community": 31,
+      "community": 25,
       "norm_label": "return opponents with threat_rating above threshold, sorted."
     },
     {
@@ -2728,7 +2728,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L340",
       "id": "memory_agent_memory_rationale_340",
-      "community": 44,
+      "community": 34,
       "norm_label": "append a new lesson, keeping max_lessons most recent."
     },
     {
@@ -2737,7 +2737,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L350",
       "id": "memory_agent_memory_rationale_350",
-      "community": 48,
+      "community": 38,
       "norm_label": "add a structured combat lesson, capping at 50."
     },
     {
@@ -2746,7 +2746,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L356",
       "id": "memory_agent_memory_rationale_356",
-      "community": 49,
+      "community": 39,
       "norm_label": "add or update a strategy rule. deduplicates by rule_type + condition."
     },
     {
@@ -2755,7 +2755,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L372",
       "id": "memory_agent_memory_rationale_372",
-      "community": 28,
+      "community": 21,
       "norm_label": "update or create an opponent profile with new data."
     },
     {
@@ -2764,7 +2764,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L388",
       "id": "memory_agent_memory_rationale_388",
-      "community": 50,
+      "community": 41,
       "norm_label": "recalculate threat_rating for all opponents based on stats."
     },
     {
@@ -2773,7 +2773,7 @@
       "source_file": "bot/memory/agent_memory.py",
       "source_location": "L403",
       "id": "memory_agent_memory_rationale_403",
-      "community": 31,
+      "community": 25,
       "norm_label": "return memory statistics for dashboard display."
     },
     {
@@ -2782,7 +2782,7 @@
       "source_file": "bot/setup/__init__.py",
       "source_location": "L1",
       "id": "setup_init_py",
-      "community": 55,
+      "community": 46,
       "norm_label": "__init__.py"
     },
     {
@@ -2899,7 +2899,7 @@
       "source_file": "bot/setup/identity.py",
       "source_location": "L1",
       "id": "setup_identity_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "identity.py"
     },
     {
@@ -2917,7 +2917,7 @@
       "source_file": "bot/setup/identity.py",
       "source_location": "L1",
       "id": "setup_identity_rationale_1",
-      "community": 15,
+      "community": 3,
       "norm_label": "erc-8004 identity registration \u2014 on-chain register() + post /api/identity. never"
     },
     {
@@ -2989,7 +2989,7 @@
       "source_file": "bot/setup/whitelist.py",
       "source_location": "L1",
       "id": "setup_whitelist_py",
-      "community": 26,
+      "community": 3,
       "norm_label": "whitelist.py"
     },
     {
@@ -2998,7 +2998,7 @@
       "source_file": "bot/setup/whitelist.py",
       "source_location": "L17",
       "id": "setup_whitelist_ensure_whitelist",
-      "community": 26,
+      "community": 8,
       "norm_label": "ensure_whitelist()"
     },
     {
@@ -3007,7 +3007,7 @@
       "source_file": "bot/setup/whitelist.py",
       "source_location": "L1",
       "id": "setup_whitelist_rationale_1",
-      "community": 26,
+      "community": 3,
       "norm_label": "whitelist request + auto-approval (advanced mode). post /whitelist/request \u2192 on-"
     },
     {
@@ -3016,7 +3016,7 @@
       "source_file": "bot/setup/whitelist.py",
       "source_location": "L18",
       "id": "setup_whitelist_rationale_18",
-      "community": 26,
+      "community": 8,
       "norm_label": "request whitelist + auto-approve if advanced mode.     returns true if whitelist"
     },
     {
@@ -3025,7 +3025,7 @@
       "source_file": "bot/strategy/__init__.py",
       "source_location": "L1",
       "id": "strategy_init_py",
-      "community": 56,
+      "community": 47,
       "norm_label": "__init__.py"
     },
     {
@@ -3034,7 +3034,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1",
       "id": "strategy_brain_py",
-      "community": 20,
+      "community": 16,
       "norm_label": "brain.py"
     },
     {
@@ -3043,7 +3043,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L97",
       "id": "strategy_brain_calc_damage",
-      "community": 16,
+      "community": 35,
       "norm_label": "calc_damage()"
     },
     {
@@ -3052,7 +3052,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L109",
       "id": "strategy_brain_get_weapon_bonus",
-      "community": 22,
+      "community": 23,
       "norm_label": "get_weapon_bonus()"
     },
     {
@@ -3061,7 +3061,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L117",
       "id": "strategy_brain_get_weapon_range",
-      "community": 16,
+      "community": 36,
       "norm_label": "get_weapon_range()"
     },
     {
@@ -3070,7 +3070,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L130",
       "id": "strategy_brain_resolve_region",
-      "community": 20,
+      "community": 15,
       "norm_label": "_resolve_region()"
     },
     {
@@ -3079,7 +3079,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L146",
       "id": "strategy_brain_get_region_id",
-      "community": 20,
+      "community": 16,
       "norm_label": "_get_region_id()"
     },
     {
@@ -3097,7 +3097,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L163",
       "id": "strategy_brain_decide_action",
-      "community": 16,
+      "community": 15,
       "norm_label": "decide_action()"
     },
     {
@@ -3106,7 +3106,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L658",
       "id": "strategy_brain_get_move_ep_cost",
-      "community": 41,
+      "community": 29,
       "norm_label": "_get_move_ep_cost()"
     },
     {
@@ -3115,7 +3115,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L669",
       "id": "strategy_brain_estimate_enemy_weapon_bonus",
-      "community": 33,
+      "community": 26,
       "norm_label": "_estimate_enemy_weapon_bonus()"
     },
     {
@@ -3142,7 +3142,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L792",
       "id": "strategy_brain_check_equip",
-      "community": 22,
+      "community": 23,
       "norm_label": "_check_equip()"
     },
     {
@@ -3151,7 +3151,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L815",
       "id": "strategy_brain_find_safe_region",
-      "community": 40,
+      "community": 16,
       "norm_label": "_find_safe_region()"
     },
     {
@@ -3160,7 +3160,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L861",
       "id": "strategy_brain_find_healing_item",
-      "community": 34,
+      "community": 32,
       "norm_label": "_find_healing_item()"
     },
     {
@@ -3169,7 +3169,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L888",
       "id": "strategy_brain_find_energy_drink",
-      "community": 36,
+      "community": 28,
       "norm_label": "_find_energy_drink()"
     },
     {
@@ -3178,7 +3178,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L896",
       "id": "strategy_brain_select_weakest",
-      "community": 39,
+      "community": 30,
       "norm_label": "_select_weakest()"
     },
     {
@@ -3187,7 +3187,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L901",
       "id": "strategy_brain_is_in_range",
-      "community": 38,
+      "community": 31,
       "norm_label": "_is_in_range()"
     },
     {
@@ -3196,7 +3196,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L931",
       "id": "strategy_brain_select_facility",
-      "community": 32,
+      "community": 15,
       "norm_label": "_select_facility()"
     },
     {
@@ -3205,7 +3205,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L953",
       "id": "strategy_brain_track_agents",
-      "community": 37,
+      "community": 33,
       "norm_label": "_track_agents()"
     },
     {
@@ -3214,7 +3214,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1018",
       "id": "strategy_brain_use_utility_item",
-      "community": 23,
+      "community": 22,
       "norm_label": "_use_utility_item()"
     },
     {
@@ -3223,7 +3223,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1040",
       "id": "strategy_brain_learn_from_map",
-      "community": 23,
+      "community": 22,
       "norm_label": "learn_from_map()"
     },
     {
@@ -3232,7 +3232,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1088",
       "id": "strategy_brain_choose_move_target",
-      "community": 35,
+      "community": 27,
       "norm_label": "_choose_move_target()"
     },
     {
@@ -3241,7 +3241,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1",
       "id": "strategy_brain_rationale_1",
-      "community": 20,
+      "community": 16,
       "norm_label": "strategy brain \u2014 main decision engine with priority-based action selection. impl"
     },
     {
@@ -3250,7 +3250,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L100",
       "id": "strategy_brain_rationale_100",
-      "community": 16,
+      "community": 35,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:"
     },
     {
@@ -3259,7 +3259,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L110",
       "id": "strategy_brain_rationale_110",
-      "community": 22,
+      "community": 23,
       "norm_label": "get atk bonus from equipped weapon."
     },
     {
@@ -3268,7 +3268,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L118",
       "id": "strategy_brain_rationale_118",
-      "community": 16,
+      "community": 36,
       "norm_label": "get range from equipped weapon."
     },
     {
@@ -3277,7 +3277,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L131",
       "id": "strategy_brain_rationale_131",
-      "community": 20,
+      "community": 15,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotchas"
     },
     {
@@ -3286,7 +3286,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L147",
       "id": "strategy_brain_rationale_147",
-      "community": 20,
+      "community": 16,
       "norm_label": "extract region id from either a string or dict entry."
     },
     {
@@ -3304,7 +3304,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L166",
       "id": "strategy_brain_rationale_166",
-      "community": 16,
+      "community": 15,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain pe"
     },
     {
@@ -3313,7 +3313,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L659",
       "id": "strategy_brain_rationale_659",
-      "community": 41,
+      "community": 29,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terrai"
     },
     {
@@ -3322,7 +3322,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L670",
       "id": "strategy_brain_rationale_670",
-      "community": 33,
+      "community": 26,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon."
     },
     {
@@ -3349,7 +3349,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L793",
       "id": "strategy_brain_rationale_793",
-      "community": 22,
+      "community": 23,
       "norm_label": "auto-equip best weapon from inventory."
     },
     {
@@ -3358,7 +3358,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L816",
       "id": "strategy_brain_rationale_816",
-      "community": 40,
+      "community": 16,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     pe"
     },
     {
@@ -3367,7 +3367,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L862",
       "id": "strategy_brain_rationale_862",
-      "community": 34,
+      "community": 32,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer banda"
     },
     {
@@ -3376,7 +3376,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L889",
       "id": "strategy_brain_rationale_889",
-      "community": 36,
+      "community": 28,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md)."
     },
     {
@@ -3385,7 +3385,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L897",
       "id": "strategy_brain_rationale_897",
-      "community": 39,
+      "community": 30,
       "norm_label": "select target with lowest hp."
     },
     {
@@ -3394,7 +3394,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L904",
       "id": "strategy_brain_rationale_904",
-      "community": 38,
+      "community": 31,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same region"
     },
     {
@@ -3403,7 +3403,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L932",
       "id": "strategy_brain_rationale_932",
-      "community": 32,
+      "community": 15,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: suppl"
     },
     {
@@ -3412,7 +3412,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L956",
       "id": "strategy_brain_rationale_956",
-      "community": 37,
+      "community": 33,
       "norm_label": "track observed agents for threat assessment (agent-memory.md temp.knownagents)."
     },
     {
@@ -3421,7 +3421,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1021",
       "id": "strategy_brain_rationale_1021",
-      "community": 23,
+      "community": 22,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigge"
     },
     {
@@ -3430,7 +3430,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1041",
       "id": "strategy_brain_rationale_1041",
-      "community": 23,
+      "community": 22,
       "norm_label": "called after map is used \u2014 learn entire map layout.     track all death zones, p"
     },
     {
@@ -3439,7 +3439,7 @@
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1095",
       "id": "strategy_brain_rationale_1095",
-      "community": 35,
+      "community": 27,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pen"
     },
     {
@@ -3448,7 +3448,7 @@
       "source_file": "bot/utils/__init__.py",
       "source_location": "L1",
       "id": "utils_init_py",
-      "community": 57,
+      "community": 48,
       "norm_label": "__init__.py"
     },
     {
@@ -3457,7 +3457,7 @@
       "source_file": "bot/utils/logger.py",
       "source_location": "L1",
       "id": "utils_logger_py",
-      "community": 10,
+      "community": 12,
       "norm_label": "logger.py"
     },
     {
@@ -3466,7 +3466,7 @@
       "source_file": "bot/utils/logger.py",
       "source_location": "L7",
       "id": "utils_logger_get_logger",
-      "community": 10,
+      "community": 12,
       "norm_label": "get_logger()"
     },
     {
@@ -3475,7 +3475,7 @@
       "source_file": "bot/utils/logger.py",
       "source_location": "L1",
       "id": "utils_logger_rationale_1",
-      "community": 10,
+      "community": 12,
       "norm_label": "structured logging for the bot."
     },
     {
@@ -3484,7 +3484,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L1",
       "id": "utils_railway_sync_py",
-      "community": 9,
+      "community": 11,
       "norm_label": "railway_sync.py"
     },
     {
@@ -3493,7 +3493,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L22",
       "id": "utils_railway_sync_is_railway",
-      "community": 9,
+      "community": 11,
       "norm_label": "is_railway()"
     },
     {
@@ -3502,7 +3502,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L27",
       "id": "utils_railway_sync_is_setup_complete",
-      "community": 9,
+      "community": 11,
       "norm_label": "is_setup_complete()"
     },
     {
@@ -3511,7 +3511,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L32",
       "id": "utils_railway_sync_get_railway_config",
-      "community": 9,
+      "community": 11,
       "norm_label": "_get_railway_config()"
     },
     {
@@ -3520,7 +3520,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L56",
       "id": "utils_railway_sync_collection_upsert",
-      "community": 9,
+      "community": 11,
       "norm_label": "_collection_upsert()"
     },
     {
@@ -3529,7 +3529,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L107",
       "id": "utils_railway_sync_sync_all_to_railway",
-      "community": 9,
+      "community": 11,
       "norm_label": "sync_all_to_railway()"
     },
     {
@@ -3538,7 +3538,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L173",
       "id": "utils_railway_sync_sync_memory_to_railway",
-      "community": 9,
+      "community": 11,
       "norm_label": "sync_memory_to_railway()"
     },
     {
@@ -3547,7 +3547,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L215",
       "id": "utils_railway_sync_restore_memory_from_railway",
-      "community": 9,
+      "community": 11,
       "norm_label": "restore_memory_from_railway()"
     },
     {
@@ -3556,7 +3556,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L1",
       "id": "utils_railway_sync_rationale_1",
-      "community": 9,
+      "community": 11,
       "norm_label": "railway variables auto-sync. after account creation, saves api_key + private key"
     },
     {
@@ -3565,7 +3565,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L23",
       "id": "utils_railway_sync_rationale_23",
-      "community": 9,
+      "community": 11,
       "norm_label": "check if running on railway."
     },
     {
@@ -3574,7 +3574,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L28",
       "id": "utils_railway_sync_rationale_28",
-      "community": 9,
+      "community": 11,
       "norm_label": "check if first-run sync was already done (prevents redeploy loop)."
     },
     {
@@ -3583,7 +3583,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L33",
       "id": "utils_railway_sync_rationale_33",
-      "community": 9,
+      "community": 11,
       "norm_label": "get railway config from env vars. returns none if not on railway or missing toke"
     },
     {
@@ -3592,7 +3592,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L57",
       "id": "utils_railway_sync_rationale_57",
-      "community": 9,
+      "community": 11,
       "norm_label": "save all variables in one api call using variablecollectionupsert.     this trig"
     },
     {
@@ -3601,7 +3601,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L108",
       "id": "utils_railway_sync_rationale_108",
-      "community": 9,
+      "community": 11,
       "norm_label": "one-time sync of all variables to railway after first-run.     combines config +"
     },
     {
@@ -3610,7 +3610,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L174",
       "id": "utils_railway_sync_rationale_174",
-      "community": 9,
+      "community": 11,
       "norm_label": "sync memory learning data to railway variable.      saves only essential fields"
     },
     {
@@ -3619,7 +3619,7 @@
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L216",
       "id": "utils_railway_sync_rationale_216",
-      "community": 9,
+      "community": 11,
       "norm_label": "try to restore memory data from railway variable after restart."
     },
     {
@@ -3628,7 +3628,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L1",
       "id": "utils_rate_limiter_py",
-      "community": 21,
+      "community": 20,
       "norm_label": "rate_limiter.py"
     },
     {
@@ -3637,7 +3637,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L9",
       "id": "utils_rate_limiter_ratelimiter",
-      "community": 21,
+      "community": 20,
       "norm_label": "ratelimiter"
     },
     {
@@ -3646,7 +3646,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L12",
       "id": "utils_rate_limiter_ratelimiter_init",
-      "community": 21,
+      "community": 20,
       "norm_label": ".__init__()"
     },
     {
@@ -3655,7 +3655,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L19",
       "id": "utils_rate_limiter_ratelimiter_refill",
-      "community": 21,
+      "community": 20,
       "norm_label": "._refill()"
     },
     {
@@ -3664,7 +3664,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L26",
       "id": "utils_rate_limiter_ratelimiter_acquire",
-      "community": 21,
+      "community": 20,
       "norm_label": ".acquire()"
     },
     {
@@ -3673,7 +3673,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L1",
       "id": "utils_rate_limiter_rationale_1",
-      "community": 21,
+      "community": 20,
       "norm_label": "token-bucket rate limiter for rest (300/min) and websocket (120/min). non-blocki"
     },
     {
@@ -3682,7 +3682,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L10",
       "id": "utils_rate_limiter_rationale_10",
-      "community": 21,
+      "community": 20,
       "norm_label": "async token-bucket rate limiter."
     },
     {
@@ -3691,7 +3691,7 @@
       "source_file": "bot/utils/rate_limiter.py",
       "source_location": "L27",
       "id": "utils_rate_limiter_rationale_27",
-      "community": 21,
+      "community": 20,
       "norm_label": "wait until tokens are available. non-blocking via asyncio.sleep."
     },
     {
@@ -3700,7 +3700,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L1",
       "id": "utils_version_check_py",
-      "community": 25,
+      "community": 3,
       "norm_label": "version_check.py"
     },
     {
@@ -3709,7 +3709,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L12",
       "id": "utils_version_check_check_version",
-      "community": 25,
+      "community": 3,
       "norm_label": "check_version()"
     },
     {
@@ -3718,7 +3718,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L27",
       "id": "utils_version_check_get_version_header",
-      "community": 25,
+      "community": 3,
       "norm_label": "get_version_header()"
     },
     {
@@ -3727,7 +3727,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L1",
       "id": "utils_version_check_rationale_1",
-      "community": 25,
+      "community": 3,
       "norm_label": "version check \u2014 get /api/version and x-version header management. returns 426 ve"
     },
     {
@@ -3736,7 +3736,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L13",
       "id": "utils_version_check_rationale_13",
-      "community": 25,
+      "community": 3,
       "norm_label": "fetch current server version. returns version string."
     },
     {
@@ -3745,7 +3745,7 @@
       "source_file": "bot/utils/version_check.py",
       "source_location": "L28",
       "id": "utils_version_check_rationale_28",
-      "community": 25,
+      "community": 3,
       "norm_label": "return x-version header dict."
     },
     {
@@ -3754,7 +3754,7 @@
       "source_file": "bot/web3/__init__.py",
       "source_location": "L1",
       "id": "web3_init_py",
-      "community": 58,
+      "community": 49,
       "norm_label": "__init__.py"
     },
     {
@@ -3763,7 +3763,7 @@
       "source_file": "bot/web3/contracts.py",
       "source_location": "L1",
       "id": "web3_contracts_py",
-      "community": 51,
+      "community": 42,
       "norm_label": "contracts.py"
     },
     {
@@ -3772,7 +3772,7 @@
       "source_file": "bot/web3/contracts.py",
       "source_location": "L1",
       "id": "web3_contracts_rationale_1",
-      "community": 51,
+      "community": 42,
       "norm_label": "contract abis and helpers for on-chain interactions. all addresses from contract"
     },
     {
@@ -3781,7 +3781,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L1",
       "id": "web3_eip712_signer_py",
-      "community": 42,
+      "community": 3,
       "norm_label": "eip712_signer.py"
     },
     {
@@ -3790,7 +3790,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L12",
       "id": "web3_eip712_signer_sign_join_paid",
-      "community": 42,
+      "community": 3,
       "norm_label": "sign_join_paid()"
     },
     {
@@ -3799,7 +3799,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L1",
       "id": "web3_eip712_signer_rationale_1",
-      "community": 42,
+      "community": 3,
       "norm_label": "eip-712 typed data signing for paid room join. signs jointournament typed data w"
     },
     {
@@ -3808,7 +3808,7 @@
       "source_file": "bot/web3/eip712_signer.py",
       "source_location": "L13",
       "id": "web3_eip712_signer_rationale_13",
-      "community": 42,
+      "community": 3,
       "norm_label": "sign eip-712 typed data for paid room join.     eip712_data comes from get /game"
     },
     {
@@ -3817,7 +3817,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L1",
       "id": "web3_gas_checker_py",
-      "community": 17,
+      "community": 8,
       "norm_label": "gas_checker.py"
     },
     {
@@ -3826,7 +3826,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L16",
       "id": "web3_gas_checker_check_cross_balance",
-      "community": 17,
+      "community": 8,
       "norm_label": "check_cross_balance()"
     },
     {
@@ -3835,7 +3835,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L31",
       "id": "web3_gas_checker_require_gas_or_wait",
-      "community": 17,
+      "community": 8,
       "norm_label": "require_gas_or_wait()"
     },
     {
@@ -3844,7 +3844,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L59",
       "id": "web3_gas_checker_require_gas_or_wait_async",
-      "community": 17,
+      "community": 8,
       "norm_label": "require_gas_or_wait_async()"
     },
     {
@@ -3853,7 +3853,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L1",
       "id": "web3_gas_checker_rationale_1",
-      "community": 17,
+      "community": 8,
       "norm_label": "gas fee checker \u2014 check cross balance before any on-chain transaction. if insuff"
     },
     {
@@ -3862,7 +3862,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L17",
       "id": "web3_gas_checker_rationale_17",
-      "community": 17,
+      "community": 8,
       "norm_label": "check if address has enough cross for gas.     returns (has_enough, balance_wei)"
     },
     {
@@ -3871,7 +3871,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L32",
       "id": "web3_gas_checker_rationale_32",
-      "community": 17,
+      "community": 8,
       "norm_label": "check gas balance synchronously. if insufficient, log instructions and return fa"
     },
     {
@@ -3880,7 +3880,7 @@
       "source_file": "bot/web3/gas_checker.py",
       "source_location": "L61",
       "id": "web3_gas_checker_rationale_61",
-      "community": 17,
+      "community": 8,
       "norm_label": "check gas balance. if insufficient, wait and retry every 2 minutes     until gas"
     },
     {
@@ -3889,7 +3889,7 @@
       "source_file": "bot/web3/identity_contract.py",
       "source_location": "L1",
       "id": "web3_identity_contract_py",
-      "community": 30,
+      "community": 8,
       "norm_label": "identity_contract.py"
     },
     {
@@ -3898,7 +3898,7 @@
       "source_file": "bot/web3/identity_contract.py",
       "source_location": "L20",
       "id": "web3_identity_contract_register_identity_onchain",
-      "community": 30,
+      "community": 8,
       "norm_label": "register_identity_onchain()"
     },
     {
@@ -3907,7 +3907,7 @@
       "source_file": "bot/web3/identity_contract.py",
       "source_location": "L1",
       "id": "web3_identity_contract_rationale_1",
-      "community": 30,
+      "community": 8,
       "norm_label": "erc-8004 identity registry on-chain calls. register() from owner eoa \u2192 returns t"
     },
     {
@@ -3916,7 +3916,7 @@
       "source_file": "bot/web3/identity_contract.py",
       "source_location": "L21",
       "id": "web3_identity_contract_rationale_21",
-      "community": 30,
+      "community": 8,
       "norm_label": "call register() on erc-8004 identity registry from owner eoa.     returns tokeni"
     },
     {
@@ -3925,7 +3925,7 @@
       "source_file": "bot/web3/provider.py",
       "source_location": "L1",
       "id": "web3_provider_py",
-      "community": 14,
+      "community": 8,
       "norm_label": "provider.py"
     },
     {
@@ -3934,7 +3934,7 @@
       "source_file": "bot/web3/provider.py",
       "source_location": "L13",
       "id": "web3_provider_get_w3",
-      "community": 14,
+      "community": 8,
       "norm_label": "get_w3()"
     },
     {
@@ -3943,7 +3943,7 @@
       "source_file": "bot/web3/provider.py",
       "source_location": "L1",
       "id": "web3_provider_rationale_1",
-      "community": 14,
+      "community": 8,
       "norm_label": "shared web3 provider for cross network (poa chain). all on-chain calls should us"
     },
     {
@@ -3952,7 +3952,7 @@
       "source_file": "bot/web3/provider.py",
       "source_location": "L14",
       "id": "web3_provider_rationale_14",
-      "community": 14,
+      "community": 8,
       "norm_label": "get web3 instance with poa middleware for cross network."
     },
     {
@@ -4033,7 +4033,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L1",
       "id": "web3_whitelist_contract_py",
-      "community": 14,
+      "community": 8,
       "norm_label": "whitelist_contract.py"
     },
     {
@@ -4042,7 +4042,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L18",
       "id": "web3_whitelist_contract_get_molty_wallet_address",
-      "community": 14,
+      "community": 8,
       "norm_label": "get_molty_wallet_address()"
     },
     {
@@ -4051,7 +4051,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L42",
       "id": "web3_whitelist_contract_verify_whitelist",
-      "community": 14,
+      "community": 8,
       "norm_label": "verify_whitelist()"
     },
     {
@@ -4060,7 +4060,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L64",
       "id": "web3_whitelist_contract_approve_whitelist_onchain",
-      "community": 14,
+      "community": 8,
       "norm_label": "approve_whitelist_onchain()"
     },
     {
@@ -4069,7 +4069,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L1",
       "id": "web3_whitelist_contract_rationale_1",
-      "community": 14,
+      "community": 8,
       "norm_label": "walletfactory + moltyroyalewallet on-chain calls for whitelist approval. checks"
     },
     {
@@ -4078,7 +4078,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L19",
       "id": "web3_whitelist_contract_rationale_19",
-      "community": 14,
+      "community": 8,
       "norm_label": "resolve moltyroyalewallet address from walletfactory.getwallets(). returns none"
     },
     {
@@ -4087,7 +4087,7 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L43",
       "id": "web3_whitelist_contract_rationale_43",
-      "community": 14,
+      "community": 8,
       "norm_label": "verify agent eoa appears in current whitelist on-chain."
     },
     {
@@ -4096,8 +4096,44 @@
       "source_file": "bot/web3/whitelist_contract.py",
       "source_location": "L69",
       "id": "web3_whitelist_contract_rationale_69",
-      "community": 14,
+      "community": 8,
       "norm_label": "auto-approve whitelist on-chain (advanced mode).     1. check if already whiteli"
+    },
+    {
+      "label": "Setup pipeline: wallet \u2192 whitelist \u2192 identity. Respects config flags.",
+      "file_type": "rationale",
+      "source_file": "bot/heartbeat.py",
+      "source_location": "L252",
+      "community": 0,
+      "norm_label": "setup pipeline: wallet \u2192 whitelist \u2192 identity. respects config flags.",
+      "id": "bot_heartbeat_rationale_252"
+    },
+    {
+      "label": "Join a game based on room selection.",
+      "file_type": "rationale",
+      "source_file": "bot/heartbeat.py",
+      "source_location": "L306",
+      "community": 0,
+      "norm_label": "join a game based on room selection.",
+      "id": "bot_heartbeat_rationale_306"
+    },
+    {
+      "label": "Resume or start playing an active game.         Per game-loop.md: always connect",
+      "file_type": "rationale",
+      "source_file": "bot/heartbeat.py",
+      "source_location": "L330",
+      "community": 0,
+      "norm_label": "resume or start playing an active game.         per game-loop.md: always connect",
+      "id": "bot_heartbeat_rationale_330"
+    },
+    {
+      "label": "Run the WebSocket gameplay engine.",
+      "file_type": "rationale",
+      "source_file": "bot/heartbeat.py",
+      "source_location": "L347",
+      "community": 0,
+      "norm_label": "run the websocket gameplay engine.",
+      "id": "bot_heartbeat_rationale_347"
     },
     {
       "label": "Single heartbeat cycle: check state \u2192 route \u2192 act.",
@@ -4149,7 +4185,7 @@
       "file_type": "rationale",
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L22",
-      "community": 9,
+      "community": 11,
       "norm_label": "check if running on railway.",
       "id": "utils_railway_sync_rationale_22"
     },
@@ -4158,7 +4194,7 @@
       "file_type": "rationale",
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L27",
-      "community": 9,
+      "community": 11,
       "norm_label": "check if first-run sync was already done (prevents redeploy loop).",
       "id": "utils_railway_sync_rationale_27"
     },
@@ -4167,7 +4203,7 @@
       "file_type": "rationale",
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L32",
-      "community": 9,
+      "community": 11,
       "norm_label": "get railway config from env vars. returns none if not on railway or missing toke",
       "id": "utils_railway_sync_rationale_32"
     },
@@ -4176,7 +4212,7 @@
       "file_type": "rationale",
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L56",
-      "community": 9,
+      "community": 11,
       "norm_label": "save all variables in one api call using variablecollectionupsert.     this trig",
       "id": "utils_railway_sync_rationale_56"
     },
@@ -4185,7 +4221,7 @@
       "file_type": "rationale",
       "source_file": "bot/utils/railway_sync.py",
       "source_location": "L107",
-      "community": 9,
+      "community": 11,
       "norm_label": "one-time sync of all variables to railway after first-run.     combines config +",
       "id": "utils_railway_sync_rationale_107"
     },
@@ -4248,7 +4284,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L639",
-      "community": 41,
+      "community": 29,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terrai",
       "id": "strategy_brain_rationale_639"
     },
@@ -4257,7 +4293,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L650",
-      "community": 33,
+      "community": 26,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon.",
       "id": "strategy_brain_rationale_650"
     },
@@ -4284,7 +4320,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L773",
-      "community": 22,
+      "community": 23,
       "norm_label": "auto-equip best weapon from inventory.",
       "id": "strategy_brain_rationale_773"
     },
@@ -4293,7 +4329,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L796",
-      "community": 40,
+      "community": 16,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     pe",
       "id": "strategy_brain_rationale_796"
     },
@@ -4302,7 +4338,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L842",
-      "community": 34,
+      "community": 32,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer banda",
       "id": "strategy_brain_rationale_842"
     },
@@ -4311,7 +4347,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L869",
-      "community": 36,
+      "community": 28,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md).",
       "id": "strategy_brain_rationale_869"
     },
@@ -4320,7 +4356,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L877",
-      "community": 39,
+      "community": 30,
       "norm_label": "select target with lowest hp.",
       "id": "strategy_brain_rationale_877"
     },
@@ -4329,7 +4365,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L884",
-      "community": 38,
+      "community": 31,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same region",
       "id": "strategy_brain_rationale_884"
     },
@@ -4338,7 +4374,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L912",
-      "community": 32,
+      "community": 15,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: suppl",
       "id": "strategy_brain_rationale_912"
     },
@@ -4347,7 +4383,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L936",
-      "community": 37,
+      "community": 33,
       "norm_label": "track observed agents for threat assessment (agent-memory.md temp.knownagents).",
       "id": "strategy_brain_rationale_936"
     },
@@ -4356,7 +4392,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1001",
-      "community": 23,
+      "community": 22,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigge",
       "id": "strategy_brain_rationale_1001"
     },
@@ -4365,7 +4401,7 @@
       "file_type": "rationale",
       "source_file": "bot/strategy/brain.py",
       "source_location": "L1075",
-      "community": 35,
+      "community": 27,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pen",
       "id": "strategy_brain_rationale_1075"
     },
@@ -4374,7 +4410,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L69",
-      "community": 4,
+      "community": 5,
       "norm_label": "build a details dict with contextual information about the death.",
       "id": "game_settlement_rationale_69"
     },
@@ -4383,7 +4419,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L111",
-      "community": 4,
+      "community": 5,
       "norm_label": "extract numeric combat metrics from the game result.",
       "id": "game_settlement_rationale_111"
     },
@@ -4392,7 +4428,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L170",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate a resource-efficiency combatlesson from game metrics.",
       "id": "game_settlement_rationale_170"
     },
@@ -4401,7 +4437,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L218",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate a combat-performance combatlesson.",
       "id": "game_settlement_rationale_218"
     },
@@ -4410,7 +4446,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L270",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate the primary death-cause combatlesson.",
       "id": "game_settlement_rationale_270"
     },
@@ -4419,7 +4455,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L318",
-      "community": 4,
+      "community": 5,
       "norm_label": "sync opponent profiles from brain's _known_agents into memory.      for each age",
       "id": "game_settlement_rationale_318"
     },
@@ -4428,7 +4464,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L385",
-      "community": 4,
+      "community": 5,
       "norm_label": "generate adaptive strategyrules from lesson patterns observed in this game.",
       "id": "game_settlement_rationale_385"
     },
@@ -4437,7 +4473,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L482",
-      "community": 4,
+      "community": 5,
       "norm_label": "convert old string-based lessons to structured combatlesson format.",
       "id": "game_settlement_rationale_482"
     },
@@ -4446,7 +4482,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L541",
-      "community": 4,
+      "community": 5,
       "norm_label": "process game end with structured analysis pipeline:     1. extract final stats f",
       "id": "game_settlement_rationale_541"
     },
@@ -4455,7 +4491,7 @@
       "file_type": "rationale",
       "source_file": "bot/game/settlement.py",
       "source_location": "L658",
-      "community": 4,
+      "community": 5,
       "norm_label": "analyze the game's action log for patterns about what went wrong.      looks for",
       "id": "game_settlement_rationale_658"
     },
@@ -4545,7 +4581,7 @@
       "file_type": "rationale",
       "source_file": "bot/dashboard/state.py",
       "source_location": "L103",
-      "community": 11,
+      "community": 13,
       "norm_label": "update learning data from agentmemory.",
       "id": "dashboard_state_rationale_103"
     },
@@ -4554,7 +4590,7 @@
       "file_type": "rationale",
       "source_file": "bot/dashboard/state.py",
       "source_location": "L120",
-      "community": 11,
+      "community": 13,
       "norm_label": "full state snapshot for dashboard api.",
       "id": "dashboard_state_rationale_120"
     },
@@ -4563,7 +4599,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L184",
-      "community": 10,
+      "community": 12,
       "norm_label": "warn if multiple agents share the same sc wallet.",
       "id": "bot_config_rationale_184"
     },
@@ -4572,7 +4608,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L200",
-      "community": 10,
+      "community": 12,
       "norm_label": "select only 1 agent per sc wallet (molty_royale_wallet).     if multiple agents",
       "id": "bot_config_rationale_200"
     },
@@ -4617,7 +4653,7 @@
       "file_type": "rationale",
       "source_file": "bot/setup/whitelist.py",
       "source_location": "L17",
-      "community": 26,
+      "community": 8,
       "norm_label": "request whitelist + auto-approve if advanced mode.     returns true if whitelist",
       "id": "setup_whitelist_rationale_17"
     },
@@ -4626,7 +4662,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L83",
-      "community": 10,
+      "community": 12,
       "norm_label": "load agent configs from agents_json env var, fallback to credentials.json.     f",
       "id": "bot_config_rationale_83"
     },
@@ -4635,7 +4671,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L124",
-      "community": 10,
+      "community": 12,
       "norm_label": "filter agents by agent_names env var (comma-separated list of agent names).",
       "id": "bot_config_rationale_124"
     },
@@ -4644,7 +4680,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L160",
-      "community": 10,
+      "community": 12,
       "norm_label": "warn if multiple agents share the same sc wallet.",
       "id": "bot_config_rationale_160"
     },
@@ -4653,7 +4689,7 @@
       "file_type": "rationale",
       "source_file": "bot/config.py",
       "source_location": "L173",
-      "community": 10,
+      "community": 12,
       "norm_label": "select only 1 agent per sc wallet (molty_royale_wallet).     if multiple agents",
       "id": "bot_config_rationale_173"
     },
@@ -4725,7 +4761,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L22",
-      "community": 3,
+      "community": 4,
       "norm_label": "serve the dashboard html (no cache to always get latest).",
       "id": "dashboard_server_rationale_22"
     },
@@ -4734,7 +4770,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L31",
-      "community": 3,
+      "community": 4,
       "norm_label": "return full dashboard state snapshot.",
       "id": "dashboard_server_rationale_31"
     },
@@ -4743,7 +4779,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L36",
-      "community": 3,
+      "community": 4,
       "norm_label": "return accounts list.",
       "id": "dashboard_server_rationale_36"
     },
@@ -4752,7 +4788,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L41",
-      "community": 3,
+      "community": 4,
       "norm_label": "export all data as json download.",
       "id": "dashboard_server_rationale_41"
     },
@@ -4761,7 +4797,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L49",
-      "community": 3,
+      "community": 4,
       "norm_label": "websocket endpoint \u2014 client stays connected for push updates.",
       "id": "dashboard_server_rationale_49"
     },
@@ -4770,7 +4806,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L76",
-      "community": 3,
+      "community": 4,
       "norm_label": "background task: push state snapshots to all ws clients every 1.5s.",
       "id": "dashboard_server_rationale_76"
     },
@@ -4779,7 +4815,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L102",
-      "community": 3,
+      "community": 4,
       "norm_label": "start push loop as background task on app startup.",
       "id": "dashboard_server_rationale_102"
     },
@@ -4788,7 +4824,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L107",
-      "community": 3,
+      "community": 4,
       "norm_label": "stop push loop on app shutdown.",
       "id": "dashboard_server_rationale_107"
     },
@@ -4797,7 +4833,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L118",
-      "community": 3,
+      "community": 4,
       "norm_label": "save account from dashboard form.",
       "id": "dashboard_server_rationale_118"
     },
@@ -4806,7 +4842,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L128",
-      "community": 3,
+      "community": 4,
       "norm_label": "import data from json.",
       "id": "dashboard_server_rationale_128"
     },
@@ -4815,7 +4851,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L140",
-      "community": 8,
+      "community": 10,
       "norm_label": "create the aiohttp web application.",
       "id": "dashboard_server_rationale_140"
     },
@@ -4824,7 +4860,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/server.py",
       "source_location": "L164",
-      "community": 8,
+      "community": 10,
       "norm_label": "start the dashboard server (non-blocking).",
       "id": "dashboard_server_rationale_164"
     },
@@ -4833,7 +4869,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/state.py",
       "source_location": "L16",
-      "community": 11,
+      "community": 13,
       "norm_label": "singleton shared state between bot and dashboard.",
       "id": "dashboard_state_rationale_16"
     },
@@ -4842,7 +4878,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/state.py",
       "source_location": "L55",
-      "community": 11,
+      "community": 13,
       "norm_label": "update agent state from bot engine.",
       "id": "dashboard_state_rationale_55"
     },
@@ -4851,7 +4887,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/state.py",
       "source_location": "L76",
-      "community": 11,
+      "community": 13,
       "norm_label": "add or update account.",
       "id": "dashboard_state_rationale_76"
     },
@@ -4860,7 +4896,7 @@
       "file_type": "rationale",
       "source_file": "dashboard/state.py",
       "source_location": "L87",
-      "community": 11,
+      "community": 13,
       "norm_label": "full state snapshot for dashboard api.",
       "id": "dashboard_state_rationale_87"
     },
@@ -4869,7 +4905,7 @@
       "file_type": "rationale",
       "source_file": "game/settlement.py",
       "source_location": "L11",
-      "community": 4,
+      "community": 5,
       "norm_label": "process game end:     1. extract final stats     2. update memory (overall his",
       "id": "game_settlement_rationale_11"
     },
@@ -4941,7 +4977,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L34",
-      "community": 13,
+      "community": 14,
       "norm_label": "read/write molty-royale-context.json with overall + temp sections.",
       "id": "memory_agent_memory_rationale_34"
     },
@@ -4959,7 +4995,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L58",
-      "community": 27,
+      "community": 18,
       "norm_label": "persist memory to disk.",
       "id": "memory_agent_memory_rationale_58"
     },
@@ -4968,7 +5004,7 @@
       "file_type": "rationale",
       "source_file": "memory/agent_memory.py",
       "source_location": "L109",
-      "community": 44,
+      "community": 34,
       "norm_label": "append a new lesson, keeping max_lessons most recent.",
       "id": "memory_agent_memory_rationale_109"
     },
@@ -4977,7 +5013,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L75",
-      "community": 16,
+      "community": 35,
       "norm_label": "damage formula per combat-items.md + game-systems.md weather penalty.     base:",
       "id": "strategy_brain_rationale_75"
     },
@@ -4986,7 +5022,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L85",
-      "community": 22,
+      "community": 23,
       "norm_label": "get atk bonus from equipped weapon.",
       "id": "strategy_brain_rationale_85"
     },
@@ -4995,7 +5031,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L93",
-      "community": 16,
+      "community": 36,
       "norm_label": "get range from equipped weapon.",
       "id": "strategy_brain_rationale_93"
     },
@@ -5004,7 +5040,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L105",
-      "community": 20,
+      "community": 15,
       "norm_label": "resolve a connectedregions entry to a full region object.     per v1.5.2 gotcha",
       "id": "strategy_brain_rationale_105"
     },
@@ -5013,7 +5049,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L121",
-      "community": 20,
+      "community": 16,
       "norm_label": "extract region id from either a string or dict entry.",
       "id": "strategy_brain_rationale_121"
     },
@@ -5031,7 +5067,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L138",
-      "community": 16,
+      "community": 15,
       "norm_label": "main decision engine. returns action dict or none (wait).      priority chain",
       "id": "strategy_brain_rationale_138"
     },
@@ -5040,7 +5076,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L393",
-      "community": 41,
+      "community": 29,
       "norm_label": "calculate move ep cost per game-systems.md.     base: 2. storm: +1. water terra",
       "id": "strategy_brain_rationale_393"
     },
@@ -5049,7 +5085,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L404",
-      "community": 33,
+      "community": 26,
       "norm_label": "estimate enemy's weapon bonus from their equipped weapon.",
       "id": "strategy_brain_rationale_404"
     },
@@ -5076,7 +5112,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L516",
-      "community": 22,
+      "community": 23,
       "norm_label": "auto-equip best weapon from inventory.",
       "id": "strategy_brain_rationale_516"
     },
@@ -5085,7 +5121,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L536",
-      "community": 40,
+      "community": 16,
       "norm_label": "find nearest connected region that's not a death zone and not pending dz.     p",
       "id": "strategy_brain_rationale_536"
     },
@@ -5094,7 +5130,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L572",
-      "community": 34,
+      "community": 32,
       "norm_label": "find best healing item based on urgency.     critical=true (hp<30): prefer band",
       "id": "strategy_brain_rationale_572"
     },
@@ -5103,7 +5139,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L596",
-      "community": 36,
+      "community": 28,
       "norm_label": "find energy drink for ep recovery (+5 ep per combat-items.md).",
       "id": "strategy_brain_rationale_596"
     },
@@ -5112,7 +5148,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L604",
-      "community": 39,
+      "community": 30,
       "norm_label": "select target with lowest hp.",
       "id": "strategy_brain_rationale_604"
     },
@@ -5121,7 +5157,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L610",
-      "community": 38,
+      "community": 31,
       "norm_label": "check if target is in weapon range.     per combat-items.md: melee = same regio",
       "id": "strategy_brain_rationale_610"
     },
@@ -5130,7 +5166,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L638",
-      "community": 32,
+      "community": 15,
       "norm_label": "select best facility to interact with per game-systems.md.     facilities: supp",
       "id": "strategy_brain_rationale_638"
     },
@@ -5139,7 +5175,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L660",
-      "community": 37,
+      "community": 33,
       "norm_label": "track observed agents for threat assessment (agent-memory.md temp.knownagents).",
       "id": "strategy_brain_rationale_660"
     },
@@ -5148,7 +5184,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L685",
-      "community": 23,
+      "community": 22,
       "norm_label": "use utility items immediately after pickup.     map: reveals entire map \u2192 trigg",
       "id": "strategy_brain_rationale_685"
     },
@@ -5157,7 +5193,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L702",
-      "community": 23,
+      "community": 22,
       "norm_label": "called after map is used \u2014 learn entire map layout.     track all death zones,",
       "id": "strategy_brain_rationale_702"
     },
@@ -5166,7 +5202,7 @@
       "file_type": "rationale",
       "source_file": "strategy/brain.py",
       "source_location": "L744",
-      "community": 35,
+      "community": 27,
       "norm_label": "choose best region to move to.     critical: never move into a death zone or pe",
       "id": "strategy_brain_rationale_744"
     },
@@ -5179,7 +5215,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "bot/main.py",
       "id": "main"
     },
@@ -5192,7 +5228,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "main()",
       "id": "main_main"
     },
@@ -5205,7 +5241,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "bot/heartbeat.py",
       "id": "heartbeat"
     },
@@ -5218,7 +5254,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "heartbeat",
       "id": "heartbeat_Heartbeat"
     },
@@ -5231,7 +5267,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "bot/config.py",
       "id": "config"
     },
@@ -5244,7 +5280,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "load_agents()",
       "id": "config_load_agents"
     },
@@ -5257,7 +5293,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 59,
+      "community": 50,
       "norm_label": "bot/api_client.py",
       "id": "api_client"
     },
@@ -5270,7 +5306,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "moltyapi",
       "id": "api_client_MoltyAPI"
     },
@@ -5283,7 +5319,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 60,
+      "community": 51,
       "norm_label": "bot/state_router.py",
       "id": "state_router"
     },
@@ -5296,7 +5332,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "determine_state()",
       "id": "state_router_determine_state"
     },
@@ -5309,7 +5345,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "bot/dashboard/server.py",
       "id": "dashboard_server"
     },
@@ -5322,7 +5358,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 52,
       "norm_label": "bot/dashboard/state.py",
       "id": "dashboard_state"
     },
@@ -5335,7 +5371,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "dashboardstate",
       "id": "dashboard_state_DashboardState"
     },
@@ -5348,7 +5384,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "dashboard_state singleton",
       "id": "dashboard_state_singleton"
     },
@@ -5361,7 +5397,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 62,
+      "community": 53,
       "norm_label": "bot/game/action_sender.py",
       "id": "game_action_sender"
     },
@@ -5374,7 +5410,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "actionsender",
       "id": "game_action_sender_ActionSender"
     },
@@ -5387,7 +5423,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 63,
+      "community": 54,
       "norm_label": "bot/game/free_join.py",
       "id": "game_free_join"
     },
@@ -5400,7 +5436,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 64,
+      "community": 55,
       "norm_label": "bot/game/paid_join.py",
       "id": "game_paid_join"
     },
@@ -5413,7 +5449,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 56,
       "norm_label": "bot/game/room_selector.py",
       "id": "game_room_selector"
     },
@@ -5426,7 +5462,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 66,
+      "community": 57,
       "norm_label": "bot/game/settlement.py",
       "id": "game_settlement"
     },
@@ -5439,7 +5475,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 58,
       "norm_label": "bot/game/websocket_engine.py",
       "id": "game_websocket_engine"
     },
@@ -5452,7 +5488,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "websocketengine",
       "id": "game_websocket_engine_WebSocketEngine"
     },
@@ -5465,7 +5501,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 68,
+      "community": 59,
       "norm_label": "bot/memory/agent_memory.py",
       "id": "memory_agent_memory"
     },
@@ -5478,7 +5514,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 10,
       "norm_label": "agentmemory",
       "id": "memory_agent_memory_AgentMemory"
     },
@@ -5491,7 +5527,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 69,
+      "community": 60,
       "norm_label": "bot/setup/account_setup.py",
       "id": "setup_account_setup"
     },
@@ -5504,7 +5540,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 61,
       "norm_label": "bot/setup/identity.py",
       "id": "setup_identity"
     },
@@ -5517,7 +5553,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 71,
+      "community": 62,
       "norm_label": "bot/setup/wallet_setup.py",
       "id": "setup_wallet_setup"
     },
@@ -5530,7 +5566,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 72,
+      "community": 63,
       "norm_label": "bot/dashboard/static/app.js",
       "id": "dashboard_app_js"
     },
@@ -5556,7 +5592,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "setup package init",
       "id": "bot_setup_init"
     },
@@ -5569,7 +5605,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 3,
       "norm_label": "strategy brain module",
       "id": "bot_strategy_brain"
     },
@@ -5582,7 +5618,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "strategy package init",
       "id": "bot_strategy_init"
     },
@@ -5595,7 +5631,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 3,
       "norm_label": "logger utility",
       "id": "bot_utils_logger"
     },
@@ -5608,7 +5644,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "railway sync utility",
       "id": "bot_utils_railway_sync"
     },
@@ -5621,7 +5657,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 3,
       "norm_label": "rate limiter utility",
       "id": "bot_utils_rate_limiter"
     },
@@ -5634,7 +5670,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "version check utility",
       "id": "bot_utils_version_check"
     },
@@ -5647,7 +5683,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "utils package init",
       "id": "bot_utils_init"
     },
@@ -5660,7 +5696,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 8,
       "norm_label": "web3 contracts module",
       "id": "bot_web3_contracts"
     },
@@ -5673,7 +5709,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 45,
+      "community": 3,
       "norm_label": "eip-712 signer module",
       "id": "bot_web3_eip712_signer"
     },
@@ -5686,7 +5722,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 8,
       "norm_label": "gas checker module",
       "id": "bot_web3_gas_checker"
     },
@@ -5699,7 +5735,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 3,
       "norm_label": "identity contract module",
       "id": "bot_web3_identity_contract"
     },
@@ -5712,7 +5748,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 8,
       "norm_label": "web3 provider module",
       "id": "bot_web3_provider"
     },
@@ -5738,7 +5774,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 26,
+      "community": 3,
       "norm_label": "whitelist contract module",
       "id": "bot_web3_whitelist_contract"
     },
@@ -5751,7 +5787,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "web3 package init",
       "id": "bot_web3_init"
     },
@@ -5764,7 +5800,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "agent instructions document",
       "id": "AGENTS_md"
     },
@@ -5777,7 +5813,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "docker compose configuration",
       "id": "docker_compose_yml"
     },
@@ -5790,7 +5826,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "project readme document",
       "id": "README_md"
     },
@@ -5803,7 +5839,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "python dependencies list",
       "id": "requirements_txt"
     },
@@ -5816,7 +5852,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "dashboard index html",
       "id": "bot_dashboard_static_index_html"
     },
@@ -5829,7 +5865,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "graphify tool",
       "id": "concept_graphify"
     },
@@ -5842,7 +5878,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "railway deployment platform",
       "id": "concept_railway"
     },
@@ -5855,7 +5891,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "fly.io deployment platform",
       "id": "concept_fly_io"
     },
@@ -5868,7 +5904,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "docker containerization",
       "id": "concept_docker"
     },
@@ -5881,7 +5917,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 3,
       "norm_label": "websocket protocol",
       "id": "concept_websocket"
     },
@@ -5894,7 +5930,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "cross forge trade",
       "id": "cross-forge-trade"
     },
@@ -5907,7 +5943,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "game guide",
       "id": "game-guide"
     },
@@ -5920,7 +5956,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "skill",
       "id": "skill"
     },
@@ -5933,7 +5969,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "strategy guide",
       "id": "strategy"
     },
@@ -5946,7 +5982,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "action payload reference",
       "id": "actions"
     },
@@ -5959,7 +5995,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "agent memory & growth",
       "id": "agent-memory"
     },
@@ -5972,7 +6008,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "api summary",
       "id": "api-summary"
     },
@@ -5985,7 +6021,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "combat & items spec sheet",
       "id": "combat-items"
     },
@@ -5998,7 +6034,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "contracts and chain details",
       "id": "contracts"
     },
@@ -6011,7 +6047,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "economy and rewards",
       "id": "economy"
     },
@@ -6024,7 +6060,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "error catalog",
       "id": "errors"
     },
@@ -6037,7 +6073,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "free game participation",
       "id": "free-games"
     },
@@ -6050,7 +6086,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "game loop",
       "id": "game-loop"
     },
@@ -6063,7 +6099,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "game systems overview",
       "id": "game-systems"
     },
@@ -6076,7 +6112,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "implementation gotchas",
       "id": "gotchas"
     },
@@ -6089,7 +6125,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "erc-8004 identity registration",
       "id": "identity"
     },
@@ -6102,7 +6138,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "operational limits",
       "id": "limits"
     },
@@ -6115,7 +6151,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "owner guidance",
       "id": "owner-guidance"
     },
@@ -6128,7 +6164,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "paid game participation",
       "id": "paid-games"
     },
@@ -6141,7 +6177,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "setup guide",
       "id": "setup"
     },
@@ -6153,7 +6189,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "molty royale",
       "id": "concept_molty-royale"
     },
@@ -6166,7 +6202,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "state router",
       "id": "concept_state-router"
     },
@@ -6178,7 +6214,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "websocket gameplay",
       "id": "concept_websocket-gameplay"
     },
@@ -6191,7 +6227,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "erc-8004 identity",
       "id": "concept_erc8004"
     },
@@ -6204,7 +6240,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "eip-712",
       "id": "concept_eip712"
     },
@@ -6217,7 +6253,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "smoltz",
       "id": "concept_sMoltz"
     },
@@ -6230,7 +6266,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "moltz",
       "id": "concept_Moltz"
     },
@@ -6243,7 +6279,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "cross",
       "id": "concept_CROSS"
     },
@@ -6256,7 +6292,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "guardians",
       "id": "concept_guardians"
     },
@@ -6269,7 +6305,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "death zone",
       "id": "concept_death-zone"
     },
@@ -6282,7 +6318,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "combat formula",
       "id": "concept_combat-formula"
     },
@@ -6295,7 +6331,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "molty-royale-context.json",
       "id": "concept_agent-memory-json"
     },
@@ -6308,7 +6344,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "cross forge router",
       "id": "concept_cross-forge-router"
     },
@@ -6321,7 +6357,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "wallet types",
       "id": "concept_wallet-types"
     },
@@ -6334,7 +6370,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "agent eoa",
       "id": "concept_agent-eoa"
     },
@@ -6347,7 +6383,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "owner eoa",
       "id": "concept_owner-eoa"
     },
@@ -6360,7 +6396,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "moltyroyale wallet",
       "id": "concept_molty-wallet"
     },
@@ -6373,7 +6409,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "runtime modes document",
       "id": "runtime-modes_RuntimeModes"
     },
@@ -6386,7 +6422,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "autonomous websocket runner mode",
       "id": "runtime-modes_AutonomousWebSocketRunnerMode"
     },
@@ -6399,7 +6435,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "heartbeat mode",
       "id": "runtime-modes_HeartbeatMode"
     },
@@ -6412,7 +6448,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "cost guidance",
       "id": "runtime-modes_CostGuidance"
     },
@@ -6425,7 +6461,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "ws/agent",
       "id": "runtime-modes_ws-agent"
     },
@@ -6438,7 +6474,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "agent_view",
       "id": "runtime-modes_agent_view"
     },
@@ -6451,7 +6487,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "action messages",
       "id": "runtime-modes_action-messages"
     },
@@ -6464,7 +6500,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "heartbeat.md",
       "id": "runtime-modes_heartbeat-md"
     },
@@ -6477,7 +6513,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "setup guide document",
       "id": "setup_SetupGuide"
     },
@@ -6490,7 +6526,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "agent eoa",
       "id": "setup_AgentEOA"
     },
@@ -6503,7 +6539,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "owner eoa",
       "id": "setup_OwnerEOA"
     },
@@ -6516,7 +6552,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "moltyroyale wallet (sc wallet)",
       "id": "setup_MoltyRoyaleWallet"
     },
@@ -6529,7 +6565,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "post /accounts",
       "id": "setup_PostAccounts"
     },
@@ -6542,7 +6578,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "put /accounts/wallet",
       "id": "setup_PutAccountsWallet"
     },
@@ -6555,7 +6591,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "post /whitelist/request",
       "id": "setup_PostWhitelistRequest"
     },
@@ -6568,7 +6604,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "post /create/wallet",
       "id": "setup_PostCreateWallet"
     },
@@ -6581,7 +6617,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "erc-8004 identity",
       "id": "setup_ERC8004Identity"
     },
@@ -6594,7 +6630,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "walletfactory contract",
       "id": "setup_WalletFactory"
     },
@@ -6607,7 +6643,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "moltyroyalewallet contract",
       "id": "setup_MoltyRoyaleWalletContract"
     },
@@ -6620,7 +6656,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "legacy walletfactory",
       "id": "setup_LegacyWalletFactory"
     },
@@ -6633,7 +6669,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "moltz erc-20",
       "id": "setup_MoltzERC20"
     },
@@ -6646,7 +6682,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "cross (native token)",
       "id": "setup_CROSS"
     },
@@ -6659,7 +6695,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "x-api-key",
       "id": "setup_X-API-Key"
     },
@@ -6672,7 +6708,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "credentials.json",
       "id": "setup_credentials.json"
     },
@@ -6685,7 +6721,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "owner-intake.json",
       "id": "setup_owner-intake.json"
     },
@@ -6698,7 +6734,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "agent-wallet.json",
       "id": "setup_agent-wallet.json"
     },
@@ -6711,7 +6747,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "owner-wallet.json",
       "id": "setup_owner-wallet.json"
     },
@@ -6724,7 +6760,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "whitelist",
       "id": "setup_whitelist"
     },
@@ -6737,7 +6773,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "eip-712 signing",
       "id": "setup_EIP-712"
     },
@@ -6750,7 +6786,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 73,
+      "community": 64,
       "norm_label": "ethers.js",
       "id": "setup_ethers.js"
     },
@@ -6763,7 +6799,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 74,
+      "community": 65,
       "norm_label": "eth_account (python)",
       "id": "setup_eth_account"
     },
@@ -6776,7 +6812,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 75,
+      "community": 66,
       "norm_label": "web3.py",
       "id": "setup_web3.py"
     },
@@ -6789,7 +6825,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "identity.md",
       "id": "setup_identity.md"
     },
@@ -6802,7 +6838,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "economy.md",
       "id": "setup_economy.md"
     },
@@ -6815,7 +6851,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "skill.md",
       "id": "setup_skill.md"
     },
@@ -6828,7 +6864,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "heartbeat.md",
       "id": "setup_heartbeat.md"
     },
@@ -6841,7 +6877,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "paid-ready checklist",
       "id": "setup_PaidReadyChecklist"
     },
@@ -6854,7 +6890,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "owner approval paths",
       "id": "setup_OwnerApprovalPaths"
     },
@@ -6867,7 +6903,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 9,
       "norm_label": "legacy wallet withdraw",
       "id": "setup_LegacyWalletWithdraw"
     }
@@ -7511,6 +7547,16 @@
       "target": "bot_api_client_moltyapi"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "heartbeat.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "bot_heartbeat_heartbeat",
+      "target": "bot_api_client_moltyapi"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -7530,16 +7576,6 @@
       "source_location": "L161",
       "weight": 1.0,
       "source": "setup_account_setup_run_first_run_intake",
-      "target": "bot_api_client_moltyapi"
-    },
-    {
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "source_file": "heartbeat.py",
-      "source_location": "L7",
-      "weight": 0.8,
-      "confidence_score": 0.5,
-      "source": "bot_heartbeat_heartbeat",
       "target": "bot_api_client_moltyapi"
     },
     {
@@ -8500,17 +8536,6 @@
       "target": "bot_heartbeat_heartbeat"
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "main.py",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "bot_main_main",
-      "target": "bot_heartbeat_heartbeat"
-    },
-    {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "heartbeat.py",
@@ -8529,6 +8554,17 @@
       "confidence_score": 0.5,
       "source": "bot_heartbeat_heartbeat",
       "target": "memory_agent_memory_agentmemory"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "main.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "bot_main_main",
+      "target": "bot_heartbeat_heartbeat"
     },
     {
       "relation": "rationale_for",
@@ -8640,6 +8676,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "heartbeat.py",
+      "source_location": "L203",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_heartbeat_heartbeat_heartbeat_cycle",
+      "target": "bot_heartbeat_heartbeat_handle_ready"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
       "source_location": "L195",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8656,17 +8703,6 @@
       "confidence_score": 1.0,
       "source": "bot_heartbeat_heartbeat_heartbeat_cycle",
       "target": "bot_heartbeat_heartbeat_handle_in_game"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "heartbeat.py",
-      "source_location": "L203",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bot_heartbeat_heartbeat_heartbeat_cycle",
-      "target": "bot_heartbeat_heartbeat_handle_ready"
     },
     {
       "relation": "rationale_for",
@@ -8699,14 +8735,25 @@
       "target": "bot_heartbeat_heartbeat_heartbeat_cycle"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
+      "source_location": "L330",
+      "weight": 1.0,
+      "source": "bot_heartbeat_heartbeat_handle_no_identity",
+      "target": "bot_heartbeat_heartbeat_handle_ready",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "heartbeat.py",
-      "source_location": "L252",
+      "source_location": "L264",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bot_heartbeat_rationale_252",
-      "target": "bot_heartbeat_heartbeat_handle_no_identity"
+      "source": "bot_heartbeat_rationale_264",
+      "target": "bot_heartbeat_heartbeat_handle_no_identity",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8740,6 +8787,16 @@
       "weight": 1.0,
       "source": "bot_heartbeat_heartbeat_handle_no_identity",
       "target": "setup_identity_ensure_identity"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
+      "source_location": "L252",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_heartbeat_rationale_252",
+      "target": "bot_heartbeat_heartbeat_handle_no_identity"
     },
     {
       "relation": "rationale_for",
@@ -8796,11 +8853,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "heartbeat.py",
-      "source_location": "L306",
+      "source_location": "L333",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bot_heartbeat_rationale_306",
-      "target": "bot_heartbeat_heartbeat_handle_ready"
+      "source": "bot_heartbeat_rationale_333",
+      "target": "bot_heartbeat_heartbeat_handle_ready",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8834,6 +8891,16 @@
       "weight": 1.0,
       "source": "bot_heartbeat_heartbeat_handle_ready",
       "target": "game_free_join_join_free_game"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
+      "source_location": "L306",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_heartbeat_rationale_306",
+      "target": "bot_heartbeat_heartbeat_handle_ready"
     },
     {
       "relation": "rationale_for",
@@ -8890,6 +8957,16 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "heartbeat.py",
+      "source_location": "L357",
+      "weight": 1.0,
+      "source": "bot_heartbeat_rationale_357",
+      "target": "bot_heartbeat_heartbeat_handle_in_game",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
       "source_location": "L330",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8940,11 +9017,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "heartbeat.py",
-      "source_location": "L347",
+      "source_location": "L374",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bot_heartbeat_rationale_347",
-      "target": "bot_heartbeat_heartbeat_play_game"
+      "source": "bot_heartbeat_rationale_374",
+      "target": "bot_heartbeat_heartbeat_play_game",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8978,6 +9055,16 @@
       "weight": 1.0,
       "source": "bot_heartbeat_heartbeat_play_game",
       "target": "utils_railway_sync_sync_memory_to_railway"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heartbeat.py",
+      "source_location": "L347",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_heartbeat_rationale_347",
+      "target": "bot_heartbeat_heartbeat_play_game"
     },
     {
       "relation": "rationale_for",
@@ -17413,5 +17500,5 @@
       "source_location": "621-794"
     }
   ],
-  "built_at_commit": "b6773d8a8d1a4b8b522400b9c1205863e1bdf5f6"
+  "built_at_commit": "65841937f1c553ad87aa8f78d3d58fb1d30007e4"
 }
