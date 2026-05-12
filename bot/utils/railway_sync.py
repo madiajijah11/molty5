@@ -9,6 +9,7 @@ Only syncs ONCE (checks SETUP_COMPLETE flag to prevent infinite redeploy loop).
 Requires: RAILWAY_API_TOKEN (create at https://railway.com/account/tokens)
 Railway auto-provides: RAILWAY_PROJECT_ID, RAILWAY_ENVIRONMENT_ID, RAILWAY_SERVICE_ID
 """
+
 import os
 import httpx
 from bot.utils.logger import get_logger
@@ -125,9 +126,14 @@ async def sync_all_to_railway(creds: dict, agent_pk: str, owner_pk: str = ""):
     log.info("First-time Railway sync — saving ALL variables in one API call...")
 
     from bot.config import (
-        ROOM_MODE, ADVANCED_MODE, AUTO_WHITELIST,
-        AUTO_SC_WALLET, ENABLE_MEMORY, ENABLE_AGENT_TOKEN,
-        AUTO_IDENTITY, LOG_LEVEL,
+        ROOM_MODE,
+        ADVANCED_MODE,
+        AUTO_WHITELIST,
+        AUTO_SC_WALLET,
+        ENABLE_MEMORY,
+        ENABLE_AGENT_TOKEN,
+        AUTO_IDENTITY,
+        LOG_LEVEL,
     )
 
     # Build complete variables map — ALL in one call = ONE redeploy
@@ -155,6 +161,79 @@ async def sync_all_to_railway(creds: dict, agent_pk: str, owner_pk: str = ""):
 
     ok = await _collection_upsert(all_vars)
     if ok:
-        log.info("✅ All variables synced to Railway (1 API call = 1 redeploy). Credentials saved!")
+        log.info(
+            "✅ All variables synced to Railway (1 API call = 1 redeploy). Credentials saved!"
+        )
     else:
-        log.warning("Railway collection upsert failed — check RAILWAY_API_TOKEN permissions")
+        log.warning(
+            "Railway collection upsert failed — check RAILWAY_API_TOKEN permissions"
+        )
+
+
+async def sync_memory_to_railway(memory_data: dict):
+    """Sync memory learning data to Railway variable.
+
+    Saves only essential fields (not the full file) to keep data small.
+    Called after each game settlement. Each call triggers a Railway
+    redeploy — we accept this for data persistence.
+    """
+    if not is_railway():
+        return
+
+    config = _get_railway_config()
+    if not config:
+        return
+
+    try:
+        import json
+
+        # Compact serialization — only save the overall section + structured data
+        compact = {
+            "history": memory_data.get("overall", {}).get("history", {}),
+            "lessons_count": len(memory_data.get("overall", {}).get("lessons", [])),
+            "rules_count": len(
+                memory_data.get("overall", {}).get("strategy_rules", [])
+            ),
+            "opponents_count": len(
+                memory_data.get("overall", {}).get("known_agents", {})
+            ),
+            "updated_at": __import__("time").time(),
+        }
+        payload = {
+            "MEMORY_SNAPSHOT": json.dumps(compact, separators=(",", ":"), default=str),
+        }
+        ok = await _collection_upsert(payload)
+        if ok:
+            log.debug(
+                "Memory synced to Railway (%d games)",
+                compact["history"].get("totalGames", 0),
+            )
+    except Exception as e:
+        log.warning("Memory sync to Railway failed: %s", e)
+
+
+async def restore_memory_from_railway(memory):
+    """Try to restore memory data from Railway variable after restart."""
+    if not is_railway():
+        return False
+
+    snapshot = os.getenv("MEMORY_SNAPSHOT", "")
+    if not snapshot:
+        return False
+
+    try:
+        import json
+
+        data = json.loads(snapshot)
+        history = data.get("history", {})
+        if history.get("totalGames", 0) > 0:
+            memory.data["overall"]["history"] = history
+            log.info(
+                "Restored memory from Railway: %d games, %s lessons",
+                history["totalGames"],
+                data.get("lessons_count", 0),
+            )
+            return True
+    except Exception as e:
+        log.warning("Failed to restore memory from Railway: %s", e)
+    return False

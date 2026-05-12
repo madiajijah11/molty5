@@ -150,6 +150,12 @@ class Heartbeat:
         # Load memory (if enabled)
         if ENABLE_MEMORY:
             await self.memory.load()
+            # Try to restore from Railway snapshot (survives container restarts)
+            from bot.utils.railway_sync import restore_memory_from_railway
+
+            restored = await restore_memory_from_railway(self.memory)
+            if restored:
+                await self.memory.save()
             if creds.get("agent_name"):
                 self.memory.set_agent_name(creds["agent_name"])
         else:
@@ -166,8 +172,8 @@ class Heartbeat:
                 self.running = False
             except Exception as e:
                 consecutive_errors += 1
-                # Escalating backoff: 10s → 30s → 60s → 120s
-                wait = min(10 * (2 ** min(consecutive_errors - 1, 4)), 120)
+                # Escalating backoff: 5s → 10s → 20s → 40s → 60s
+                wait = min(5 * (2 ** min(consecutive_errors - 1, 4)), 60)
                 log.error(
                     "Heartbeat error (#%d): %s. Retrying in %ds...",
                     consecutive_errors,
@@ -384,5 +390,10 @@ class Heartbeat:
         # Settle
         await settle_game(game_result, entry_type, self.memory)
 
-        log.info("Game complete. Starting next cycle in 5s...")
-        await asyncio.sleep(5)
+        # Sync memory to Railway so data survives container restarts
+        from bot.utils.railway_sync import sync_memory_to_railway
+
+        await sync_memory_to_railway(self.memory.data)
+
+        log.info("Game complete. Starting next cycle in 2s...")
+        await asyncio.sleep(2)
