@@ -5,6 +5,7 @@ Respects First-Run Intake config flags for Railway/Docker deployment.
 """
 
 import asyncio
+import os
 from bot.api_client import MoltyAPI, APIError
 from bot.dashboard.state import dashboard_state
 from bot.state_router import (
@@ -228,6 +229,17 @@ class Heartbeat:
 
         # Push learning data to dashboard every cycle
         dashboard_state.update_learning(self.memory.get_stats())
+
+        # Persist memory to Railway every 10 cycles (survives container restarts)
+        if ENABLE_MEMORY and os.environ.get("RAILWAY_PROJECT_ID"):
+            self._save_cycles = getattr(self, "_save_cycles", 0) + 1
+            if self._save_cycles % 10 == 0:
+                try:
+                    from bot.utils.railway_sync import sync_memory_to_railway
+
+                    await sync_memory_to_railway(self.memory.data)
+                except Exception:
+                    pass  # Non-critical
 
         # Step 3: Route based on state
         if state == NO_IDENTITY:
