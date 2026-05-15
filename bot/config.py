@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ── Skill / API version ──────────────────────────────────────────────
-SKILL_VERSION = "1.6.1"
+SKILL_VERSION = "1.6.2"
 
 # ── URLs ──────────────────────────────────────────────────────────────
 API_BASE = "https://cdn.moltyroyale.com/api"
